@@ -15,7 +15,7 @@
         "build": {
           "builder": "@angular-devkit/build-angular:browser",
           "options": {
-            "outputPath": "dist/apps/front-end",
+            "outputPath": "dist/front-end/browser",
             "index": "apps/front-end/src/index.html",
             "main": "apps/front-end/src/main.ts",
             "polyfills": "apps/front-end/src/polyfills.ts",
@@ -23,7 +23,8 @@
             "aot": true,
             "assets": [
               "apps/front-end/src/favicon.ico",
-              "apps/front-end/src/assets"
+              "apps/front-end/src/assets",
+              "apps/front-end/src/manifest.webmanifest"
             ],
             "styles": ["apps/front-end/src/styles.scss"],
             "scripts": []
@@ -55,7 +56,9 @@
                   "maximumWarning": "6kb",
                   "maximumError": "10kb"
                 }
-              ]
+              ],
+              "serviceWorker": true,
+              "ngswConfigPath": "apps/front-end/ngsw-config.json"
             }
           }
         },
@@ -93,6 +96,41 @@
             "tsConfig": "apps/front-end/tsconfig.spec.json",
             "passWithNoTests": true,
             "setupFile": "apps/front-end/src/test-setup.ts"
+          }
+        },
+        "server": {
+          "builder": "@angular-devkit/build-angular:server",
+          "options": {
+            "outputPath": "dist/front-end/server",
+            "main": "apps/front-end/src/main.server.ts",
+            "tsConfig": "apps/front-end/tsconfig.server.json"
+          },
+          "configurations": {
+            "production": {
+              "outputHashing": "media",
+              "fileReplacements": [
+                {
+                  "replace": "apps/front-end/src/environments/environment.ts",
+                  "with": "apps/front-end/src/environments/environment.prod.ts"
+                }
+              ],
+              "sourceMap": false,
+              "optimization": true
+            }
+          }
+        },
+        "app-shell": {
+          "builder": "@angular-devkit/build-angular:app-shell",
+          "options": {
+            "browserTarget": "front-end:build",
+            "serverTarget": "front-end:server",
+            "route": "shell"
+          },
+          "configurations": {
+            "production": {
+              "browserTarget": "front-end:build:production",
+              "serverTarget": "front-end:server:production"
+            }
           }
         }
       }

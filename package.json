@@ -29,6 +29,8 @@
   },
   "private": true,
   "dependencies": {
+    "@angular/platform-server": "^9.1.0",
+    "@angular/service-worker": "^9.1.0",
     "@nrwl/angular": "9.2.4",
     "@angular/animations": "^9.1.0",
     "@angular/common": "^9.1.0",
