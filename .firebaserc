@@ -1,0 +1,6 @@
+{
+  "projects": {
+    "dev": "pelaguru-dev",
+    "default": "pelaguru-dev"
+  }
+}
