@@ -25,6 +25,12 @@
     "front-end-e2e": {
       "tags": [],
       "implicitDependencies": ["front-end"]
+    },
+    "back-end": {
+      "tags": []
+    },
+    "interfaces": {
+      "tags": []
     }
   }
 }
