@@ -2,83 +2,53 @@
 
 This project was generated using [Nx](https://nx.dev).
 
-<p align="center"><img src="https://raw.githubusercontent.com/nrwl/nx/master/nx-logo.png" width="450"></p>
+### Project setup
 
-🔎 **Nx is a set of Extensible Dev Tools for Monorepos.**
+#### Step 1
 
-## Quick Start & Documentation
+- Clone this project
+- Got to project folder
 
-[Nx Documentation](https://nx.dev/angular)
+#### Step 2
 
-[10-minute video showing all Nx features](https://nx.dev/angular/getting-started/what-is-nx)
+> Install dependencies
 
-[Interactive Tutorial](https://nx.dev/angular/tutorial/01-create-application)
+- `npm i`
+- `npm i -g concurrently`
 
-## Adding capabilities to your workspace
+> Firebase CLI (if not installed)
 
-Nx supports many plugins which add capabilities for developing different types of applications and different tools.
+- `npm i -g firebase-tools`
+- `firebase login`
 
-These capabilities include generating applications, libraries, etc as well as the devtools to test, and build projects as well.
+> Firebase CLI (if not logged in)
 
-Below are some plugins which you can add to your workspace:
+- `firebase login`
 
-- [Angular](https://angular.io)
-  - `ng add @nrwl/angular`
-- [React](https://reactjs.org)
-  - `ng add @nrwl/react`
-- Web (no framework frontends)
-  - `ng add @nrwl/web`
-- [Nest](https://nestjs.com)
-  - `ng add @nrwl/nest`
-- [Express](https://expressjs.com)
-  - `ng add @nrwl/express`
-- [Node](https://nodejs.org)
-  - `ng add @nrwl/node`
+> Firebase CLI (if installed and logged in)
 
-## Generate an application
+- `firebase use pelaguru-dev`
 
-Run `ng g @nrwl/angular:app my-app` to generate an application.
+> Add firebase credentials
 
-> You can use any of the plugins above to generate applications as well.
+- coppy `pelaguru-dev.json` file into `pelaguru/apps/back-end/keys`
 
-When using Nx, you can create multiple applications and libraries in the same workspace.
+#### Step 3
 
-## Generate a library
+> Run project
 
-Run `ng g @nrwl/angular:lib my-lib` to generate a library.
+- Front-end - `npm start`
+- Back-end
+  -- `npm run firebase:serve` (Ubuntu)
+  -- `npm run firebase:win_serve` (Windows)
 
-> You can also use any of the plugins above to generate libraries as well.
+#### Step 4
 
-Libraries are sharable across libraries and applications. They can be imported from `@pelaguru/mylib`.
+> Deploy
 
-## Development server
-
-Run `ng serve my-app` for a dev server. Navigate to http://localhost:4200/. The app will automatically reload if you change any of the source files.
-
-## Code scaffolding
-
-Run `ng g component my-component --project=my-app` to generate a new component.
-
-## Build
-
-Run `ng build my-app` to build the project. The build artifacts will be stored in the `dist/` directory. Use the `--prod` flag for a production build.
-
-## Running unit tests
-
-Run `ng test my-app` to execute the unit tests via [Jest](https://jestjs.io).
-
-Run `nx affected:test` to execute the unit tests affected by a change.
-
-## Running end-to-end tests
-
-Run `ng e2e my-app` to execute the end-to-end tests via [Cypress](https://www.cypress.io).
-
-Run `nx affected:e2e` to execute the end-to-end tests affected by a change.
-
-## Understand your workspace
-
-Run `nx dep-graph` to see a diagram of the dependencies of your projects.
-
-## Further help
-
-Visit the [Nx Documentation](https://nx.dev/angular) to learn more.
+- Front-end
+  -- `npm run firebase:host_deploy`
+- Back-end
+  -- `npm run firebase:func_deploy`
+- Front-end & Back-end
+  -- `npm run firebase:deploy`
