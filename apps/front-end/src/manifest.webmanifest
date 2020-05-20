@@ -1,7 +1,7 @@
 {
   "name": "පැලGuru",
   "short_name": "පැලGuru",
-  "theme_color": "#1976d2",
+  "theme_color": "#839e3c",
   "background_color": "#fafafa",
   "display": "standalone",
   "scope": "./",
