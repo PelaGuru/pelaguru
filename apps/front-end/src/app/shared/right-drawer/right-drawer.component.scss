@@ -1,0 +1,125 @@
+.right-drawer {
+  width: 300px;
+  .right-drawer-inner {
+    .right-list-container {
+      padding: 50px 0;
+      .right-list-container-inner {
+        .right-item {
+          a {
+            text-decoration: none;
+            &.active {
+              .right-item-inner {
+                background-color: #0000000e;
+                &::after {
+                  content: '';
+                  position: absolute;
+                  width: 3px;
+                  top: 50%;
+                  transform: translateY(-50%);
+                  right: 0;
+                  background-color: var(--primary);
+                  border-bottom-right-radius: 20px;
+                  border-top-right-radius: 20px;
+                  animation: drawer-right-item-active-animation 0.3s ease-out
+                    forwards;
+                }
+
+                @keyframes drawer-right-item-active-animation {
+                  0% {
+                    height: 0;
+                  }
+                  100% {
+                    height: 100%;
+                  }
+                }
+              }
+            }
+          }
+          .right-item-inner {
+            padding: 15px 10px 15px 20px;
+            cursor: pointer;
+            font-weight: 600;
+            font-size: 1.1em;
+          }
+        }
+      }
+    }
+  }
+}
+
+.important {
+  background-color: var(--primary) !important;
+  color: white;
+}
+
+.notification-container {
+  .notification-container-inner {
+    .header-container {
+      padding: 15px 0;
+      background-color: #d8d8d8;
+      .text {
+        text-align: center;
+        font-size: 1.1em;
+        color: black;
+      }
+    }
+    .button-container {
+      padding: 10px;
+      text-align: right;
+      button {
+        color: var(--primary);
+      }
+    }
+    .notification-list-container {
+      height: calc(100vh - 160px);
+      overflow: auto;
+      .notification-list-container-inner {
+        height: 1000px;
+        padding: 10px;
+
+        .notification-item {
+          padding: 0.7em 1em;
+          border: 1px solid #b6b6b6;
+          border-radius: 4px;
+          margin-bottom: 10px;
+
+          .header {
+            display: grid;
+            grid-template-columns: auto max-content;
+            .label {
+              font-weight: 600;
+              display: grid;
+              align-content: center;
+              color: black;
+            }
+            .close-button {
+              button {
+                border: 0;
+                height: 25px;
+                width: 25px;
+                border-radius: 50px;
+                display: grid;
+                align-content: center;
+                justify-content: center;
+                cursor: pointer;
+                background-color: transparent;
+
+                &:hover {
+                  background-color: #e2e2e2;
+                }
+                span {
+                  font-size: 20px;
+                }
+              }
+            }
+          }
+
+          .time {
+            text-align: right;
+            font-size: 0.7em;
+          }
+        }
+      }
+    }
+  }
+}
