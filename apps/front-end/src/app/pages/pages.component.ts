@@ -37,7 +37,7 @@ export class PagesComponent implements OnInit {
     if (data.rightDrawerState) {
       this.rightDrawerServiceService.setNavDrawerState(false);
     }
-    this.navDrawerService.setNavDrawerState(true);
+    this.navDrawerService.setNavDrawerState(!data.navDrawerState);
   }
 
   onToggleRightDrawer(data: RightDrawerStateData): void {
