@@ -251,7 +251,8 @@
     }
   },
   "cli": {
-    "defaultCollection": "@nrwl/angular"
+    "defaultCollection": "@nrwl/angular",
+    "analytics": "5e1c9de7-eacf-476c-b5fd-b622f8cf7f25"
   },
   "schematics": {
     "@nrwl/angular:application": {
