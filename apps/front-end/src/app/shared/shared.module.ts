@@ -19,6 +19,7 @@ import { NotAuthorizedComponent } from './not-authorized/not-authorized.componen
 import { NavDrawerComponent } from './nav-drawer/nav-drawer.component';
 import { NavBarComponent } from './nav-bar/nav-bar.component';
 import { RightDrawerComponent } from './right-drawer/right-drawer.component';
+import { FooterComponent } from './footer/footer.component';
 
 const nativeModules = [
   CommonModule,
@@ -46,7 +47,8 @@ const externalModules = [
     NotAuthorizedComponent,
     NavDrawerComponent,
     NavBarComponent,
-    RightDrawerComponent
+    RightDrawerComponent,
+    FooterComponent
   ],
   imports: [CommonModule, ...nativeModules, ...externalModules],
   exports: [
@@ -56,7 +58,8 @@ const externalModules = [
     NotAuthorizedComponent,
     NavDrawerComponent,
     NavBarComponent,
-    RightDrawerComponent
+    RightDrawerComponent,
+    FooterComponent
   ]
 })
 export class SharedModule {}
