@@ -14,6 +14,7 @@ $mobile-responsive-height-1: 900px;
   grid-template-columns: max-content auto max-content auto max-content;
   grid-template-areas: 'left ... middle ... right';
   padding: 0 20px;
+  color: var(--text-color);
 
   .left-content {
     grid-area: left;
@@ -78,6 +79,7 @@ $mobile-responsive-height-1: 900px;
         text-decoration: none;
         font-weight: 600;
         font-size: 1.1em;
+        color: var(--text-color);
 
         &.active {
           .nav-item-inner {
