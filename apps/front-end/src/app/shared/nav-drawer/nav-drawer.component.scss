@@ -9,6 +9,7 @@
             text-decoration: none;
             font-weight: 600;
             font-size: 1.1em;
+            color: var(--text-color);
 
             &.active {
               .nav-item-inner {
