@@ -1,0 +1,196 @@
+<div class="heading-text">
+  <div class="text">Marketplace</div>
+</div>
+<div class="search-container">
+  <div class="search-container-inner">
+    <div class="search-form">
+      <form [formGroup]="searchController">
+        <div class="input-container mat-elevation-z2">
+          <div class="icon">
+            <span class="material-icons">search</span>
+          </div>
+          <input
+            class="search-input"
+            type="text"
+            placeholder="Search plants"
+            [formControl]="searchController.get('search')"
+            [matAutocomplete]="auto"
+          />
+          <div
+            class="reset"
+            mat-ripple
+            *ngIf="searchController.get('search').value"
+            (click)="searchController.reset()"
+          >
+            <span class="material-icons">close</span>
+          </div>
+        </div>
+
+        <mat-autocomplete autoActiveFirstOption #auto="matAutocomplete">
+          <mat-option
+            *ngFor="let option of filteredOptions | async"
+            [value]="option"
+          >
+            {{ option }}
+          </mat-option>
+        </mat-autocomplete>
+      </form>
+    </div>
+  </div>
+</div>
+<div class="grid-container">
+  <div class="container">
+    <div class="grid-container-inner">
+      <a href="">
+        <mat-card>
+          <div
+            class="image-container"
+            style="background-image: url(../../../assets/img/temp/shop.webp);"
+          ></div>
+          <div class="description-container">
+            <div class="name">Shop name</div>
+            <div class="description">
+              Lorem Ipsum is simply dummy text of the printing and typesetting
+              industry. Lorem Ipsum has been the industry's standard dummy text
+              ever since the 1500s, when an
+            </div>
+            <div class="rating">
+              <div class="rating-inner">
+                <span class="material-icons">star</span>
+                <span class="material-icons">star</span>
+                <span class="material-icons">star</span>
+                <span class="material-icons">star</span>
+                <span class="material-icons">star</span>
+              </div>
+            </div>
+          </div>
+        </mat-card>
+      </a>
+      <a href="">
+        <mat-card>
+          <div
+            class="image-container"
+            style="background-image: url(../../../assets/img/temp/shop.webp);"
+          ></div>
+          <div class="description-container">
+            <div class="name">Shop name</div>
+            <div class="description">
+              Lorem Ipsum is simply dummy text of the printing and typesetting
+              industry. Lorem Ipsum has been the industry's standard dummy text
+              ever since the 1500s, when an
+            </div>
+            <div class="rating">
+              <div class="rating-inner">
+                <span class="material-icons">star</span>
+                <span class="material-icons">star</span>
+                <span class="material-icons">star_half</span>
+                <span class="material-icons">star_border</span>
+                <span class="material-icons">star_border</span>
+              </div>
+            </div>
+          </div>
+        </mat-card>
+      </a>
+      <a href="">
+        <mat-card>
+          <div
+            class="image-container"
+            style="background-image: url(../../../assets/img/temp/shop.webp);"
+          ></div>
+          <div class="description-container">
+            <div class="name">Shop name</div>
+            <div class="description">
+              Lorem Ipsum is simply dummy text of the printing and typesetting
+              industry. Lorem Ipsum has been the industry's standard dummy text
+              ever since the 1500s, when an
+            </div>
+            <div class="rating">
+              <div class="rating-inner">
+                <span class="material-icons">star</span>
+                <span class="material-icons">star</span>
+                <span class="material-icons">star</span>
+                <span class="material-icons">star</span>
+                <span class="material-icons">star</span>
+              </div>
+            </div>
+          </div>
+        </mat-card>
+      </a>
+      <a href="">
+        <mat-card>
+          <div
+            class="image-container"
+            style="background-image: url(../../../assets/img/temp/shop.webp);"
+          ></div>
+          <div class="description-container">
+            <div class="name">Shop name</div>
+            <div class="description">
+              Lorem Ipsum is simply dummy text of the printing and typesetting
+              industry. Lorem Ipsum has been the industry's standard dummy text
+              ever since the 1500s, when an
+            </div>
+            <div class="rating">
+              <div class="rating-inner">
+                <span class="material-icons">star</span>
+                <span class="material-icons">star</span>
+                <span class="material-icons">star_half</span>
+                <span class="material-icons">star_border</span>
+                <span class="material-icons">star_border</span>
+              </div>
+            </div>
+          </div>
+        </mat-card>
+      </a>
+      <a href="">
+        <mat-card>
+          <div
+            class="image-container"
+            style="background-image: url(../../../assets/img/temp/shop.webp);"
+          ></div>
+          <div class="description-container">
+            <div class="name">Shop name</div>
+            <div class="description">
+              Lorem Ipsum is simply dummy text of the printing and typesetting
+              industry. Lorem Ipsum has been the industry's standard dummy text
+              ever since the 1500s, when an
+            </div>
+            <div class="rating">
+              <div class="rating-inner">
+                <span class="material-icons">star</span>
+                <span class="material-icons">star</span>
+                <span class="material-icons">star</span>
+                <span class="material-icons">star</span>
+                <span class="material-icons">star</span>
+              </div>
+            </div>
+          </div>
+        </mat-card>
+      </a>
+      <a href="">
+        <mat-card>
+          <div
+            class="image-container"
+            style="background-image: url(../../../assets/img/temp/shop.webp);"
+          ></div>
+          <div class="description-container">
+            <div class="name">Shop name</div>
+            <div class="description">
+              Lorem Ipsum is simply dummy text of the printing and typesetting
+              industry. Lorem Ipsum has been the industry's standard dummy text
+              ever since the 1500s, when an
+            </div>
+            <div class="rating">
+              <div class="rating-inner">
+                <span class="material-icons">star</span>
+                <span class="material-icons">star</span>
+                <span class="material-icons">star_half</span>
+                <span class="material-icons">star_border</span>
+                <span class="material-icons">star_border</span>
+              </div>
+            </div>
+          </div>
+        </mat-card>
+      </a>
+    </div>
+  </div>
+</div>
