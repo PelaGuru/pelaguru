@@ -1,1 +1,25 @@
-<p>messages works!</p>
+<pelaguru-breadcrumb id="002"></pelaguru-breadcrumb>
+<div class="container-fluid">
+  <mat-sidenav-container
+    id="message-sidenav-container"
+    [hasBackdrop]="false"
+    autosize
+  >
+    <mat-sidenav
+      #chatContainer
+      [opened]="!mobileQuery.matches"
+      [fixedInViewport]="false"
+      [fixedTopGap]="48"
+      mode="side"
+      position="end"
+    >
+      <pelaguru-message-chat-container
+        (closeChat)="onChatClose($event)"
+      ></pelaguru-message-chat-container>
+    </mat-sidenav>
+
+    <mat-sidenav-content>
+      <pelaguru-message-contact-list></pelaguru-message-contact-list>
+    </mat-sidenav-content>
+  </mat-sidenav-container>
+</div>

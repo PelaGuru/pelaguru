@@ -1,0 +1,48 @@
+<div class="search-container">
+  <div class="search-container-inner">
+    <form [formGroup]="formController">
+      <div class="form-container mat-elevation-z1">
+        <div class="icon">
+          <span class="material-icons">search</span>
+        </div>
+        <input
+          type="text"
+          class="form-input"
+          formControlName="search"
+          placeholder="Search"
+        />
+        <button
+          class="close-button"
+          mat-ripple
+          [ngStyle]="{
+            display: formController.get('search').value == '' ? 'none' : 'grid'
+          }"
+          (click)="formController.get('search').setValue('')"
+        >
+          <span class="material-icons">close</span>
+        </button>
+      </div>
+    </form>
+  </div>
+</div>
+<mat-paginator [length]="100" [pageSize]="10" hidePageSize="true">
+</mat-paginator>
+<div class="contact-list-container">
+  <div class="contact-list-container-inner">
+    <pelaguru-message-contact-list-item></pelaguru-message-contact-list-item>
+    <pelaguru-message-contact-list-item></pelaguru-message-contact-list-item>
+    <pelaguru-message-contact-list-item></pelaguru-message-contact-list-item>
+    <pelaguru-message-contact-list-item></pelaguru-message-contact-list-item>
+    <pelaguru-message-contact-list-item></pelaguru-message-contact-list-item>
+    <pelaguru-message-contact-list-item></pelaguru-message-contact-list-item>
+    <pelaguru-message-contact-list-item></pelaguru-message-contact-list-item>
+    <pelaguru-message-contact-list-item></pelaguru-message-contact-list-item>
+    <pelaguru-message-contact-list-item></pelaguru-message-contact-list-item>
+    <pelaguru-message-contact-list-item></pelaguru-message-contact-list-item>
+    <pelaguru-message-contact-list-item></pelaguru-message-contact-list-item>
+    <pelaguru-message-contact-list-item></pelaguru-message-contact-list-item>
+    <pelaguru-message-contact-list-item></pelaguru-message-contact-list-item>
+    <pelaguru-message-contact-list-item></pelaguru-message-contact-list-item>
+    <pelaguru-message-contact-list-item></pelaguru-message-contact-list-item>
+  </div>
+</div>

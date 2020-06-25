@@ -17,7 +17,7 @@
 >
   <mat-sidenav
     #shopDrawer
-    [opened]="true"
+    [opened]="!mobileQuery.matches"
     [fixedInViewport]="true"
     [fixedTopGap]="48"
     mode="side"

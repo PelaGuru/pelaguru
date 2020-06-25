@@ -1,0 +1,113 @@
+@import 'mixing';
+
+$mobile-responsive-width-1: 700px;
+
+.header-container {
+  position: relative;
+  z-index: 2;
+
+  @include mob-res-max-width($mobile-responsive-width-1) {
+    display: grid;
+    grid-template-columns: max-content auto;
+  }
+
+  .mobile-responsive-button-container {
+    align-content: center;
+    padding: 0 0 0 10px;
+    display: none;
+
+    @include mob-res-max-width($mobile-responsive-width-1) {
+      display: grid;
+    }
+
+    .mobile-responsive-button {
+      padding: 0;
+      width: 40px;
+      height: 40px;
+      border-radius: 50%;
+      display: grid;
+      align-content: center;
+      border: 0;
+      color: var(--text-color);
+      cursor: pointer;
+      background-color: transparent;
+    }
+  }
+  .header-container-inner {
+    background-color: #ffffff;
+    padding: 9px 10px 10px 20px;
+    display: grid;
+    grid-template-columns: max-content auto;
+    grid-column-gap: 10px;
+    overflow: hidden;
+    .pic {
+      .image {
+        width: 49px;
+        overflow: hidden;
+        border-radius: 50%;
+        border: 2px solid #d8d8d8;
+      }
+    }
+    .detail {
+      display: grid;
+      align-content: center;
+      .detail-inner {
+        .name {
+          font-size: 1.2em;
+          font-weight: bold;
+        }
+
+        .email {
+          color: #888888;
+        }
+      }
+    }
+  }
+}
+
+.chat-form-container {
+  padding: 1em 2em;
+  background-color: #ebebeb;
+  border-top: 1px solid #dadada;
+  .chat-form-container-inner {
+    .form-container {
+      display: grid;
+      grid-template-columns: max-content auto max-content;
+      background-color: white;
+      overflow: hidden;
+      border-radius: 4px;
+      .icon {
+        padding: 0 10px;
+        display: grid;
+        align-content: center;
+        color: var(--text-color);
+      }
+      .chat-input {
+        border: 0;
+        outline: none;
+      }
+      .send-button {
+        padding: 0;
+        border: 0;
+        background-color: transparent;
+        padding: 5px;
+        display: grid;
+        align-content: center;
+        cursor: pointer;
+        background-color: var(--primary);
+        color: white;
+      }
+    }
+  }
+}
+
+.chat-container {
+  height: calc(100vh - 238px);
+  overflow: auto;
+
+  .chat-container-inner {
+    padding: 1px 1em;
+    background-color: white;
+    height: 100%;
+  }
+}

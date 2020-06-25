@@ -14,5 +14,9 @@ export const routeData: Array<MainRouteData> = [
   {
     id: '001',
     routes: [{ label: 'My shop', link: '/my-shop' }, { label: 'Dashboard' }]
+  },
+  {
+    id: '002',
+    routes: [{ label: 'My shop', link: '/my-shop' }, { label: 'Messages' }]
   }
 ];
