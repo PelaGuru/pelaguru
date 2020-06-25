@@ -1,0 +1,54 @@
+.content {
+  display: grid;
+  grid-template-columns: max-content auto;
+  grid-column-gap: 10px;
+  .pic {
+    display: grid;
+    align-content: center;
+    .image {
+      max-width: 35px;
+      overflow: hidden;
+      border-radius: 50%;
+      border: 2px solid #d8d8d8;
+    }
+  }
+  .details {
+    border-bottom: 1px solid #e6e6e6;
+    height: 60px;
+    padding: 10px 0;
+    text-align: left;
+    display: grid;
+    align-content: center;
+    overflow: hidden;
+    .details-container {
+      position: relative;
+
+      .name {
+        font-weight: bold;
+      }
+
+      .message {
+        padding: 0 10px 0 0;
+        overflow: hidden;
+        white-space: nowrap;
+        color: #888888;
+      }
+    }
+  }
+}
+
+.button-content {
+  border: 0;
+  background-color: transparent;
+  cursor: pointer;
+  position: relative;
+
+  .active-ind {
+    position: absolute;
+    height: 10px;
+    width: 10px;
+    background-color: red;
+    border-radius: 50%;
+    top: 13px;
+  }
+}
