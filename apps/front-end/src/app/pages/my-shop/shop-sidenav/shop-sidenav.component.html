@@ -1,0 +1,22 @@
+<div class="shop-sidenav-container">
+  <div class="shop-sidenav-container-inner">
+    <div class="nav-item-container">
+      <a
+        *ngFor="let nav of shopSideNavData"
+        [routerLink]="nav.link"
+        routerLinkActive="active"
+      >
+        <div class="nav-item" mat-ripple>
+          <div class="nav-item-inner">
+            <div class="icon">
+              <span class="material-icons">
+                {{ nav.icon }}
+              </span>
+            </div>
+            <div class="label">{{ nav.label }}</div>
+          </div>
+        </div>
+      </a>
+    </div>
+  </div>
+</div>

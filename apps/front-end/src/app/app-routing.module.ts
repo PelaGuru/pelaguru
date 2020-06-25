@@ -2,8 +2,12 @@ import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
 import { NotAuthorizedComponent } from './shared/not-authorized/not-authorized.component';
 import { NotFoundComponent } from './shared/not-found/not-found.component';
+import { SignInComponent } from './core/auth/sign-in/sign-in.component';
+import { SignUpComponent } from './core/auth/sign-up/sign-up.component';
 
 const routes: Routes = [
+  { path: 'sign-in', component: SignInComponent },
+  { path: 'sign-up', component: SignUpComponent },
   {
     path: '',
     loadChildren: () => import('./pages/pages.module').then(m => m.PagesModule)

@@ -1,1 +1,38 @@
-<router-outlet></router-outlet>
+<pelaguru-nav-bar
+  (toggleRightDrawer)="onToggleRightDrawer($event)"
+  (toggleNavDrawer)="onToggleNavDrawer($event)"
+  [navDrawerSatate]="navDrawerSatate | async"
+  [rightDrawerSatate]="rightDrawerSatate | async"
+></pelaguru-nav-bar>
+<mat-sidenav-container
+  id="page-sidenav-container"
+  [hasBackdrop]="true"
+  autosize
+>
+  <mat-sidenav
+    #navDrawer
+    [opened]="navDrawerSatate | async"
+    [fixedInViewport]="true"
+    [fixedTopGap]="48"
+    mode="over"
+  >
+    <pelaguru-nav-drawer></pelaguru-nav-drawer>
+  </mat-sidenav>
+
+  <mat-sidenav-content>
+    <router-outlet></router-outlet>
+  </mat-sidenav-content>
+
+  <mat-sidenav
+    #rightDrawer
+    [fixedInViewport]="true"
+    [fixedTopGap]="48"
+    mode="over"
+    position="end"
+    [opened]="rightDrawerSatate | async"
+  >
+    <pelaguru-right-drawer
+      [viewState]="rightSidenavViewState"
+    ></pelaguru-right-drawer>
+  </mat-sidenav>
+</mat-sidenav-container>

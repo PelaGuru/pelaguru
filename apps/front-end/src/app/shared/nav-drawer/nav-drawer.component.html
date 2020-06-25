@@ -1,0 +1,13 @@
+<div class="nav-drawer">
+  <div class="nav-drawer-inner">
+    <div class="nav-list-container">
+      <div class="nav-list-container-inner">
+        <div class="nav-item" *ngFor="let nav of navLinks">
+          <a [routerLink]="nav.link" routerLinkActive="active">
+            <div class="nav-item-inner" mat-ripple>{{ nav.label }}</div>
+          </a>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
