@@ -13,6 +13,12 @@ import { MatInputModule } from '@angular/material/input';
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatSelectModule } from '@angular/material/select';
 import { MatCardModule } from '@angular/material/card';
+import { MatListModule } from '@angular/material/list';
+import { MatPaginatorModule } from '@angular/material/paginator';
+import { MatTableModule } from '@angular/material/table';
+import { MatSortModule } from '@angular/material/sort';
+
+import { NgApexchartsModule } from 'ng-apexcharts';
 
 import { NotFoundComponent } from './not-found/not-found.component';
 import { NotAuthorizedComponent } from './not-authorized/not-authorized.component';
@@ -20,6 +26,7 @@ import { NavDrawerComponent } from './nav-drawer/nav-drawer.component';
 import { NavBarComponent } from './nav-bar/nav-bar.component';
 import { RightDrawerComponent } from './right-drawer/right-drawer.component';
 import { FooterComponent } from './footer/footer.component';
+import { BreadcrumbComponent } from './breadcrumb/breadcrumb.component';
 
 const nativeModules = [
   CommonModule,
@@ -29,6 +36,7 @@ const nativeModules = [
 ];
 
 const externalModules = [
+  NgApexchartsModule,
   MatSidenavModule,
   MatButtonModule,
   MatRippleModule,
@@ -38,7 +46,11 @@ const externalModules = [
   MatInputModule,
   MatFormFieldModule,
   MatSelectModule,
-  MatCardModule
+  MatCardModule,
+  MatListModule,
+  MatPaginatorModule,
+  MatTableModule,
+  MatSortModule
 ];
 
 @NgModule({
@@ -48,7 +60,8 @@ const externalModules = [
     NavDrawerComponent,
     NavBarComponent,
     RightDrawerComponent,
-    FooterComponent
+    FooterComponent,
+    BreadcrumbComponent
   ],
   imports: [CommonModule, ...nativeModules, ...externalModules],
   exports: [
@@ -59,7 +72,8 @@ const externalModules = [
     NavDrawerComponent,
     NavBarComponent,
     RightDrawerComponent,
-    FooterComponent
+    FooterComponent,
+    BreadcrumbComponent
   ]
 })
 export class SharedModule {}

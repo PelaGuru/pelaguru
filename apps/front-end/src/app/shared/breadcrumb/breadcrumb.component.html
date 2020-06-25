@@ -1,0 +1,15 @@
+<div class="container-fluid">
+  <div class="pelaguru-breadcrumb">
+    <div class="content">
+      <span
+        class="item"
+        *ngFor="let item of BREADCRUMBS.asObservable() | async"
+      >
+        <a *ngIf="item.link != undefined" [routerLink]="item.link">{{
+          item.label
+        }}</a>
+        <a *ngIf="item.link == undefined">{{ item.label }}</a>
+      </span>
+    </div>
+  </div>
+</div>
