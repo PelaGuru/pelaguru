@@ -27,7 +27,7 @@
               "apps/front-end/src/manifest.webmanifest"
             ],
             "styles": ["apps/front-end/src/styles.scss"],
-            "scripts": [],
+            "scripts": ["node_modules/apexcharts/dist/apexcharts.min.js"],
             "stylePreprocessorOptions": {
               "includePaths": ["apps/front-end/src/assets/scss"]
             }
