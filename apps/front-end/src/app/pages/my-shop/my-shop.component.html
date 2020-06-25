@@ -1,1 +1,32 @@
-<p>my-shop works!</p>
+<div
+  *ngIf="shopDrawer"
+  class="side-nav-buttton mat-elevation-z4"
+  [ngClass]="{ active: shopDrawer.opened }"
+>
+  <button
+    mat-ripple
+    (click)="shopDrawer.opened ? shopDrawer.close() : shopDrawer.open()"
+  >
+    <span class="material-icons">store</span>
+  </button>
+</div>
+<mat-sidenav-container
+  id="shop-sidenav-container"
+  [hasBackdrop]="false"
+  autosize
+>
+  <mat-sidenav
+    #shopDrawer
+    [opened]="true"
+    [fixedInViewport]="true"
+    [fixedTopGap]="48"
+    mode="side"
+    class="mat-elevation-z1"
+  >
+    <pelaguru-shop-sidenav></pelaguru-shop-sidenav>
+  </mat-sidenav>
+
+  <mat-sidenav-content>
+    <router-outlet></router-outlet>
+  </mat-sidenav-content>
+</mat-sidenav-container>
