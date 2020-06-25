@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { MediaMatcher } from '@angular/cdk/layout';
 
 @Component({
   selector: 'pelaguru-my-shop',
@@ -6,7 +7,12 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./my-shop.component.scss']
 })
 export class MyShopComponent implements OnInit {
-  constructor() {}
+  mobileQuery: MediaQueryList;
+  constructor(private mediaMatcher: MediaMatcher) {
+    this.mobileQuery = mediaMatcher.matchMedia('(max-width: 820px)');
+    // tslint:disable-next-line: deprecation
+    // this.mobileQuery.addListener(this.mobileQueryListener);
+  }
 
   ngOnInit(): void {}
 }
