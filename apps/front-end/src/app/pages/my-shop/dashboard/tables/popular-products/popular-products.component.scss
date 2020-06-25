@@ -1,0 +1,15 @@
+.table-cintainer {
+  .products-table {
+    width: 100%;
+  }
+}
+
+.p-link {
+  text-decoration: none;
+  color: inherit;
+
+  &:hover {
+    color: var(--primary);
+    text-decoration: underline;
+  }
+}
