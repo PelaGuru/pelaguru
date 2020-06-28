@@ -13,34 +13,36 @@
         <div class="col-sm">
           <div class="heading">
             <P class="heading_text">Site Map</P>
-        </div>
+          </div>
 
           <div class="item" *ngFor="let nav of navLinks">
             <a [routerLink]="nav.link" routerLinkActive="active">
-              <div class="nav-item-inner" mat-ripple><P class="blocktext">{{ nav.label }}</P></div>
+              <div class="nav-item-inner" mat-ripple>
+                <P class="blocktext">{{ nav.label }}</P>
+              </div>
             </a>
           </div>
-
         </div>
         <div class="col-sm">
           <div class="heading">
             <P class="heading_text">Links</P>
-        </div>
+          </div>
           <div class="item" *ngFor="let nav of socialLinks">
             <a [routerLink]="nav.link" routerLinkActive="active">
-              <div class="nav-item-inner" mat-ripple><P class="blocktext">{{ nav.label }}</P></div>
+              <div class="nav-item-inner" mat-ripple>
+                <P class="blocktext">{{ nav.label }}</P>
+              </div>
             </a>
           </div>
 
-        <div class="icon">
-          <a href="http://www.facebook.com">
-            <img src="../../../assets/icons/fbicon.png">
-          </a>
-
-        </div>
+          <div class="icon">
+            <a href="http://www.facebook.com">
+              <img src="../../../assets/icons/fbicon.png" />
+            </a>
+          </div>
         </div>
       </div>
-      <hr class="hr_line">
+      <hr class="hr_line" />
       <div class="copyright">
         © 2020 Digitally Crafted by Pelaguru Team
       </div>
