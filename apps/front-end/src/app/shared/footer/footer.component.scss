@@ -1,19 +1,11 @@
-* {
-  margin: 0;
-  padding: 0;
-  list-style: none;
-  text-decoration: none;
-}
-
 .footer {
   width: 100vw;
-  position: fixed;
   bottom: 0px;
   width: 100%;
   background: #111;
   display: block;
   overflow: hidden;
-  padding: 50px 0;
+  padding: 50px 0 0 0;
   box-sizing: border-box;
   background-color: #ffffff;
   align-content: center;
@@ -25,7 +17,7 @@
 .inner_footer {
   display: block;
   margin: 0 auto;
-  width: 1100px;
+  width: 100%;
   height: 100%;
   align-content: center;
 }
@@ -101,6 +93,7 @@ inner_footer .logo_container img {
   display: flex;
   justify-content: center;
   align-items: center;
+  padding: 1em 0;
 }
 
 p.blocktext {
@@ -118,4 +111,30 @@ p.heading_text {
   font-size: 20px;
   width: 8em;
   text-align: center;
+  padding: 0 0 20px 0;
+}
+
+.footer-nav-item-container {
+  display: grid;
+  justify-content: center;
+  grid-template-columns: repeat(2, 1fr);
+  text-align: center;
+}
+
+.row-section {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+}
+
+.link {
+  text-decoration: none;
+  color: var(--text-color);
+
+  &:hover {
+    color: var(--primary);
+  }
+}
+.nav-item-inner {
+  padding: 5px 0;
+  font-weight: normal;
 }
