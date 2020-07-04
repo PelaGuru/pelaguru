@@ -14,7 +14,7 @@ interface ShopSideNavData {
 export class ShopSidenavComponent implements OnInit {
   shopSideNavData: Array<ShopSideNavData> = [
     { icon: 'dashboard', label: 'Dashboard', link: '/my-shop/dashboard' },
-    { icon: 'shopping_cart', label: 'Shop', link: '/my-shop/shop' },
+    { icon: 'shopping_cart', label: 'Shop', link: '/my-shop/shop-items' },
     { icon: 'chat', label: 'Messages', link: '/my-shop/messages' },
     {
       icon: 'account_balance_wallet',
