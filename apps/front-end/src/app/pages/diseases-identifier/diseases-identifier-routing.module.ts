@@ -1,8 +1,8 @@
 import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
-import { DiseasesComponent } from '../diseases/diseases.component';
+import { DiseasesIdentifierComponent } from '../diseases-identifier/diseases-identifier.component';
 
-const routes: Routes = [{ path: '', component: DiseasesComponent }];
+const routes: Routes = [{ path: '', component: DiseasesIdentifierComponent }];
 
 @NgModule({
   imports: [RouterModule.forChild(routes)],
