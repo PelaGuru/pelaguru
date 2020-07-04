@@ -18,6 +18,9 @@ import { MatPaginatorModule } from '@angular/material/paginator';
 import { MatTableModule } from '@angular/material/table';
 import { MatSortModule } from '@angular/material/sort';
 import { MatStepperModule } from '@angular/material/stepper';
+import { MatSlideToggleModule } from '@angular/material/slide-toggle';
+import { MatChipsModule } from '@angular/material/chips';
+
 import { NgApexchartsModule } from 'ng-apexcharts';
 import { NgxDropzoneModule } from 'ngx-dropzone';
 import { NotFoundComponent } from './not-found/not-found.component';
@@ -52,7 +55,9 @@ const externalModules = [
   MatTableModule,
   MatSortModule,
   MatStepperModule,
-  NgxDropzoneModule
+  NgxDropzoneModule,
+  MatSlideToggleModule,
+  MatChipsModule
 ];
 
 @NgModule({
