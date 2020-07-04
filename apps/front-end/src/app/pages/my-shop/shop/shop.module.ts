@@ -3,9 +3,20 @@ import { CommonModule } from '@angular/common';
 
 import { ShopRoutingModule } from './shop-routing.module';
 import { ShopComponent } from './shop.component';
+import { SharedModule } from '../../../shared/shared.module';
+import { AddShopItemComponent } from './add-shop-item/add-shop-item.component';
+import { ShopItemsOverviewComponent } from './shop-items-overview/shop-items-overview.component';
+import { ViewShopItemComponent } from './view-shop-item/view-shop-item.component';
+import { EditShopItemComponent } from './edit-shop-item/edit-shop-item.component';
 
 @NgModule({
-  declarations: [ShopComponent],
-  imports: [CommonModule, ShopRoutingModule]
+  declarations: [
+    ShopComponent,
+    AddShopItemComponent,
+    ShopItemsOverviewComponent,
+    ViewShopItemComponent,
+    EditShopItemComponent
+  ],
+  imports: [CommonModule, ShopRoutingModule, SharedModule]
 })
 export class ShopModule {}
