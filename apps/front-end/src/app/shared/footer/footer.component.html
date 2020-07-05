@@ -2,46 +2,52 @@
   <div class="inner_footer">
     <div class="container">
       <div class="row">
-        <div class="col-sm ">
+        <div class="col-sm-4">
           <div class="heading">
             <P class="heading_text">Contact Us</P>
           </div>
           <div class="item">
-            <P class="blocktext">pelagurulk@gmail.com</P>
+            <p class="blocktext">pelagurulk@gmail.com</p>
           </div>
+          <br />
+          <br />
         </div>
-        <div class="col-sm">
+        <div class="col-sm-4">
           <div class="heading">
             <P class="heading_text">Site Map</P>
           </div>
-
-          <div class="item" *ngFor="let nav of navLinks">
-            <a [routerLink]="nav.link" routerLinkActive="active">
-              <div class="nav-item-inner" mat-ripple>
-                <P class="blocktext">{{ nav.label }}</P>
-              </div>
-            </a>
+          <div class="footer-nav-item-container">
+            <div *ngFor="let nav of navLinks" class="nav-item-inner" mat-ripple>
+              <a [routerLink]="nav.link" class="link">
+                {{ nav.label }}
+              </a>
+            </div>
           </div>
+          <br />
+          <br />
         </div>
-        <div class="col-sm">
+        <div class="col-sm-4">
           <div class="heading">
             <P class="heading_text">Links</P>
           </div>
           <div class="item" *ngFor="let nav of socialLinks">
-            <a [routerLink]="nav.link" routerLinkActive="active">
+            <a [routerLink]="nav.link" class="link">
               <div class="nav-item-inner" mat-ripple>
                 <P class="blocktext">{{ nav.label }}</P>
               </div>
             </a>
           </div>
-
+          <br />
           <div class="icon">
             <a href="http://www.facebook.com">
               <img src="../../../assets/icons/fbicon.png" />
             </a>
           </div>
+          <br />
+          <br />
         </div>
       </div>
+
       <hr class="hr_line" />
       <div class="copyright">
         © 2020 Digitally Crafted by Pelaguru Team

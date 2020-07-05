@@ -1,1 +1,62 @@
-<p>payments works!</p>
+<pelaguru-breadcrumb id="003"></pelaguru-breadcrumb>
+<div class="container-fluid">
+  <div class="header">
+    <div class="text">Payments</div>
+    <div class="desc">
+      Lorem ipsum dolor sit amet consectetur adipisicing elit. Quaerat,
+      blanditiis suscipit! Veritatis reprehenderit excepturi dolor itaque quia
+      esse quidem repellat.
+    </div>
+  </div>
+  <div class="payment-table-container">
+    <div class="payment-table-container-inner">
+      <table
+        mat-table
+        [dataSource]="dataSource"
+        class="table"
+        matSort
+        matSortActive="payment_date"
+        matSortDisableClear
+        matSortDirection="desc"
+      >
+        <!-- Number Column -->
+        <ng-container matColumnDef="payment_date">
+          <th mat-header-cell *matHeaderCellDef mat-sort-header disableClear>
+            Payment Date
+          </th>
+          <td mat-cell *matCellDef="let row">{{ row.payment_date }}</td>
+        </ng-container>
+
+        <!-- Title Column -->
+        <ng-container matColumnDef="invoice_id">
+          <th mat-header-cell *matHeaderCellDef mat-sort-header disableClear>
+            Invoice Id
+          </th>
+          <td mat-cell *matCellDef="let row">{{ row.invoice_id }}</td>
+        </ng-container>
+
+        <!-- State Column -->
+        <ng-container matColumnDef="amount">
+          <th mat-header-cell *matHeaderCellDef>Amount</th>
+          <td mat-cell *matCellDef="let row">{{ row.amount }}</td>
+        </ng-container>
+
+        <!-- Created Column -->
+        <ng-container matColumnDef="download">
+          <th mat-header-cell *matHeaderCellDef>
+            Download
+          </th>
+          <td mat-cell *matCellDef="let row"></td>
+        </ng-container>
+
+        <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+        <tr mat-row *matRowDef="let row; columns: displayedColumns"></tr>
+      </table>
+    </div>
+
+    <mat-paginator
+      [length]="resultsLength"
+      [pageSize]="pageSize"
+    ></mat-paginator>
+  </div>
+</div>

@@ -1,0 +1,32 @@
+<div class="setting-list-item">
+  <div class="setting-list-item-inner">
+    <div class="label">Shop keywords</div>
+    <div class="icon">
+      <span class="material-icons">
+        arrow_right
+      </span>
+    </div>
+    <div class="content">
+      <mat-form-field class="mat-form-field">
+        <mat-chip-list #chipList aria-label="Fruit selection">
+          <mat-chip
+            *ngFor="let keyword of keywords"
+            [selectable]="selectable"
+            [removable]="removable"
+            (removed)="remove(keyword)"
+          >
+            {{ keyword.label }}
+            <mat-icon matChipRemove *ngIf="removable">cancel</mat-icon>
+          </mat-chip>
+          <input
+            placeholder="New keyword..."
+            [matChipInputFor]="chipList"
+            [matChipInputSeparatorKeyCodes]="separatorKeysCodes"
+            [matChipInputAddOnBlur]="addOnBlur"
+            (matChipInputTokenEnd)="add($event)"
+          />
+        </mat-chip-list>
+      </mat-form-field>
+    </div>
+  </div>
+</div>
