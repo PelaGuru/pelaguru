@@ -3,7 +3,7 @@
     {{!isLinear ? 'Enable linear mode' : 'Disable linear mode'}}
   </button> -->
 <pelaguru-breadcrumb id="007"></pelaguru-breadcrumb>
-<div class="container-fluid" style="margin-top: 10px;margin-bottom: 10px;">
+<div class="container-fluid" style="margin-top: 10px;margin-bottom: 20px;">
   <mat-card>
     <mat-vertical-stepper [linear]="isLinear" #stepper>
       <mat-step [stepControl]="firstFormGroup">
@@ -99,3 +99,4 @@
     </mat-vertical-stepper>
   </mat-card>
 </div>
+<pelaguru-footer></pelaguru-footer>
