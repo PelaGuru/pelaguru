@@ -7,7 +7,6 @@ import { AngularFireStorageModule } from '@angular/fire/storage';
 import { environment } from '../../environments/environment';
 import { HttpClientModule } from '@angular/common/http';
 
-
 @NgModule({
   declarations: [],
   imports: [
@@ -19,4 +18,4 @@ import { HttpClientModule } from '@angular/common/http';
     AngularFireStorageModule
   ]
 })
-export class CoreModule { }
+export class CoreModule {}
