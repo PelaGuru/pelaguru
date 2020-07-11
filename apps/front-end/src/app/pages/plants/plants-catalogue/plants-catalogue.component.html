@@ -1,0 +1,62 @@
+<div class="heading-text">
+  <div class="text">Plants</div>
+</div>
+<div class="search-container">
+  <div class="search-container-inner">
+    <div class="search-form">
+      <form [formGroup]="searchController">
+        <div class="input-container mat-elevation-z2">
+          <div class="icon">
+            <span class="material-icons">search</span>
+          </div>
+          <input
+            class="search-input"
+            type="text"
+            placeholder="Search plants"
+            [formControl]="searchController.get('search')"
+            [matAutocomplete]="auto"
+          />
+          <div
+            class="reset"
+            mat-ripple
+            *ngIf="searchController.get('search').value"
+            (click)="searchController.reset()"
+          >
+            <span class="material-icons">close</span>
+          </div>
+        </div>
+
+        <mat-autocomplete autoActiveFirstOption #auto="matAutocomplete">
+          <mat-option
+            *ngFor="let option of filteredOptions | async"
+            [value]="option"
+          >
+            {{ option }}
+          </mat-option>
+        </mat-autocomplete>
+      </form>
+    </div>
+  </div>
+</div>
+<div class="grid-container">
+  <div class="container">
+    <div class="grid-container-inner">
+      <a
+        *ngFor="let item of plantCatalogueItems | async"
+        routerLink="{{ item.username }}"
+      >
+        <mat-card>
+          <div
+            class="image-container"
+            [ngStyle]="{ 'background-image': 'url(' + item.image + ')' }"
+          ></div>
+          <div class="description-container">
+            <div class="name">{{ item.name }}</div>
+            <div class="description">{{ item.sciName }}</div>
+          </div>
+        </mat-card>
+      </a>
+    </div>
+  </div>
+</div>
+<pelaguru-footer></pelaguru-footer>

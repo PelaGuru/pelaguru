@@ -1,0 +1,19 @@
+@import 'mixing';
+
+$mobile-responsive-width-1: 700px;
+
+#message-sidenav-container {
+  height: calc(100vh - 106px);
+  background-color: white;
+  border-bottom: 1px solid #dadada;
+  border-left: 1px solid #dadada;
+  border-right: 1px solid #dadada;
+}
+
+mat-sidenav {
+  width: calc(100% - 300px);
+
+  @include mob-res-max-width($mobile-responsive-width-1) {
+    width: 100%;
+  }
+}

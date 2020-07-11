@@ -1,0 +1,18 @@
+.setting-list-item {
+  padding: 1em 0;
+  .setting-list-item-inner {
+    display: grid;
+    grid-template-columns: minmax(0, 150px) max-content auto;
+    grid-gap: 10px;
+    .label {
+      display: grid;
+      align-content: center;
+    }
+    .icon {
+      display: grid;
+      align-content: center;
+    }
+    // .content {
+    // }
+  }
+}

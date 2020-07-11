@@ -1,0 +1,104 @@
+<!-- <br><br>
+<button mat-raised-button (click)="isLinear = !isLinear" id="toggle-linear">
+    {{!isLinear ? 'Enable linear mode' : 'Disable linear mode'}}
+  </button> -->
+<div class="back-image">
+  <pelaguru-breadcrumb id="007"></pelaguru-breadcrumb>
+  <div class="container-fluid view">
+    <mat-card>
+      <mat-vertical-stepper [linear]="isLinear" #stepper>
+        <mat-step [stepControl]="firstFormGroup">
+          <form [formGroup]="firstFormGroup">
+            <ng-template matStepLabel>Upload your images</ng-template>
+            <mat-card>
+              <ngx-dropzone (change)="onSelect($event)">
+                <ngx-dropzone-label
+                  >Drag and Drop your image</ngx-dropzone-label
+                >
+                <ngx-dropzone-preview
+                  *ngFor="let f of files"
+                  [removable]="true"
+                  (removed)="onRemove(f)"
+                >
+                  <ngx-dropzone-label
+                    >{{ f.name }} ({{ f.type }})</ngx-dropzone-label
+                  >
+                </ngx-dropzone-preview>
+              </ngx-dropzone>
+            </mat-card>
+            <div style="padding-top: 20px;text-align: right;">
+              <button
+                class="mat-elevation-z5"
+                mat-button
+                matStepperNext
+                style="background-color:#84a03c;"
+              >
+                Next
+              </button>
+            </div>
+          </form>
+        </mat-step>
+        <mat-step [stepControl]="secondFormGroup">
+          <form [formGroup]="secondFormGroup">
+            <ng-template matStepLabel>Process</ng-template>
+            <mat-card>
+              Lorem ipsum dolor sit amet consectetur adipisicing elit. Ipsam
+              magni quam iste quidem adipisci voluptates quisquam dicta quas,
+              maxime ut accusantium unde natus, repellat, omnis eaque totam.
+              Voluptas, quaerat quos.
+            </mat-card>
+            <div style="padding-top: 20px;text-align: right;">
+              <button
+                class="mat-elevation-z5"
+                mat-button
+                matStepperPrevious
+                style="background-color:#84a03c;margin-right: 10px;"
+              >
+                Back
+              </button>
+              <button
+                class="mat-elevation-z5"
+                mat-button
+                matStepperNext
+                style="background-color:#84a03c;"
+              >
+                Next
+              </button>
+            </div>
+          </form>
+        </mat-step>
+        <mat-step>
+          <ng-template matStepLabel>Done</ng-template>
+          <mat-card>
+            <p>
+              Lorem ipsum dolor sit amet consectetur adipisicing elit. Molestias
+              quas amet autem magni est nobis corrupti cum numquam illo
+              doloribus quidem perferendis accusantium fugiat, exercitationem
+              ipsa veniam quo rerum dolorem.
+            </p>
+          </mat-card>
+          <div style="padding-top: 20px;text-align: right;">
+            <button
+              class="mat-elevation-z5"
+              mat-button
+              matStepperPrevious
+              style="background-color:#84a03c;margin-right: 10px;"
+            >
+              Back
+            </button>
+            <button
+              class="mat-elevation-z5"
+              mat-button
+              (click)="stepper.reset()"
+              style="background-color:#84a03c;"
+            >
+              Reset
+            </button>
+          </div>
+        </mat-step>
+      </mat-vertical-stepper>
+    </mat-card>
+  </div>
+
+  <pelaguru-footer></pelaguru-footer>
+</div>

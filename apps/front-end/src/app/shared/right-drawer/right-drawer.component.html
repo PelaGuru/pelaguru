@@ -1,0 +1,71 @@
+<div class="right-drawer">
+  <div class="right-drawer-inner">
+    <div class="profile-container" *ngIf="viewState === 'PROFILE'">
+      <div class="right-list-container">
+        <div class="right-list-container-inner">
+          <div class="right-item">
+            <a routerLink="/seller-request" routerLinkActive="active">
+              <div class="right-item-inner important" mat-ripple>
+                Request for seller
+              </div>
+            </a>
+          </div>
+          <div class="right-item" *ngFor="let right of profileLinks">
+            <a [routerLink]="right.link" routerLinkActive="active">
+              <div class="right-item-inner" mat-ripple>{{ right.label }}</div>
+            </a>
+          </div>
+          <div class="right-item">
+            <div class="right-item-inner" mat-ripple>Sign out</div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="notification-container" *ngIf="viewState === 'NOTIFICATION'">
+      <div class="notification-container-inner">
+        <div class="header-container">
+          <div class="text">Notifications</div>
+        </div>
+        <div class="button-container">
+          <button mat-button>Clear all</button>
+        </div>
+        <div class="notification-list-container">
+          <div class="notification-list-container-inner">
+            <div class="notification-item">
+              <div class="header">
+                <div class="label">Title</div>
+                <div class="close-button">
+                  <button>
+                    <span class="material-icons">close</span>
+                  </button>
+                </div>
+              </div>
+              <div class="content">
+                Lorem ipsum dolor, sit amet consectetur adipisicing elit. Quasi
+                provident tempore accusantium consequatur necessitatibus alias
+                ab doloribus facilis, optio enim?
+              </div>
+              <div class="time">April 22, 2020</div>
+            </div>
+            <div class="notification-item">
+              <div class="header">
+                <div class="label">Title</div>
+                <div class="close-button">
+                  <button>
+                    <span class="material-icons">close</span>
+                  </button>
+                </div>
+              </div>
+              <div class="content">
+                Lorem ipsum dolor, sit amet consectetur adipisicing elit. Quasi
+                provident tempore accusantium consequatur necessitatibus alias
+                ab doloribus facilis, optio enim?
+              </div>
+              <div class="time">April 22, 2020</div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

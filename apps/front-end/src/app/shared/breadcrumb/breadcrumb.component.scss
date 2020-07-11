@@ -1,0 +1,31 @@
+.pelaguru-breadcrumb {
+  padding-bottom: 10px;
+  padding-top: 10px;
+  border-bottom: 1px solid rgb(218, 218, 218);
+  .content {
+    padding: 0;
+    margin: 0;
+    .item {
+      font-size: 0.8em;
+      padding: 0 5px 0 0;
+
+      a {
+        text-decoration: none;
+        color: inherit;
+      }
+    }
+    .item:first-child {
+      padding-left: 0;
+    }
+    .item:not(:last-child) {
+      color: var(--primary);
+    }
+    .item:not(:first-child) {
+      &:before {
+        content: '/';
+        padding-right: 5px;
+        color: rgb(175, 175, 175);
+      }
+    }
+  }
+}

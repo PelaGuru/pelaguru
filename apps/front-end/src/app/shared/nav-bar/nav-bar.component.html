@@ -1,0 +1,59 @@
+<div class="nav-bar-container mat-elevation-z1">
+  <div class="nav-bar-container-inner">
+    <div class="left-content">
+      <div class="nav-button">
+        <button mat-icon-button (click)="navDrawerToggle()">
+          <mat-icon>menu</mat-icon>
+        </button>
+      </div>
+      <div class="logo">
+        <img
+          src="../../../assets/img/logo/main-logo.svg"
+          class="img-resp"
+          alt=""
+        />
+      </div>
+    </div>
+    <div class="middle-logo-container">
+      <div class="logo">
+        <img
+          src="../../../assets/img/logo/main-logo.svg"
+          class="img-resp"
+          alt=""
+        />
+      </div>
+    </div>
+    <div class="middle-content signed-in">
+      <div class="nav-item" *ngFor="let nav of navLinks">
+        <a [routerLink]="nav.link" routerLinkActive="active">
+          <div class="nav-item-inner" mat-ripple>{{ nav.label }}</div>
+        </a>
+      </div>
+    </div>
+    <div class="right-content">
+      <div class="notification">
+        <button mat-icon-button (click)="rightDrawerToggle('NOTIFICATION')">
+          <mat-icon
+            matBadge="4"
+            matBadgePosition="after"
+            matBadgeOverlap="true"
+            matBadgeSize="small"
+            matBadgeColor="warn"
+            >notification_important</mat-icon
+          >
+        </button>
+      </div>
+      <div class="profile">
+        <div class="image-container">
+          <div class="image" mat-ripple (click)="rightDrawerToggle('PROFILE')">
+            <img
+              src="../../../assets/img/temp/temp-user.jpeg"
+              class="img-resp"
+              alt=""
+            />
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

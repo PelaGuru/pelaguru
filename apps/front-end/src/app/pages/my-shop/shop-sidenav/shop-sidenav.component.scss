@@ -1,0 +1,37 @@
+.shop-sidenav-container {
+  .shop-sidenav-container-inner {
+    min-width: 75px;
+    padding: 70px 0;
+    .nav-item-container {
+      a {
+        color: var(--text-color);
+        text-decoration: none;
+        transition: 0.3s;
+
+        &.active {
+          color: var(--primary);
+          .nav-item {
+            background-color: #0000000e;
+          }
+        }
+        .nav-item {
+          padding: 10px 0;
+          .nav-item-inner {
+            .icon {
+              display: grid;
+              justify-content: center;
+              .material-icons {
+                width: 30px;
+                font-size: 35px;
+              }
+            }
+            .label {
+              text-align: center;
+              font-size: 0.8em;
+            }
+          }
+        }
+      }
+    }
+  }
+}

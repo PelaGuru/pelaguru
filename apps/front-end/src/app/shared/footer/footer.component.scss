@@ -1,0 +1,140 @@
+.footer {
+  width: 100vw;
+  bottom: 0px;
+  width: 100%;
+  background: #111;
+  display: block;
+  overflow: hidden;
+  padding: 50px 0 0 0;
+  box-sizing: border-box;
+  background-color: #ffffff;
+  align-content: center;
+
+  justify-content: center;
+  align-items: center;
+}
+
+.inner_footer {
+  display: block;
+  margin: 0 auto;
+  width: 100%;
+  height: 100%;
+  align-content: center;
+}
+
+inner_footer .logo_container {
+  width: 35%;
+  float: left;
+  height: 100%;
+  display: block;
+}
+
+inner_footer .logo_container img {
+  width: 5px;
+  height: auto;
+}
+
+.inner_footer .footer_third {
+  width: calc(21.6666667% - 20px);
+  margin-right: 10px;
+  float: left;
+  height: 100%;
+}
+
+.inner_footer .footer_third:last-child {
+  margin-right: 0;
+}
+.inner_footer .footer_third h1 {
+  font-family: 'arial';
+  font-size: 22px;
+  color: white;
+  display: block;
+  width: 100%;
+  margin-bottom: 20px;
+}
+
+.heading {
+  // font-size: 20px;
+  color: #111;
+  margin: 10px;
+  text-decoration: none;
+  font-weight: 600;
+  font-size: 1.1em;
+  color: var(--text-color);
+}
+
+.item {
+  font-size: 15px;
+  color: #111;
+  margin: 5px;
+  align-self: flex-start;
+  text-decoration: none;
+  font-weight: 600;
+  font-size: 1.1em;
+  color: var(--text-color);
+}
+// .icon{
+// 	width: 2px;
+// 	height: 2px;
+// }
+.icon {
+  padding: 5px;
+  margin-left: auto;
+  margin-right: auto;
+  width: 5em;
+}
+.hr_line {
+  border: 0;
+  height: 1px;
+  background: #333;
+  background-image: linear-gradient(to right, #ccc, #333, #ccc);
+}
+.copyright {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 1em 0;
+}
+
+p.blocktext {
+  margin-left: auto;
+  margin-right: auto;
+  width: 8em;
+  text-align: center;
+  color: var(--text-color);
+}
+
+p.heading_text {
+  font-weight: bold;
+  margin-left: auto;
+  margin-right: auto;
+  font-size: 20px;
+  width: 8em;
+  text-align: center;
+  padding: 0 0 20px 0;
+}
+
+.footer-nav-item-container {
+  display: grid;
+  justify-content: center;
+  grid-template-columns: repeat(2, 1fr);
+  text-align: center;
+}
+
+.row-section {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+}
+
+.link {
+  text-decoration: none;
+  color: var(--text-color);
+
+  &:hover {
+    color: var(--primary);
+  }
+}
+.nav-item-inner {
+  padding: 5px 0;
+  font-weight: normal;
+}
