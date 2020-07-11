@@ -1,0 +1,80 @@
+<pelaguru-auth-nav-bar authPage="SIGN_UP"></pelaguru-auth-nav-bar>
+<div class="auth-container">
+  <div
+    class="back"
+    style="background-image: url('../../../../assets/img/background.png');"
+  ></div>
+  <div class="auth-container-inner">
+    <mat-card>
+      <div class="header-container">
+        <div class="text">Sign Up</div>
+      </div>
+      <div class="form-container">
+        <form [formGroup]="formController">
+          <mat-form-field class="mat-form-field">
+            <mat-label>First name</mat-label>
+            <input
+              matInput
+              formControlName="firstName"
+              [errorStateMatcher]="matcher"
+            />
+            <mat-hint>Enter your first name.</mat-hint>
+            <mat-error>Please enter your first name.</mat-error>
+          </mat-form-field>
+          <mat-form-field class="mat-form-field">
+            <mat-label>Last name</mat-label>
+            <input
+              matInput
+              formControlName="lastName"
+              [errorStateMatcher]="matcher"
+            />
+            <mat-hint>Enter your last name.</mat-hint>
+            <mat-error>Please enter your last name.</mat-error>
+          </mat-form-field>
+          <mat-form-field class="mat-form-field">
+            <mat-label>Email</mat-label>
+            <input
+              type="email"
+              matInput
+              formControlName="email"
+              [errorStateMatcher]="matcher"
+            />
+            <mat-hint>Enter your email address.</mat-hint>
+            <mat-error>Please enter your email address.</mat-error>
+          </mat-form-field>
+          <mat-form-field class="mat-form-field">
+            <mat-label>Password</mat-label>
+            <input
+              type="password"
+              matInput
+              formControlName="password"
+              [errorStateMatcher]="matcher"
+            />
+            <mat-hint>Enter your password.</mat-hint>
+            <mat-error>Please enter your password.</mat-error>
+          </mat-form-field>
+        </form>
+      </div>
+      <div class="signin-button">
+        <button
+          mat-raised-button
+          color="primary"
+          style="color: white;"
+          (click)="signUp()"
+        >
+          Sign Up
+        </button>
+      </div>
+      <!-- <div class="line-break"></div> -->
+      <div class="google-sign-in-button">
+        <pelaguru-google-sign-in></pelaguru-google-sign-in>
+      </div>
+      <!-- <div class="line-break"></div> -->
+      <div class="to-sign-in">
+        <div class="text">
+          Already have an account? <a routerLink="/sign-in">Sign In</a>
+        </div>
+      </div>
+    </mat-card>
+  </div>
+</div>
