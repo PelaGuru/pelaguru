@@ -30,6 +30,7 @@ import { NavBarComponent } from './nav-bar/nav-bar.component';
 import { RightDrawerComponent } from './right-drawer/right-drawer.component';
 import { FooterComponent } from './footer/footer.component';
 import { BreadcrumbComponent } from './breadcrumb/breadcrumb.component';
+import { SuggestionComponent } from './suggestion/suggestion.component';
 
 const nativeModules = [
   CommonModule,
@@ -68,7 +69,8 @@ const externalModules = [
     NavBarComponent,
     RightDrawerComponent,
     FooterComponent,
-    BreadcrumbComponent
+    BreadcrumbComponent,
+    SuggestionComponent
   ],
   imports: [CommonModule, ...nativeModules, ...externalModules],
   exports: [
@@ -80,7 +82,8 @@ const externalModules = [
     NavBarComponent,
     RightDrawerComponent,
     FooterComponent,
-    BreadcrumbComponent
+    BreadcrumbComponent,
+    SuggestionComponent
   ]
 })
 export class SharedModule {}
