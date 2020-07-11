@@ -8,8 +8,8 @@
       <div class="cover-image"></div>
       <div class="header-container">
         <div class="header-container-inner">
-          <div class="title">Tomato</div>
-          <div class="desc">Lycopersicon esculentum</div>
+          <div class="title">{{ plant.plantName }}</div>
+          <div class="desc">{{ plant.desc }}</div>
         </div>
       </div>
       <div class="back-button">
@@ -23,11 +23,26 @@
     <mat-card class="basic-details-card">
       <div class="title-text">Basic details</div>
       <div placement="center">
-        <img
-          class="image-container"
-          src="https://i0.wp.com/images-prod.healthline.com/hlcmsresource/images/AN_images/tomatoes-1296x728-feature.jpg?w=1155&h=1528"
-        />
+        <img class="image-container" src="{{ plant.image }}" />
+        <div class="container">
+          <mat-list>
+            <mat-divider></mat-divider>
+            <mat-list-item> Plant Name : {{ plant.plantName }} </mat-list-item>
+            <mat-divider></mat-divider>
+            <mat-list-item>
+              Popular Districts : {{ plant.popularDistricts }}
+            </mat-list-item>
+            <mat-divider></mat-divider>
+            <mat-list-item> Uses : {{ plant.uses }}</mat-list-item>
+            <mat-divider></mat-divider>
+            <mat-list-item
+              >Common Diseases : {{ plant.commonDiseases }}</mat-list-item
+            >
+            <mat-divider></mat-divider>
+          </mat-list>
+        </div>
       </div>
+      <!-- <pelaguru-suggestion></pelaguru-suggestion> -->
     </mat-card>
   </div>
 </div>
