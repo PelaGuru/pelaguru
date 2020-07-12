@@ -122,23 +122,32 @@ $mobile-responsive-height-1: 900px;
   .right-content {
     grid-area: right;
     display: grid;
-    grid-template-columns: max-content max-content;
-    grid-column-gap: 15px;
 
-    .notification {
+    .is-not-signed-in {
       display: grid;
       align-content: center;
     }
-    .profile {
+
+    .is-signed-in {
       display: grid;
-      align-content: center;
-      cursor: pointer;
-      .image-container {
-        .image {
-          max-width: 35px;
-          max-height: 35px;
-          overflow: hidden;
-          border-radius: 50%;
+      grid-template-columns: max-content max-content;
+      grid-column-gap: 15px;
+
+      .notification {
+        display: grid;
+        align-content: center;
+      }
+      .profile {
+        display: grid;
+        align-content: center;
+        cursor: pointer;
+        .image-container {
+          .image {
+            max-width: 35px;
+            max-height: 35px;
+            overflow: hidden;
+            border-radius: 50%;
+          }
         }
       }
     }

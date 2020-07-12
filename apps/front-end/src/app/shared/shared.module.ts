@@ -20,6 +20,7 @@ import { MatSortModule } from '@angular/material/sort';
 import { MatStepperModule } from '@angular/material/stepper';
 import { MatSlideToggleModule } from '@angular/material/slide-toggle';
 import { MatChipsModule } from '@angular/material/chips';
+import { MatSnackBarModule } from '@angular/material/snack-bar';
 
 import { NgApexchartsModule } from 'ng-apexcharts';
 import { NgxDropzoneModule } from 'ngx-dropzone';
@@ -58,7 +59,8 @@ const externalModules = [
   MatStepperModule,
   NgxDropzoneModule,
   MatSlideToggleModule,
-  MatChipsModule
+  MatChipsModule,
+  MatSnackBarModule
 ];
 
 @NgModule({

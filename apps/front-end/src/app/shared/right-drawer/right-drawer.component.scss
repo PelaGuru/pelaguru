@@ -124,3 +124,14 @@
     }
   }
 }
+
+.profile-detail-container {
+  padding: 1em 0;
+  text-align: center;
+  .name {
+    font-weight: bold;
+  }
+  .email {
+    color: var(--text-color);
+  }
+}

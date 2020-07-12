@@ -3,7 +3,11 @@
     <div class="profile-container" *ngIf="viewState === 'PROFILE'">
       <div class="right-list-container">
         <div class="right-list-container-inner">
-          <div class="right-item">
+          <div class="profile-detail-container">
+            <div class="name">{{ (userData | async)?.displayName }}</div>
+            <div class="email">{{ (userData | async)?.email }}</div>
+          </div>
+          <div class="right-item" *ngIf="!(isVendor | async)">
             <a routerLink="/seller-request" routerLinkActive="active">
               <div class="right-item-inner important" mat-ripple>
                 Request for seller
@@ -16,7 +20,9 @@
             </a>
           </div>
           <div class="right-item">
-            <div class="right-item-inner" mat-ripple>Sign out</div>
+            <div class="right-item-inner" mat-ripple (click)="logOut()">
+              Sign out
+            </div>
           </div>
         </div>
       </div>
