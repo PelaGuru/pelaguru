@@ -2,5 +2,17 @@
   "projects": {
     "dev": "pelaguru-dev",
     "default": "pelaguru-dev"
+  },
+  "targets": {
+    "pelaguru-dev": {
+      "hosting": {
+        "front-end-dev": [
+          "pelaguru-front-end-dev"
+        ],
+        "admin-dev": [
+          "pelaguru-admin-dev"
+        ]
+      }
+    }
   }
 }
