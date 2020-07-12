@@ -277,7 +277,10 @@
               "apps/admin-dashboard/src/assets"
             ],
             "styles": ["apps/admin-dashboard/src/styles.scss"],
-            "scripts": []
+            "scripts": [],
+            "stylePreprocessorOptions": {
+              "includePaths": ["apps/admin-dashboard/src/assets/scss"]
+            }
           },
           "configurations": {
             "production": {

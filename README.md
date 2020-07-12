@@ -49,6 +49,8 @@ This project was generated using [Nx](https://nx.dev).
 
 - Front-end
   -- `npm run firebase:host_deploy`
+- Admin-dashboard
+  -- `firebase deploy --only hosting:pelaguru-admin-dev`
 - Back-end
   -- `npm run firebase:func_deploy`
 - Front-end & Back-end
