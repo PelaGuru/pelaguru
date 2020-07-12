@@ -37,7 +37,8 @@ This project was generated using [Nx](https://nx.dev).
 
 > Run project
 
-- Front-end - `npm start`
+- Front-end - `ng serve front-end`
+- Admin Dashboard - `ng serve admin-dashboard`
 - Back-end
   -- `npm run firebase:serve` (Ubuntu)
   -- `npm run firebase:win_serve` (Windows)
