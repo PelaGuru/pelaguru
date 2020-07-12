@@ -1,0 +1,55 @@
+@import 'mixing';
+
+mat-card {
+  overflow: hidden;
+  .image-container {
+    margin: -16px -16px 0 -16px;
+    min-height: 150px;
+
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+  }
+  .detail-container {
+    .name {
+      .link {
+        text-decoration: none;
+        color: inherit;
+
+        &:hover {
+          color: var(--primary);
+          text-decoration: underline;
+        }
+      }
+      padding: 10px 0 0 0;
+      font-size: 1.2em;
+      font-weight: bold;
+    }
+    .short-title {
+      color: var(--text-color);
+    }
+  }
+  .button-container {
+    .button-container-inner {
+      display: grid;
+      grid-template-columns: auto max-content max-content;
+      grid-gap: 10px;
+      .date {
+        display: grid;
+        align-content: center;
+        color: var(--text-color);
+        opacity: 0.7;
+        padding: 5px 0 0 0;
+      }
+      .switch {
+        display: grid;
+        align-content: center;
+        padding: 5px 0 0 0;
+      }
+      .delete {
+        color: var(--text-color);
+        opacity: 0.6;
+      }
+    }
+  }
+}
