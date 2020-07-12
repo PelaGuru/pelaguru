@@ -1,0 +1,79 @@
+pelaguru-auth-nav-bar {
+  position: fixed;
+  width: 100%;
+  z-index: 300;
+  top: 0;
+}
+.auth-container {
+  .auth-container-inner {
+    padding-top: 48px;
+    height: 100vh;
+    display: grid;
+    align-content: center;
+    justify-content: center;
+    grid-template-columns: minmax(0, 400px);
+    padding: 0 10px;
+
+    mat-card {
+      padding-top: 2em;
+
+      .header-container {
+        .text {
+          font-size: 1.2em;
+          font-weight: bold;
+          text-align: center;
+          color: var(--primary);
+        }
+      }
+
+      .form-container {
+        padding: 2em 0 0 0;
+        .mat-form-field {
+          width: 100%;
+          margin-bottom: 1em;
+        }
+      }
+    }
+  }
+}
+
+.line-break {
+  border-bottom: 1px solid #dddddd;
+  padding-top: 1em;
+  margin-bottom: 1em;
+}
+
+.google-sign-in-button {
+  display: grid;
+}
+
+.signin-button {
+  padding-bottom: 1em;
+  button {
+    width: 100%;
+  }
+}
+
+.to-sign-in {
+  padding-top: 1em;
+  .text {
+    color: var(--text-color);
+    text-align: center;
+    a {
+      text-decoration: none;
+      color: var(--primary);
+    }
+  }
+}
+
+.back {
+  position: absolute;
+  height: 100%;
+  width: 100%;
+  z-index: -1;
+
+  background-repeat: no-repeat;
+  background-size: cover;
+  //   filter: blur(10px);
+  //   opacity: 0.3;
+}

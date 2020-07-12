@@ -2,6 +2,9 @@ import { Component, OnInit, Output, EventEmitter, Input } from '@angular/core';
 import { DrawerSatateData } from '../models/drawer-satate-data';
 import { RightDrawerStateData } from '../models/right-drawer-state-data';
 import { NavLinkData } from '../models/nav-link-data';
+import { BehaviorSubject, Observable } from 'rxjs';
+import { AuthService } from '../../core/auth/auth.service';
+import { User } from '@pelaguru/interfaces';
 
 @Component({
   selector: 'pelaguru-nav-bar',
@@ -9,6 +12,8 @@ import { NavLinkData } from '../models/nav-link-data';
   styleUrls: ['./nav-bar.component.scss']
 })
 export class NavBarComponent implements OnInit {
+  profilePicUrl = '';
+
   @Output() toggleNavDrawer: EventEmitter<DrawerSatateData> = new EventEmitter<
     DrawerSatateData
   >();
@@ -23,12 +28,18 @@ export class NavBarComponent implements OnInit {
     { label: 'Home', link: '/home' },
     { label: 'Plants', link: '/plants' },
     { label: 'Diseases', link: '/diseases' },
-    { label: 'Marketplace', link: '/marketplace' },
-    { label: 'My Shop', link: '/my-shop' }
+    { label: 'Marketplace', link: '/marketplace' }
+    // { label: 'My Shop', link: '/my-shop' }
   ];
-  constructor() {}
+  constructor(private authService: AuthService) {}
 
-  ngOnInit(): void {}
+  ngOnInit(): void {
+    this.userData.subscribe(user => {
+      if (!!user) {
+        this.profilePicUrl = user.profilePic;
+      }
+    });
+  }
 
   navDrawerToggle() {
     this.toggleNavDrawer.emit({
@@ -43,5 +54,17 @@ export class NavBarComponent implements OnInit {
       navDrawerState: this.navDrawerSatate,
       rightDrawerState: this.rightDrawerSatate
     });
+  }
+
+  get isAuthenticated(): Observable<boolean> {
+    return this.authService.isAuthenticated();
+  }
+
+  get userData() {
+    return this.authService.userData;
+  }
+
+  get isVendor() {
+    return this.authService.isVendor();
   }
 }

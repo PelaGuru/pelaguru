@@ -41,7 +41,10 @@
 <div class="grid-container">
   <div class="container">
     <div class="grid-container-inner">
-      <a href="">
+      <a
+        *ngFor="let item of diseaseCatalogueItems | async"
+        routerLink="{{ item.username }}"
+      >
         <mat-card>
           <div
             class="image-container"
@@ -56,3 +59,4 @@
     </div>
   </div>
 </div>
+<pelaguru-footer></pelaguru-footer>

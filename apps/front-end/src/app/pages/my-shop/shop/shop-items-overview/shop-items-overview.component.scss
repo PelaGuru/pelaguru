@@ -1,8 +1,40 @@
+@import 'mixing';
+
+$mobile-res-width-1: 1530px;
+$mobile-res-width-2: 1150px;
+$mobile-res-width-3: 922px;
+$mobile-res-width-4: 577px;
+
 .button-container {
   padding: 1em 0;
   display: grid;
   justify-content: right;
   button {
     color: white;
+  }
+}
+
+.item-list-container {
+  padding: 0 0 2em 0;
+  .item-list-container-inner {
+    display: grid;
+    grid-template-columns: repeat(5, 1fr);
+    grid-gap: 10px;
+
+    @include mob-res-max-width($mobile-res-width-1) {
+      grid-template-columns: repeat(4, 1fr);
+    }
+
+    @include mob-res-max-width($mobile-res-width-2) {
+      grid-template-columns: repeat(3, 1fr);
+    }
+
+    @include mob-res-max-width($mobile-res-width-3) {
+      grid-template-columns: repeat(2, 1fr);
+    }
+
+    @include mob-res-max-width($mobile-res-width-4) {
+      grid-template-columns: repeat(1, 1fr);
+    }
   }
 }

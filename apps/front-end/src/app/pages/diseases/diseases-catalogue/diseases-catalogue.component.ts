@@ -1,7 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { FormControl, FormGroup } from '@angular/forms';
-import { Observable } from 'rxjs';
+import { Observable, BehaviorSubject } from 'rxjs';
 import { startWith, map } from 'rxjs/operators';
+import { DiseaseCatalogueItem } from '@pelaguru/interfaces';
 
 @Component({
   selector: 'pelaguru-diseases-catalogue',
@@ -9,6 +10,9 @@ import { startWith, map } from 'rxjs/operators';
   styleUrls: ['./diseases-catalogue.component.scss']
 })
 export class DiseasesCatalogueComponent implements OnInit {
+  private DiseaseCatalogueItemsDataSource: BehaviorSubject<
+    Array<DiseaseCatalogueItem>
+  > = new BehaviorSubject<Array<DiseaseCatalogueItem>>([]);
   myControl = new FormControl();
   options: string[] = ['One', 'Two', 'Three'];
   filteredOptions: Observable<string[]>;
@@ -25,6 +29,7 @@ export class DiseasesCatalogueComponent implements OnInit {
       startWith(''),
       map(value => this._filter(value))
     );
+    this.addTestData();
   }
 
   private _filter(value: string): string[] {
@@ -33,5 +38,34 @@ export class DiseasesCatalogueComponent implements OnInit {
     return this.options.filter(
       option => option.toLowerCase().indexOf(filterValue) === 0
     );
+  }
+
+  addTestData(): void {
+    this.DiseaseCatalogueItemsDataSource.next([
+      {
+        id: '876543',
+        image: 'http://localhost:4200/assets/img/temp/1.jpg',
+        name: 'Tomato',
+        sciName: 'Lycopersicon esculentum',
+        username: 'tomato'
+      },
+      {
+        id: '876543',
+        image: 'http://localhost:4200/assets/img/temp/1.jpg',
+        name: 'Tomato',
+        sciName: 'Lycopersicon esculentum',
+        username: 'tomato'
+      },
+      {
+        id: '876543',
+        image: 'http://localhost:4200/assets/img/temp/1.jpg',
+        name: 'Tomato',
+        sciName: 'Lycopersicon esculentum',
+        username: 'tomato'
+      }
+    ]);
+  }
+  get diseaseCatalogueItems(): Observable<Array<DiseaseCatalogueItem>> {
+    return this.DiseaseCatalogueItemsDataSource.asObservable();
   }
 }

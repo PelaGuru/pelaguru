@@ -1,0 +1,78 @@
+<div class="container">
+  <div class="container-inner">
+    <mat-card class="header-card">
+      <!-- <div
+          class="cover-image"
+          style="background-image: url(https://images5.alphacoders.com/378/thumb-1920-378648.jpg);"
+        ></div> -->
+      <div class="cover-image"></div>
+      <div class="header-container">
+        <div class="header-container-inner">
+          <div class="title">{{ disease.diseaseName }}</div>
+          <div class="desc">{{ disease.desc }}</div>
+        </div>
+      </div>
+      <div class="back-button">
+        <a routerLink="../">
+          <button mat-icon-button mat-ripple>
+            <mat-icon>arrow_back</mat-icon>
+          </button>
+        </a>
+      </div>
+    </mat-card>
+    <mat-card class="basic-details-card">
+      <div class="title-text">Basic details</div>
+      <div placement="center">
+        <img class="image-container" src="{{ disease.image }}" />
+        <div class="container">
+          <mat-list>
+            <mat-divider></mat-divider>
+            <mat-list-item>
+              Plant Name : {{ disease.diseaseName }}
+            </mat-list-item>
+            <mat-divider></mat-divider>
+            <mat-list-item>
+              Popular Districts : {{ disease.symptoms }}
+            </mat-list-item>
+            <mat-divider></mat-divider>
+            <mat-list-item> Uses : {{ disease.causativeAgent }}</mat-list-item>
+            <mat-divider></mat-divider>
+            <mat-list-item
+              >Additional Features :
+              {{ disease.additionalFeatures }}</mat-list-item
+            >
+            <mat-divider></mat-divider>
+            <mat-list-item>Solutions : {{ disease.chemicals }}</mat-list-item>
+            <mat-divider></mat-divider>
+            <mat-list-item
+              >Common Plants : {{ disease.commonPlants }}</mat-list-item
+            >
+          </mat-list>
+        </div>
+      </div>
+    </mat-card>
+    <div class="grid-container">
+      <div class="container">
+        <div class="grid-container-inner">
+          <a
+            *ngFor="let item of chemicalSuggestionItems | async"
+            routerLink="{{ item.brandName }}"
+          >
+            <mat-card>
+              <div
+                class="image-container"
+                [ngStyle]="{ 'background-image': 'url(' + item.image + ')' }"
+              ></div>
+              <div class="description-container">
+                <div class="name">{{ item.brandName }}</div>
+                <div class="description">{{ item.chemicalName }}</div>
+                <div class="description">{{ item.vendors }}</div>
+                <div class="description">{{ item.avgPrice }}</div>
+              </div>
+            </mat-card>
+          </a>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

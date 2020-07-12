@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { PLANT } from './plant';
 
 @Component({
   selector: 'pelaguru-view-plant',
@@ -7,6 +8,13 @@ import { Component, OnInit } from '@angular/core';
 })
 export class ViewPlantComponent implements OnInit {
   constructor() {}
+  plant = PLANT;
 
-  ngOnInit(): void {}
+  ngOnInit(): void {
+    this.getPlant();
+  }
+
+  getPlant(): void {
+    //this.plantService.getPlant().subscribe(plant => this.plant = plant);
+  }
 }

@@ -1,0 +1,46 @@
+<div class="nav-bar-container mat-elevation-z1">
+  <div class="nav-bar-container-inner">
+    <div class="left-content">
+      <div class="nav-button">
+        <a routerLink="/">
+          <button mat-icon-button color="primary">
+            <mat-icon>arrow_back</mat-icon>
+          </button>
+        </a>
+      </div>
+      <div class="logo">
+        <img
+          src="../../../../assets/img/logo/main-logo.svg"
+          class="img-resp"
+          alt=""
+        />
+      </div>
+    </div>
+    <div class="middle-logo-container">
+      <div class="logo">
+        <img
+          src="../../../../assets/img/logo/main-logo.svg"
+          class="img-resp"
+          alt=""
+        />
+      </div>
+    </div>
+    <div class="middle-content signed-in">
+      <div class="nav-item" *ngFor="let nav of navLinks">
+        <a [routerLink]="nav.link" routerLinkActive="active">
+          <div class="nav-item-inner" mat-ripple>{{ nav.label }}</div>
+        </a>
+      </div>
+    </div>
+    <div class="right-content">
+      <div class="is-not-signed-in">
+        <a routerLink="/sign-in" *ngIf="authPage == 'SIGN_UP'">
+          <button mat-button color="primary">Sign In</button>
+        </a>
+        <a routerLink="/sign-up" *ngIf="authPage == 'SIGN_IN'">
+          <button mat-button color="primary">Sign Up</button>
+        </a>
+      </div>
+    </div>
+  </div>
+</div>

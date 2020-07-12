@@ -1,0 +1,12 @@
+<mat-card>
+  <div
+    class="image-container"
+    [ngStyle]="{ 'background-image': 'url(' + chemical.image + ')' }"
+  ></div>
+  <div class="description-container">
+    <div class="name">{{ chemical.brandName }}</div>
+    <div class="description">{{ chemical.chemicalName }}</div>
+    <div class="description">{{ chemical.vendors }}</div>
+    <div class="description">{{ chemical.avgPrice }}</div>
+  </div>
+</mat-card>

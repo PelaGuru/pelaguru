@@ -45,21 +45,21 @@ export class PlantsCatalogueComponent implements OnInit {
     this.plantCatalogueItemsDataSource.next([
       {
         id: '876543',
-        image: 'http://localhost:4200/assets/img/temp/1.jpg',
+        image: '../../../assets/img/temp/1.jpg',
         name: 'Tomato',
         sciName: 'Lycopersicon esculentum',
         username: 'tomato'
       },
       {
         id: '876543',
-        image: 'http://localhost:4200/assets/img/temp/1.jpg',
+        image: '../../../assets/img/temp/1.jpg',
         name: 'Tomato',
         sciName: 'Lycopersicon esculentum',
         username: 'tomato'
       },
       {
         id: '876543',
-        image: 'http://localhost:4200/assets/img/temp/1.jpg',
+        image: '../../../assets/img/temp/1.jpg',
         name: 'Tomato',
         sciName: 'Lycopersicon esculentum',
         username: 'tomato'

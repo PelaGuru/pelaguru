@@ -8,6 +8,7 @@ import { environment } from '../../environments/environment';
 import { HttpClientModule } from '@angular/common/http';
 import { RightDrawerServiceService } from './right-drawer-service/right-drawer-service.service';
 import { NavDrawerService } from './nav-drawer-service/nav-drawer.service';
+import { AuthModule } from './auth/auth.module';
 
 @NgModule({
   declarations: [],
@@ -17,8 +18,10 @@ import { NavDrawerService } from './nav-drawer-service/nav-drawer.service';
     AngularFireModule.initializeApp(environment.firebase),
     AngularFireAuthModule,
     AngularFirestoreModule.enablePersistence(),
-    AngularFireStorageModule
+    AngularFireStorageModule,
+    AuthModule
   ],
+  exports: [AuthModule],
   providers: [RightDrawerServiceService, NavDrawerService]
 })
 export class CoreModule {}

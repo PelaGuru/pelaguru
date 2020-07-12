@@ -29,30 +29,56 @@
           <div class="nav-item-inner" mat-ripple>{{ nav.label }}</div>
         </a>
       </div>
+      <div
+        class="nav-item"
+        *ngIf="(isAuthenticated | async) && (isVendor | async)"
+      >
+        <a routerLink="/my-shop" routerLinkActive="active">
+          <div class="nav-item-inner" mat-ripple>My Shop</div>
+        </a>
+      </div>
     </div>
     <div class="right-content">
-      <div class="notification">
-        <button mat-icon-button (click)="rightDrawerToggle('NOTIFICATION')">
-          <mat-icon
-            matBadge="4"
-            matBadgePosition="after"
-            matBadgeOverlap="true"
-            matBadgeSize="small"
-            matBadgeColor="warn"
-            >notification_important</mat-icon
-          >
-        </button>
-      </div>
-      <div class="profile">
-        <div class="image-container">
-          <div class="image" mat-ripple (click)="rightDrawerToggle('PROFILE')">
-            <img
-              src="../../../assets/img/temp/temp-user.jpeg"
-              class="img-resp"
-              alt=""
-            />
+      <div class="is-signed-in" *ngIf="isAuthenticated | async">
+        <div class="notification">
+          <button mat-icon-button (click)="rightDrawerToggle('NOTIFICATION')">
+            <mat-icon
+              matBadge="4"
+              matBadgePosition="after"
+              matBadgeOverlap="true"
+              matBadgeSize="small"
+              matBadgeColor="warn"
+              >notification_important</mat-icon
+            >
+          </button>
+        </div>
+        <div class="profile">
+          <div class="image-container">
+            <div
+              class="image"
+              mat-ripple
+              (click)="rightDrawerToggle('PROFILE')"
+            >
+              <img
+                *ngIf="(userData | async) && (userData | async).profilePic"
+                [src]="(userData | async).profilePic"
+                class="img-resp"
+                alt=""
+              />
+              <img
+                *ngIf="!(userData | async)"
+                src="../../../assets/img/temp/temp-user.svg"
+                class="img-resp"
+                alt=""
+              />
+            </div>
           </div>
         </div>
+      </div>
+      <div class="is-not-signed-in" *ngIf="!(isAuthenticated | async)">
+        <a routerLink="/sign-in"
+          ><button mat-button color="primary">Sign In</button></a
+        >
       </div>
     </div>
   </div>

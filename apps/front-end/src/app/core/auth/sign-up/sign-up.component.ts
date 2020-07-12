@@ -1,4 +1,9 @@
 import { Component, OnInit } from '@angular/core';
+import { FormGroup, Validators, FormControl } from '@angular/forms';
+import { ErrorStateMatcher } from '@angular/material/core';
+import { AuthService } from '../auth.service';
+import { MatSnackBar } from '@angular/material/snack-bar';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'pelaguru-sign-up',
@@ -6,7 +11,54 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./sign-up.component.scss']
 })
 export class SignUpComponent implements OnInit {
-  constructor() {}
+  formController: FormGroup;
+  matcher: ErrorStateMatcher;
+
+  constructor(
+    private authService: AuthService,
+    private snackbar: MatSnackBar,
+    private router: Router
+  ) {
+    this.formController = new FormGroup({
+      firstName: new FormControl('', [Validators.required]),
+      lastName: new FormControl('', [Validators.required]),
+      email: new FormControl('', [Validators.required, Validators.email]),
+      password: new FormControl('', [Validators.required])
+    });
+    this.matcher = new ErrorStateMatcher();
+  }
 
   ngOnInit(): void {}
+
+  async signUp(): Promise<void> {
+    if (this.formController.valid) {
+      const signUpResponse = await this.authService.signUpWithEmailPassword(
+        `${this.formController.get('firstName').value} ${
+          this.formController.get('lastName').value
+        }`,
+        this.formController.get('email').value,
+        this.formController.get('password').value
+      );
+
+      if (signUpResponse.success) {
+        this.router.navigate(['/']);
+      } else {
+        if (signUpResponse.message === 'FIREAUTH_ERROR') {
+          if (signUpResponse.error.code === 'auth/email-already-in-use') {
+            this.snackbar.open(
+              'Your are already created a account. Please try to Sign In.',
+              'close'
+            );
+          } else {
+            this.snackbar.open(
+              'Something went wrong. Try again later.',
+              'close'
+            );
+          }
+        } else {
+          this.snackbar.open('Something went wrong. Try again later.', 'close');
+        }
+      }
+    }
+  }
 }
