@@ -3,6 +3,8 @@ import { FormControl, FormGroup } from '@angular/forms';
 import { Disease } from '@pelaguru/interfaces';
 import { BehaviorSubject } from 'rxjs';
 import { DiseasService } from '../../../core/diseas-service/diseas.service';
+import { NotificationService } from '../../../core/notification-service/notification.service';
+import Swal from 'sweetalert2';
 
 @Component({
   selector: 'pelaguru-all-diseases',
@@ -15,7 +17,10 @@ export class AllDiseasesComponent implements OnInit {
   disease: BehaviorSubject<Disease[]> = new BehaviorSubject([]);
   displayedColumns: string[] = ['name', 'action'];
 
-  constructor(private diseasService: DiseasService) {
+  constructor(
+    private diseasService: DiseasService,
+    private notificationService: NotificationService
+  ) {
     this.formControl = new FormGroup({
       search: new FormControl(''),
     });
@@ -25,7 +30,44 @@ export class AllDiseasesComponent implements OnInit {
     this.getAllDiseases();
   }
 
-  deleteDisease(id: string) {}
+  deleteDisease(id: string) {
+    console.log(id);
+    Swal.fire({
+      title: 'Are you sure?',
+      text: 'You will not be able to recover this file!',
+      icon: 'warning',
+      showCancelButton: true,
+      confirmButtonText: 'Yes!',
+      cancelButtonText: 'No',
+    }).then((result) => {
+      if (result.value) {
+        this.loading = true;
+        this.diseasService
+          .deleteDiseases(id)
+          .then(() => {
+            this.loading = false;
+            this.getAllDiseases();
+            this.notificationService.create(
+              'Diseases successfully deleted.',
+              'success',
+              'Success'
+            );
+          })
+          .catch((error) => {
+            this.loading = false;
+            this.notificationService.create(
+              'Something went wrong. Try again later.',
+              'danger',
+              'Error'
+            );
+          });
+        // For more information about handling dismissals please visit
+        // https://sweetalert2.github.io/#handling-dismissals
+      } else if (result.dismiss === Swal.DismissReason.cancel) {
+        Swal.fire('Cancelled', 'Your imaginary file is safe :)', 'error');
+      }
+    });
+  }
 
   async getAllDiseases() {
     this.loading = true;
