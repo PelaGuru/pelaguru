@@ -8,8 +8,8 @@
       <div class="cover-image"></div>
       <div class="header-container">
         <div class="header-container-inner">
-          <div class="title">{{ (diseaseDetails | async).diseaseName }}</div>
-          <div class="desc">{{ (diseaseDetails | async).commonSymptoms }}</div>
+          <div class="title">{{ (diseaseDetails | async)?.diseaseName }}</div>
+          <div class="desc">{{ (diseaseDetails | async)?.commonSymptoms }}</div>
         </div>
       </div>
       <div class="back-button">
@@ -25,7 +25,7 @@
       <div placement="center">
         <img
           class="image-container"
-          src="{{ (diseaseDetails | async).image }}"
+          [src]="(diseaseDetails | async)?.image"
         />
         <div class="container">
           <br />
@@ -33,7 +33,7 @@
           <div class="cat-item">
             <div class="heading">Disease Name</div>
             <div class="desc">
-              {{ (diseaseDetails | async).diseaseName }}
+              {{ (diseaseDetails | async)?.diseaseName }}
             </div>
           </div>
           <mat-divider></mat-divider>
@@ -41,7 +41,7 @@
             <div class="heading">Common Symptoms</div>
             <div class="desc">
               <div style="display: grid;">
-                <span *ngFor="let i of (diseaseDetails | async).commonSymptoms">
+                <span *ngFor="let i of (diseaseDetails | async)?.commonSymptoms">
                   {{ i }}
                 </span>
               </div>
@@ -52,7 +52,7 @@
           <div class="cat-item">
             <div class="heading">Causes</div>
             <div class="desc">
-              {{ (diseaseDetails | async).causes }}
+              {{ (diseaseDetails | async)?.causes }}
             </div>
           </div>
           <mat-divider></mat-divider>
@@ -61,7 +61,7 @@
             <div class="desc">
               <div style="display: grid;">
                 <span
-                  *ngFor="let i of (diseaseDetails | async).additionalFeatures"
+                  *ngFor="let i of (diseaseDetails | async)?.additionalFeatures"
                 >
                   {{ i }}
                 </span>
@@ -75,7 +75,7 @@
               Common Plants that are affected by the disease
             </div>
             <div class="desc">
-              {{ (diseaseDetails | async).commonPlants }}
+              {{ (diseaseDetails | async)?.commonPlants }}
             </div>
           </div>
           <mat-divider></mat-divider>
@@ -84,7 +84,7 @@
             <div class="heading">Solutions</div>
             <div class="desc">
               <div style="display: grid;">
-                <span *ngFor="let i of (diseaseDetails | async).solutions">
+                <span *ngFor="let i of (diseaseDetails | async)?.solutions">
                   {{ i }}
                 </span>
               </div>
@@ -98,7 +98,7 @@
         <div class="grid-container-inner">
           <a
             *ngFor="let item of chemicalSuggestionItems | async"
-            routerLink="{{ item.brandName }}"
+            routerLink="/marketplace/{{item.shopId}}/{{ item.id }}"
           >
             <mat-card>
               <div
@@ -106,10 +106,9 @@
                 [ngStyle]="{ 'background-image': 'url(' + item.image + ')' }"
               ></div>
               <div class="description-container">
-                <div class="name">{{ item.brandName }}</div>
-                <div class="description">{{ item.chemicalName }}</div>
-                <div class="description">{{ item.vendors }}</div>
-                <div class="description">{{ item.avgPrice }}</div>
+                <div class="name">{{ item.name }}</div>
+                <div class="description">{{ item.description }}</div>
+                <div class="description">{{ item.price }}</div>
               </div>
             </mat-card>
           </a>
