@@ -10,90 +10,148 @@
               </button>
             </a>
           </div>
-          <img src="../../../assets/img/temp/temp-user.svg" alt="" />
+          <img
+            *ngIf="(userData | async) && (userData | async).profilePic"
+            [src]="(userData | async).profilePic"
+            alt=""
+          />
+          <img
+            *ngIf="!(userData | async)"
+            src="../../../assets/img/temp/temp-user.svg"
+            alt=""
+          />
           <mat-card>
-            <h1>Ravishan Fernando</h1>
-            <p>myemail@gmail.com</p>
+            <h1>{{ (userData | async)?.displayName }}</h1>
+            <p>{{ (userData | async)?.email }}</p>
             <br />
             <p>
-              Lorem ipsum dolor sit amet, consectetur adipisicing elit.
-              Doloremque voluptatum magnam ipsam, repudiandae quod soluta optio
-              repellat, adipisci eum exercitationem veritatis autem ab odit non,
-              a cumque rem consequuntur velit!
+              <!-- {{ (userData | async)?.description }} -->
+              Lorem ipsum dolor sit amet consectetur adipisicing elit. Quis
+              quaerat sint, sapiente doloremque saepe omnis maxime quisquam
+              magni deleniti veniam officia, molestiae tempora excepturi
+              blanditiis veritatis. Pariatur ad quas hic!
             </p>
           </mat-card>
         </mat-card>
       </div>
 
-      <div class="col-9" style="margin-bottom: 20px;">
+      <div class="col-9" style="margin-bottom: 15px;">
         <mat-card
           class="card2"
-          style="margin-top: 10px;margin-right: -5px;margin-left: -5px;min-height: 100%;background-image: url('../../../assets/img/background.png');background-size: cover;"
+          style="margin-right: -15px;margin-top:5px; margin-left: -5px;min-height: 100%;background-image: url('../../../assets/img/background.png');background-size: cover;"
         >
-          <div
-            class="container-fluid"
-            style="background-color: white;background-size: cover;padding-bottom: 140px;margin-top: 15px;"
-          >
-            <form class="container">
-              <h1>My Profile</h1>
+          <div style="background-color: white;">
+            <form class="container" [formGroup]="formControl">
+              <h1 style="color: #84a03c;">My Profile</h1>
               <hr />
-              <br /><br /><br />
+              <br /><br />
               <div class="form-group">
-                <input
-                  type="text"
-                  placeholder="First Name"
-                  class="form-control"
-                  name="first_name"
-                />
-                <input
-                  type="text"
-                  placeholder="Last Name"
-                  class="form-control"
-                  name="last_name"
-                />
+                <mat-form-field class="example-full-width">
+                  <mat-label>First Name</mat-label>
+                  <input
+                    matInput
+                    formControlName="firstName"
+                    [errorStateMatcher]="matcher"
+                  />
+                  <mat-icon matSuffix>account_box</mat-icon>
+                  <mat-hint>Enter your First name.</mat-hint>
+                  <mat-error>Enter your First name</mat-error>
+                </mat-form-field>
+
+                <mat-form-field class="example-full-width">
+                  <mat-label>Last Name</mat-label>
+                  <input
+                    matInput
+                    formControlName="lastName"
+                    [errorStateMatcher]="matcher"
+                  />
+                  <mat-icon matSuffix>account_box</mat-icon>
+                  <mat-hint>Enter your Last name.</mat-hint>
+                  <mat-error>Enter your Last name</mat-error>
+                </mat-form-field>
               </div>
+              <br />
               <div class="form-wrapper">
-                <input
-                  type="text"
-                  placeholder="Username"
-                  class="form-control"
-                  name="user"
-                />
+                <mat-form-field class="example-full-width">
+                  <mat-label>Address</mat-label>
+                  <input
+                    matInput
+                    formControlName="address"
+                    [errorStateMatcher]="matcher"
+                  />
+                  <mat-icon matSuffix>location_on</mat-icon>
+                  <mat-hint>Enter your Address.</mat-hint>
+                  <mat-error>Enter your Address</mat-error>
+                </mat-form-field>
               </div>
+              <br />
               <div class="form-wrapper">
-                <input
-                  type="text"
-                  placeholder="Email Address"
-                  class="form-control"
-                  name="email"
-                />
+                <mat-form-field class="example-full-width">
+                  <mat-label>Email</mat-label>
+                  <input
+                    matInput
+                    formControlName="email"
+                    [errorStateMatcher]="matcher"
+                  />
+                  <mat-icon matSuffix>email</mat-icon>
+                  <mat-hint>Enter your Email.</mat-hint>
+                  <mat-error>Enter your Email</mat-error>
+                </mat-form-field>
               </div>
+              <br />
               <div class="form-wrapper">
-                <input
-                  type="text"
-                  placeholder="Telephone"
-                  class="form-control"
-                  name="telephone"
-                />
+                <mat-form-field class="example-full-width">
+                  <mat-label>Telephone</mat-label>
+                  <input
+                    matInput
+                    formControlName="telephone"
+                    [errorStateMatcher]="matcher"
+                  />
+                  <mat-icon matSuffix>phone</mat-icon>
+                  <mat-hint>Enter your Telephone No.</mat-hint>
+                  <mat-error>Enter your Telephone No</mat-error>
+                </mat-form-field>
               </div>
+              <br />
               <div class="form-wrapper">
-                <input
-                  type="textarea"
-                  placeholder="Description"
-                  class="form-control"
-                  name="description"
-                />
+                <mat-form-field class="example-full-width">
+                  <!-- <mat-label>Last Name</mat-label> -->
+                  <ngx-mat-file-input
+                    formControlName="profilepic"
+                    placeholder="Profile Pic"
+                    [accept]="'.jpg'"
+                  ></ngx-mat-file-input>
+                  <mat-icon matSuffix>folder</mat-icon>
+                  <mat-hint>Insert Your Profile Pic.</mat-hint>
+                  <mat-error>Insert Your Profile Pic</mat-error>
+                </mat-form-field>
               </div>
-              <br /><br /><br />
+              <br />
+              <div class="form-wrapper">
+                <mat-form-field class="example-full-width">
+                  <mat-label>Description</mat-label>
+                  <textarea
+                    matInput
+                    formControlName="description"
+                    [errorStateMatcher]="matcher"
+                    placeholder="Ex. It makes me feel..."
+                  ></textarea>
+                  <mat-icon matSuffix>description</mat-icon>
+                  <mat-hint>Enter your Description.</mat-hint>
+                  <mat-error>Enter your Description</mat-error>
+                </mat-form-field>
+              </div>
+              <br /><br />
               <button
                 mat-button
                 class="mat-elevation-z5"
                 name="button"
-                style="background-color:#84a03c;border-radius: 30px;"
+                style="background-color:#84a03c;border-radius: 30px;margin-bottom: 4px;"
                 mat-ripple
               >
                 <b>Update</b>
               </button>
+              <br /><br />
             </form>
           </div>
         </mat-card>
@@ -101,4 +159,3 @@
     </div>
   </div>
 </div>
-<pelaguru-footer></pelaguru-footer>
