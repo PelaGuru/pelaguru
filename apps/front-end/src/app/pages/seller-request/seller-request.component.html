@@ -1,1 +1,149 @@
-<p>seller-request works!</p>
+<div class="bcground_image">
+  <div class="container x">
+    <mat-card>
+      <form class="example-form" [formGroup]="formControl">
+        <h1 style="color: #84a03c;text-align: center;">Seller Request</h1>
+        <hr />
+        <div class="form-group">
+          <mat-form-field class="example-full-width">
+            <mat-label>First Name</mat-label>
+            <input
+              matInput
+              formControlName="firstName"
+              [errorStateMatcher]="matcher"
+            />
+            <mat-icon matSuffix>account_box</mat-icon>
+            <mat-hint>Enter your First name.</mat-hint>
+            <mat-error>Enter your First name</mat-error>
+          </mat-form-field>
+
+          <mat-form-field class="example-full-width">
+            <mat-label>Last Name</mat-label>
+            <input
+              matInput
+              formControlName="lastName"
+              [errorStateMatcher]="matcher"
+            />
+            <mat-icon matSuffix>account_box</mat-icon>
+            <mat-hint>Enter your Last name.</mat-hint>
+            <mat-error>Enter your Last name</mat-error>
+          </mat-form-field>
+        </div>
+        <br />
+        <div class="form-wrapper">
+          <mat-form-field class="example-full-width">
+            <mat-label>Address</mat-label>
+            <input
+              matInput
+              formControlName="address"
+              [errorStateMatcher]="matcher"
+            />
+            <mat-icon matSuffix>location_on</mat-icon>
+            <mat-hint>Enter your Address.</mat-hint>
+            <mat-error>Enter your Address</mat-error>
+          </mat-form-field>
+        </div>
+        <br />
+        <div class="form-wrapper">
+          <mat-form-field class="example-full-width">
+            <mat-label>Email</mat-label>
+            <input
+              matInput
+              formControlName="email"
+              [errorStateMatcher]="matcher"
+            />
+            <mat-icon matSuffix>email</mat-icon>
+            <mat-hint>Enter your Email.</mat-hint>
+            <mat-error>Enter your Email</mat-error>
+          </mat-form-field>
+        </div>
+        <br />
+        <div class="form-wrapper">
+          <mat-form-field class="example-full-width">
+            <mat-label>Telephone</mat-label>
+            <input
+              matInput
+              formControlName="telephone"
+              [errorStateMatcher]="matcher"
+            />
+            <mat-icon matSuffix>phone</mat-icon>
+            <mat-hint>Enter your Telephone No.</mat-hint>
+            <mat-error>Enter your Telephone No</mat-error>
+          </mat-form-field>
+        </div>
+        <br />
+        <div class="form-group">
+          <mat-form-field class="example-full-width">
+            <mat-label>NIC / BA</mat-label>
+            <mat-select
+              matSelect
+              formControlName="option"
+              [errorStateMatcher]="matcher"
+            >
+              <mat-option value="NIC">NIC</mat-option>
+              <mat-option value="BA">BA</mat-option>
+            </mat-select>
+            <mat-icon matSuffix>source</mat-icon>
+            <mat-error>Select your Choice</mat-error>
+            <mat-hint>NIC/BA</mat-hint>
+          </mat-form-field>
+
+          <mat-form-field class="example-full-width">
+            <!-- <mat-label>Last Name</mat-label> -->
+            <ngx-mat-file-input
+              formControlName="acceptfile"
+              placeholder="PDF file only"
+              [accept]="'.pdf'"
+            ></ngx-mat-file-input>
+            <mat-icon matSuffix>folder</mat-icon>
+            <mat-hint>Upload your NIC/BA.</mat-hint>
+            <mat-error>Upload your NIC/BA</mat-error>
+          </mat-form-field>
+        </div>
+        <br />
+        <div class="form-wrapper">
+          <mat-form-field class="example-full-width">
+            <mat-label>Shop Name</mat-label>
+            <input
+              matInput
+              formControlName="shopName"
+              [errorStateMatcher]="matcher"
+            />
+            <mat-icon matSuffix>description</mat-icon>
+            <mat-hint>Enter your Shop Name.</mat-hint>
+            <mat-error>Enter your Shop Name</mat-error>
+          </mat-form-field>
+        </div>
+        <br />
+        <div class="form-wrapper">
+          <mat-form-field class="example-full-width">
+            <mat-label>Description</mat-label>
+            <textarea
+              matInput
+              formControlName="description"
+              [errorStateMatcher]="matcher"
+              placeholder="Ex. It makes me feel..."
+            ></textarea>
+            <mat-icon matSuffix>description</mat-icon>
+            <mat-hint>Enter your Description.</mat-hint>
+            <mat-error>Enter your Description</mat-error>
+          </mat-form-field>
+        </div>
+        <br />
+        <div style="text-align: center;">
+          <button
+            mat-button
+            class="mat-elevation-z5"
+            name="button"
+            style="background-color:#84a03c;border-radius: 30px;margin-bottom: 4px;"
+            mat-ripple
+          >
+            <b>Submit</b>
+          </button>
+        </div>
+
+        <br />
+      </form>
+    </mat-card>
+  </div>
+</div>
