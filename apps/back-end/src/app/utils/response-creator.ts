@@ -4,7 +4,8 @@ export function makeResponse(
   success: boolean,
   message: string = 'success',
   statusCode: number = 200,
+  errorCode?: any,
   data?: any
 ): ServerResponse {
-  return { success, message, data, statusCode };
+  return { success, message, errorCode, data, statusCode };
 }
