@@ -1,3 +1,3 @@
 export enum CommonErrorCodes {
-  InternalError = 'service:internal-error'
+  InternalError = 'service:internal-error',
 }

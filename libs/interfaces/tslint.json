@@ -1,10 +1,5 @@
 {
   "extends": "../../tslint.json",
-  "rules": {
-    "directive-selector": [true, "attribute", "pelaguru", "camelCase"],
-    "component-selector": [true, "element", "pelaguru", "kebab-case"]
-  },
-  "linterOptions": {
-    "exclude": ["!**/*"]
-  }
+  "linterOptions": { "exclude": ["!**/*"] },
+  "rules": {}
 }

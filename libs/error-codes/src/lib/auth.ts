@@ -5,5 +5,5 @@ export enum AuthErrorCodes {
   InvalidArgument = 'auth:invalid-argument',
   InvalidEmail = 'auth:invalid-email',
   InvalidPassword = 'auth:invalid-password',
-  UserNotFound = 'auth:user-not-found'
+  UserNotFound = 'auth:user-not-found',
 }
