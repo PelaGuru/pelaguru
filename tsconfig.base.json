@@ -16,7 +16,8 @@
     "skipDefaultLibCheck": true,
     "baseUrl": ".",
     "paths": {
-      "@pelaguru/interfaces": ["libs/interfaces/src/index.ts"]
+      "@pelaguru/interfaces": ["libs/interfaces/src/index.ts"],
+      "@pelaguru/error-codes": ["libs/error-codes/src/index.ts"]
     }
   },
   "exclude": ["node_modules", "tmp"]
