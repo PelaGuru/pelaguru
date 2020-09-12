@@ -9,6 +9,7 @@ import { HttpClientModule } from '@angular/common/http';
 import { RightDrawerServiceService } from './right-drawer-service/right-drawer-service.service';
 import { NavDrawerService } from './nav-drawer-service/nav-drawer.service';
 import { AuthModule } from './auth/auth.module';
+import { PageGuard } from './page-guard/page.guard';
 
 @NgModule({
   declarations: [],
@@ -19,9 +20,9 @@ import { AuthModule } from './auth/auth.module';
     AngularFireAuthModule,
     AngularFirestoreModule.enablePersistence(),
     AngularFireStorageModule,
-    AuthModule
+    AuthModule,
   ],
   exports: [AuthModule],
-  providers: [RightDrawerServiceService, NavDrawerService]
+  providers: [RightDrawerServiceService, NavDrawerService, PageGuard],
 })
 export class CoreModule {}

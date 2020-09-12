@@ -12,8 +12,8 @@ export const environment = {
     storageBucket: 'pelaguru-dev.appspot.com',
     messagingSenderId: '41926452209',
     appId: '1:41926452209:web:27c755cceed4f0d43f9a50',
-    measurementId: 'G-H7SEM57MHS'
-  }
+    measurementId: 'G-H7SEM57MHS',
+  },
 };
 
 /*

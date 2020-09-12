@@ -8,12 +8,12 @@ import { Router } from '@angular/router';
 @Component({
   selector: 'pelaguru-sign-in',
   templateUrl: './sign-in.component.html',
-  styleUrls: ['./sign-in.component.scss']
+  styleUrls: ['./sign-in.component.scss'],
 })
 export class SignInComponent implements OnInit {
   formController: FormGroup;
   matcher: ErrorStateMatcher;
-
+  isLoading: boolean;
   constructor(
     private authService: AuthService,
     private snackbar: MatSnackBar,
@@ -21,7 +21,7 @@ export class SignInComponent implements OnInit {
   ) {
     this.formController = new FormGroup({
       email: new FormControl('', [Validators.required, Validators.email]),
-      password: new FormControl('', [Validators.required])
+      password: new FormControl('', [Validators.required]),
     });
     this.matcher = new ErrorStateMatcher();
   }
@@ -30,27 +30,32 @@ export class SignInComponent implements OnInit {
 
   async signIn() {
     if (this.formController.valid) {
+      this.isLoading = true;
       const response = await this.authService.signInWithEmailPassword(
         this.formController.get('email').value,
         this.formController.get('password').value
       );
       if (response.success) {
+        this.isLoading = false;
         this.router.navigate(['/']);
       } else {
-        if (response.message === 'FIREAUTH_ERROR') {
-          if (response.error.code === 'auth/user-not-found') {
+        this.isLoading = false;
+        switch (response.errorCode) {
+          case 'auth/user-not-found':
             this.snackbar.open(
               'Your are not created a account. Please try to Sign Up.',
               'close'
             );
-          } else {
+            break;
+          case 'auth/wrong-password':
+            this.snackbar.open('Your email or password is incorrect.', 'close');
+            break;
+          default:
             this.snackbar.open(
               'Something went wrong. Try again later.',
               'close'
             );
-          }
-        } else {
-          this.snackbar.open('Something went wrong. Try again later.', 'close');
+            break;
         }
       }
     }

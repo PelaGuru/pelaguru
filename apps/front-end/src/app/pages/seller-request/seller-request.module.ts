@@ -7,6 +7,6 @@ import { SharedModule } from '../../shared/shared.module';
 
 @NgModule({
   declarations: [SellerRequestComponent],
-  imports: [CommonModule, SellerRequestRoutingModule, SharedModule]
+  imports: [CommonModule, SellerRequestRoutingModule, SharedModule],
 })
 export class SellerRequestModule {}

@@ -3,6 +3,8 @@ import { Routes, RouterModule } from '@angular/router';
 import { PagesComponent } from './pages.component';
 import { HomeComponent } from './home/home.component';
 import { SellerRequestComponent } from './seller-request/seller-request.component';
+import { UserRole } from '@pelaguru/interfaces';
+import { PageGuard } from '../core/page-guard/page.guard';
 
 const routes: Routes = [
   {
@@ -15,46 +17,53 @@ const routes: Routes = [
         path: 'diseases-identifier',
         loadChildren: () =>
           import('./diseases-identifier/diseases-identifier.module').then(
-            m => m.DiseasesIdentifierModule
-          )
+            (m) => m.DiseasesIdentifierModule
+          ),
+        canActivate: [PageGuard],
       },
       {
         path: 'plants',
         loadChildren: () =>
-          import('./plants/plants.module').then(m => m.PlantsModule)
+          import('./plants/plants.module').then((m) => m.PlantsModule),
       },
       {
         path: 'diseases',
         loadChildren: () =>
-          import('./diseases/diseases.module').then(m => m.DiseasesModule)
+          import('./diseases/diseases.module').then((m) => m.DiseasesModule),
       },
       {
         path: 'marketplace',
         loadChildren: () =>
           import('./marketplace/marketplace.module').then(
-            m => m.MarketplaceModule
-          )
+            (m) => m.MarketplaceModule
+          ),
       },
       {
         path: 'my-shop',
         loadChildren: () =>
-          import('./my-shop/my-shop.module').then(m => m.MyShopModule)
+          import('./my-shop/my-shop.module').then((m) => m.MyShopModule),
+        data: {
+          allowedRoles: [UserRole.Vendor],
+        },
+        canActivate: [PageGuard],
       },
       {
         path: 'seller-request',
-        component: SellerRequestComponent
+        component: SellerRequestComponent,
+        canActivate: [PageGuard],
       },
       {
         path: 'profile',
         loadChildren: () =>
-          import('./profile/profile.module').then(m => m.ProfileModule)
-      }
-    ]
-  }
+          import('./profile/profile.module').then((m) => m.ProfileModule),
+        canActivate: [PageGuard],
+      },
+    ],
+  },
 ];
 
 @NgModule({
   imports: [RouterModule.forChild(routes)],
-  exports: [RouterModule]
+  exports: [RouterModule],
 })
 export class PagesRoutingModule {}

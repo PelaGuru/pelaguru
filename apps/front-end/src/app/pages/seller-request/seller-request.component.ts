@@ -7,7 +7,7 @@ import { ErrorStateMatcher } from '@angular/material/core';
 @Component({
   selector: 'pelaguru-seller-request',
   templateUrl: './seller-request.component.html',
-  styleUrls: ['./seller-request.component.scss']
+  styleUrls: ['./seller-request.component.scss'],
 })
 export class SellerRequestComponent implements OnInit {
   @Input() viewState: string;
@@ -23,7 +23,7 @@ export class SellerRequestComponent implements OnInit {
       shopName: new FormControl('', [Validators.required]),
       option: new FormControl('', [Validators.required]),
       acceptfile: new FormControl('', [Validators.required]),
-      description: new FormControl('', [Validators.required])
+      description: new FormControl('', [Validators.required]),
     });
     this.matcher = new ErrorStateMatcher();
   }

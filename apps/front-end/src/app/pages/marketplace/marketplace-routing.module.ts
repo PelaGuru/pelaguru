@@ -10,13 +10,13 @@ const routes: Routes = [
     component: MarketplaceComponent,
     children: [
       { path: '', component: ShopCatalogueComponent },
-      { path: ':shopUsername', component: ViewShopComponent }
-    ]
-  }
+      { path: ':shopUsername', component: ViewShopComponent },
+    ],
+  },
 ];
 
 @NgModule({
   imports: [RouterModule.forChild(routes)],
-  exports: [RouterModule]
+  exports: [RouterModule],
 })
 export class MarketplaceRoutingModule {}

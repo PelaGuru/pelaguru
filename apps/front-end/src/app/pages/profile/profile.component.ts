@@ -7,7 +7,7 @@ import { ErrorStateMatcher } from '@angular/material/core';
 @Component({
   selector: 'pelaguru-profile',
   templateUrl: './profile.component.html',
-  styleUrls: ['./profile.component.scss']
+  styleUrls: ['./profile.component.scss'],
 })
 export class ProfileComponent implements OnInit {
   @Input() viewState: string;
@@ -25,7 +25,7 @@ export class ProfileComponent implements OnInit {
       email: new FormControl('', [Validators.required, Validators.email]),
       telephone: new FormControl('', [Validators.required]),
       profilepic: new FormControl('', [Validators.required]),
-      description: new FormControl('', [Validators.required])
+      description: new FormControl('', [Validators.required]),
     });
     this.matcher = new ErrorStateMatcher();
   }

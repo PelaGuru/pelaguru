@@ -4,16 +4,17 @@ import { ErrorStateMatcher } from '@angular/material/core';
 import { AuthService } from '../auth.service';
 import { MatSnackBar } from '@angular/material/snack-bar';
 import { Router } from '@angular/router';
+import { AuthErrorCodes } from '@pelaguru/error-codes';
 
 @Component({
   selector: 'pelaguru-sign-up',
   templateUrl: './sign-up.component.html',
-  styleUrls: ['./sign-up.component.scss']
+  styleUrls: ['./sign-up.component.scss'],
 })
 export class SignUpComponent implements OnInit {
   formController: FormGroup;
   matcher: ErrorStateMatcher;
-
+  isLoading: boolean;
   constructor(
     private authService: AuthService,
     private snackbar: MatSnackBar,
@@ -23,7 +24,7 @@ export class SignUpComponent implements OnInit {
       firstName: new FormControl('', [Validators.required]),
       lastName: new FormControl('', [Validators.required]),
       email: new FormControl('', [Validators.required, Validators.email]),
-      password: new FormControl('', [Validators.required])
+      password: new FormControl('', [Validators.required]),
     });
     this.matcher = new ErrorStateMatcher();
   }
@@ -32,6 +33,7 @@ export class SignUpComponent implements OnInit {
 
   async signUp(): Promise<void> {
     if (this.formController.valid) {
+      this.isLoading = true;
       const signUpResponse = await this.authService.signUpWithEmailPassword(
         `${this.formController.get('firstName').value} ${
           this.formController.get('lastName').value
@@ -41,22 +43,29 @@ export class SignUpComponent implements OnInit {
       );
 
       if (signUpResponse.success) {
+        this.isLoading = false;
         this.router.navigate(['/']);
       } else {
-        if (signUpResponse.message === 'FIREAUTH_ERROR') {
-          if (signUpResponse.error.code === 'auth/email-already-in-use') {
+        this.isLoading = false;
+        switch (signUpResponse.errorCode) {
+          case AuthErrorCodes.EmailAlreadyExists:
             this.snackbar.open(
               'Your are already created a account. Please try to Sign In.',
               'close'
             );
-          } else {
+            break;
+          case AuthErrorCodes.InvalidArgument:
+            this.snackbar.open(
+              'Please input all fields and try again.',
+              'close'
+            );
+            break;
+          default:
             this.snackbar.open(
               'Something went wrong. Try again later.',
               'close'
             );
-          }
-        } else {
-          this.snackbar.open('Something went wrong. Try again later.', 'close');
+            break;
         }
       }
     }

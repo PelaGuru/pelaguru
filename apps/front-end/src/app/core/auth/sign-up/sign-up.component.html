@@ -37,6 +37,7 @@
               type="email"
               matInput
               formControlName="email"
+              autocomplete="username"
               [errorStateMatcher]="matcher"
             />
             <mat-hint>Enter your email address.</mat-hint>
@@ -48,6 +49,7 @@
               type="password"
               matInput
               formControlName="password"
+              autocomplete="current-password"
               [errorStateMatcher]="matcher"
             />
             <mat-hint>Enter your password.</mat-hint>
@@ -60,9 +62,13 @@
           mat-raised-button
           color="primary"
           style="color: white;"
-          (click)="signUp()"
+          (click)="isLoading ? null : signUp()"
         >
-          Sign Up
+          <pelaguru-btn-loading
+            *ngIf="isLoading"
+            color="#ffffff"
+          ></pelaguru-btn-loading>
+          <span *ngIf="!isLoading">Sign Up </span>
         </button>
       </div>
       <!-- <div class="line-break"></div> -->

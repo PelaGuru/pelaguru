@@ -33,12 +33,13 @@ import { RightDrawerComponent } from './right-drawer/right-drawer.component';
 import { FooterComponent } from './footer/footer.component';
 import { BreadcrumbComponent } from './breadcrumb/breadcrumb.component';
 import { SuggestionComponent } from './suggestion/suggestion.component';
+import { BtnLoadingComponent } from './btn-loading/btn-loading.component';
 
 const nativeModules = [
   CommonModule,
   FormsModule,
   ReactiveFormsModule,
-  RouterModule
+  RouterModule,
 ];
 
 const externalModules = [
@@ -62,7 +63,7 @@ const externalModules = [
   MatSlideToggleModule,
   MatChipsModule,
   MatSnackBarModule,
-  MaterialFileInputModule
+  MaterialFileInputModule,
 ];
 
 @NgModule({
@@ -74,7 +75,8 @@ const externalModules = [
     RightDrawerComponent,
     FooterComponent,
     BreadcrumbComponent,
-    SuggestionComponent
+    SuggestionComponent,
+    BtnLoadingComponent,
   ],
   imports: [CommonModule, ...nativeModules, ...externalModules],
   exports: [
@@ -87,7 +89,8 @@ const externalModules = [
     RightDrawerComponent,
     FooterComponent,
     BreadcrumbComponent,
-    SuggestionComponent
-  ]
+    SuggestionComponent,
+    BtnLoadingComponent,
+  ],
 })
 export class SharedModule {}

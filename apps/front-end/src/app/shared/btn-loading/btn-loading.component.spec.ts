@@ -1,19 +1,19 @@
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { AppShellComponent } from './app-shell.component';
+import { BtnLoadingComponent } from './btn-loading.component';
 
-describe('AppShellComponent', () => {
-  let component: AppShellComponent;
-  let fixture: ComponentFixture<AppShellComponent>;
+describe('BtnLoadingComponent', () => {
+  let component: BtnLoadingComponent;
+  let fixture: ComponentFixture<BtnLoadingComponent>;
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      declarations: [AppShellComponent],
+      declarations: [BtnLoadingComponent],
     }).compileComponents();
   }));
 
   beforeEach(() => {
-    fixture = TestBed.createComponent(AppShellComponent);
+    fixture = TestBed.createComponent(BtnLoadingComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });

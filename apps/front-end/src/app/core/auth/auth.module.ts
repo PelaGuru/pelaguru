@@ -8,6 +8,7 @@ import { GoogleSignInComponent } from './google-sign-in/google-sign-in.component
 import { ForgotPasswordComponent } from './forgot-password/forgot-password.component';
 import { AuthService } from './auth.service';
 import { AuthGuard } from './auth.guard';
+import { HttpClientModule } from '@angular/common/http';
 
 @NgModule({
   declarations: [
@@ -15,9 +16,9 @@ import { AuthGuard } from './auth.guard';
     SignUpComponent,
     AuthNavBarComponent,
     GoogleSignInComponent,
-    ForgotPasswordComponent
+    ForgotPasswordComponent,
   ],
-  imports: [CommonModule, SharedModule],
-  providers: [AuthService, AuthGuard]
+  imports: [CommonModule, SharedModule, HttpClientModule],
+  providers: [AuthService, AuthGuard],
 })
 export class AuthModule {}

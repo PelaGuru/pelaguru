@@ -11,6 +11,6 @@ const routes: Routes = [{ path: 'shell', component: AppShellComponent }];
 @NgModule({
   imports: [AppModule, ServerModule, RouterModule.forRoot(routes)],
   bootstrap: [AppComponent],
-  declarations: [AppShellComponent]
+  declarations: [AppShellComponent],
 })
 export class AppServerModule {}

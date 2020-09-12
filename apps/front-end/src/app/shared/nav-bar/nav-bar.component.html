@@ -60,8 +60,11 @@
               (click)="rightDrawerToggle('PROFILE')"
             >
               <img
-                *ngIf="(userData | async) && (userData | async).profilePic"
-                [src]="(userData | async).profilePic"
+                *ngIf="userData | async"
+                [src]="
+                  (userData | async).profilePictureUrl ||
+                  'https://pelaguru-dev.web.app/assets/img/temp/temp-user.svg'
+                "
                 class="img-resp"
                 alt=""
               />

@@ -11,8 +11,8 @@ import { ViewShopComponent } from './view-shop/view-shop.component';
   declarations: [
     MarketplaceComponent,
     ShopCatalogueComponent,
-    ViewShopComponent
+    ViewShopComponent,
   ],
-  imports: [CommonModule, MarketplaceRoutingModule, SharedModule]
+  imports: [CommonModule, MarketplaceRoutingModule, SharedModule],
 })
 export class MarketplaceModule {}
