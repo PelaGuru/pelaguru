@@ -8,7 +8,7 @@ describe('RightDrawerComponent', () => {
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      declarations: [RightDrawerComponent]
+      declarations: [RightDrawerComponent],
     }).compileComponents();
   }));
 

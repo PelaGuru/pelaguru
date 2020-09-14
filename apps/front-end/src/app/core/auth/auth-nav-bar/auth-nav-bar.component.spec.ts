@@ -8,7 +8,7 @@ describe('AuthNavBarComponent', () => {
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      declarations: [AuthNavBarComponent]
+      declarations: [AuthNavBarComponent],
     }).compileComponents();
   }));
 

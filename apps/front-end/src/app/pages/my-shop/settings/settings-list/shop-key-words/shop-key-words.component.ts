@@ -9,7 +9,7 @@ export interface KeywordData {
 @Component({
   selector: 'pelaguru-shop-key-words',
   templateUrl: './shop-key-words.component.html',
-  styleUrls: ['./shop-key-words.component.scss']
+  styleUrls: ['./shop-key-words.component.scss'],
 })
 export class ShopKeyWordsComponent implements OnInit {
   visible = true;
@@ -20,7 +20,7 @@ export class ShopKeyWordsComponent implements OnInit {
   keywords: Array<KeywordData> = [
     { label: 'Keyword 1' },
     { label: 'Keyword 2' },
-    { label: 'Keyword 3' }
+    { label: 'Keyword 3' },
   ];
 
   constructor() {}

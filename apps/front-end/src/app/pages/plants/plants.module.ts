@@ -9,6 +9,6 @@ import { ViewPlantComponent } from './view-plant/view-plant.component';
 
 @NgModule({
   declarations: [PlantsComponent, PlantsCatalogueComponent, ViewPlantComponent],
-  imports: [CommonModule, PlantsRoutingModule, SharedModule]
+  imports: [CommonModule, PlantsRoutingModule, SharedModule],
 })
 export class PlantsModule {}

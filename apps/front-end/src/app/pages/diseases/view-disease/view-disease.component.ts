@@ -8,7 +8,7 @@ import { map, startWith } from 'rxjs/operators';
 @Component({
   selector: 'pelaguru-view-disease',
   templateUrl: './view-disease.component.html',
-  styleUrls: ['./view-disease.component.scss']
+  styleUrls: ['./view-disease.component.scss'],
 })
 export class ViewDiseaseComponent implements OnInit {
   private chemicalItemsDataSource: BehaviorSubject<
@@ -36,22 +36,22 @@ export class ViewDiseaseComponent implements OnInit {
         chemicalName: 'Chemical Name',
         vendors: ['ABC Company'],
         avgPrice: 200,
-        image: 'https://cdn.hirunews.lk/Data/News_Images/201304/56746.jpg'
+        image: 'https://cdn.hirunews.lk/Data/News_Images/201304/56746.jpg',
       },
       {
         brandName: 'Brand Name',
         chemicalName: 'Chemical Name',
         vendors: ['ABC Company'],
         avgPrice: 200,
-        image: 'https://cdn.hirunews.lk/Data/News_Images/201304/56746.jpg'
+        image: 'https://cdn.hirunews.lk/Data/News_Images/201304/56746.jpg',
       },
       {
         brandName: 'Brand Name',
         chemicalName: 'Chemical Name',
         vendors: ['ABC Company'],
         avgPrice: 200,
-        image: 'https://cdn.hirunews.lk/Data/News_Images/201304/56746.jpg'
-      }
+        image: 'https://cdn.hirunews.lk/Data/News_Images/201304/56746.jpg',
+      },
     ]);
   }
 

@@ -6,5 +6,5 @@ export const PLANT: PlantDetails = {
   uses: ['Sauce,Jam'],
   commonDiseases: ['bacterial'],
   image:
-    'https://www.deccanherald.com/sites/dh/files/article_images/2020/05/23/iStock-519663318-767671330-1590189466.jpg'
+    'https://www.deccanherald.com/sites/dh/files/article_images/2020/05/23/iStock-519663318-767671330-1590189466.jpg',
 };

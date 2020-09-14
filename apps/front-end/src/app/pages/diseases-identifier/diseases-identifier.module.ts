@@ -7,6 +7,6 @@ import { SharedModule } from '../../shared/shared.module';
 
 @NgModule({
   declarations: [DiseasesIdentifierComponent],
-  imports: [CommonModule, DiseasesIdentifierRoutingModule, SharedModule]
+  imports: [CommonModule, DiseasesIdentifierRoutingModule, SharedModule],
 })
 export class DiseasesIdentifierModule {}

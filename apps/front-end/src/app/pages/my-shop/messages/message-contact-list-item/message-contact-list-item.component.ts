@@ -5,7 +5,7 @@ import { MessageChatContainerService } from 'apps/front-end/src/app/core/message
 @Component({
   selector: 'pelaguru-message-contact-list-item',
   templateUrl: './message-contact-list-item.component.html',
-  styleUrls: ['./message-contact-list-item.component.scss']
+  styleUrls: ['./message-contact-list-item.component.scss'],
 })
 export class MessageContactListItemComponent implements OnInit {
   constructor(

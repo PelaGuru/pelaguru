@@ -6,7 +6,7 @@ import { startWith, map } from 'rxjs/operators';
 @Component({
   selector: 'pelaguru-shop-catalogue',
   templateUrl: './shop-catalogue.component.html',
-  styleUrls: ['./shop-catalogue.component.scss']
+  styleUrls: ['./shop-catalogue.component.scss'],
 })
 export class ShopCatalogueComponent implements OnInit {
   myControl = new FormControl();
@@ -16,14 +16,14 @@ export class ShopCatalogueComponent implements OnInit {
   searchController: FormGroup;
   constructor() {
     this.searchController = new FormGroup({
-      search: new FormControl()
+      search: new FormControl(),
     });
   }
 
   ngOnInit(): void {
     this.filteredOptions = this.myControl.valueChanges.pipe(
       startWith(''),
-      map(value => this._filter(value))
+      map((value) => this._filter(value))
     );
   }
 
@@ -31,7 +31,7 @@ export class ShopCatalogueComponent implements OnInit {
     const filterValue = value.toLowerCase();
 
     return this.options.filter(
-      option => option.toLowerCase().indexOf(filterValue) === 0
+      (option) => option.toLowerCase().indexOf(filterValue) === 0
     );
   }
 }

@@ -4,7 +4,7 @@ import { MediaMatcher } from '@angular/cdk/layout';
 @Component({
   selector: 'pelaguru-my-shop',
   templateUrl: './my-shop.component.html',
-  styleUrls: ['./my-shop.component.scss']
+  styleUrls: ['./my-shop.component.scss'],
 })
 export class MyShopComponent implements OnInit {
   mobileQuery: MediaQueryList;

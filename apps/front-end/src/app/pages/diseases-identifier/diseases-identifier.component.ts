@@ -4,7 +4,7 @@ import { HttpClient } from '@angular/common/http';
 @Component({
   selector: 'pelaguru-diseases-identifier',
   templateUrl: './diseases-identifier.component.html',
-  styleUrls: ['./diseases-identifier.component.scss']
+  styleUrls: ['./diseases-identifier.component.scss'],
 })
 export class DiseasesIdentifierComponent implements OnInit {
   isLinear = false;
@@ -16,10 +16,10 @@ export class DiseasesIdentifierComponent implements OnInit {
 
   ngOnInit(): void {
     this.firstFormGroup = this._formBuilder.group({
-      firstCtrl: ['', Validators.required]
+      firstCtrl: ['', Validators.required],
     });
     this.secondFormGroup = this._formBuilder.group({
-      secondCtrl: ['', Validators.required]
+      secondCtrl: ['', Validators.required],
     });
   }
 

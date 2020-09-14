@@ -10,5 +10,5 @@ export const DISEASE: DiseaseDetails = {
   commonPlants: ['Tomato'],
   image:
     'https://www.missouribotanicalgarden.org/Portals/0/Gardening/Gardening%20Help/images/Pests/Septoria_Leaf_Spot_of_Tomato2241.jpg',
-  desc: 'Lycopersicon esculentum'
+  desc: 'Lycopersicon esculentum',
 };

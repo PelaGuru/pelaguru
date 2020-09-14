@@ -8,7 +8,7 @@ describe('BehaviorChartComponent', () => {
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      declarations: [BehaviorChartComponent]
+      declarations: [BehaviorChartComponent],
     }).compileComponents();
   }));
 

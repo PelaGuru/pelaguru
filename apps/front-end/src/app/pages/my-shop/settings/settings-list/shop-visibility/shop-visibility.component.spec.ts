@@ -8,7 +8,7 @@ describe('ShopVisibilityComponent', () => {
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      declarations: [ShopVisibilityComponent]
+      declarations: [ShopVisibilityComponent],
     }).compileComponents();
   }));
 

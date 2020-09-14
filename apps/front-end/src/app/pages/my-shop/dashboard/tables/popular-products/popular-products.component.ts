@@ -15,7 +15,7 @@ interface ProductData {
 @Component({
   selector: 'pelaguru-popular-products',
   templateUrl: './popular-products.component.html',
-  styleUrls: ['./popular-products.component.scss']
+  styleUrls: ['./popular-products.component.scss'],
 })
 export class PopularProductsComponent implements OnInit, AfterViewInit {
   displayedColumns: string[] = ['name', 'views'];
@@ -27,7 +27,7 @@ export class PopularProductsComponent implements OnInit, AfterViewInit {
     { id: '2435465768', name: 'Product 4', views: 12 },
     { id: '2435465768', name: 'Product 5', views: 98 },
     { id: '2435465768', name: 'Product 6', views: 34 },
-    { id: '2435465768', name: 'Product 7', views: 65 }
+    { id: '2435465768', name: 'Product 7', views: 65 },
   ];
 
   resultsLength = 0;

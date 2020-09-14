@@ -7,7 +7,7 @@ import { PlantCatalogueItem } from '@pelaguru/interfaces';
 @Component({
   selector: 'pelaguru-plants-catalogue',
   templateUrl: './plants-catalogue.component.html',
-  styleUrls: ['./plants-catalogue.component.scss']
+  styleUrls: ['./plants-catalogue.component.scss'],
 })
 export class PlantsCatalogueComponent implements OnInit {
   private plantCatalogueItemsDataSource: BehaviorSubject<
@@ -20,14 +20,14 @@ export class PlantsCatalogueComponent implements OnInit {
   searchController: FormGroup;
   constructor() {
     this.searchController = new FormGroup({
-      search: new FormControl()
+      search: new FormControl(),
     });
   }
 
   ngOnInit(): void {
     this.filteredOptions = this.myControl.valueChanges.pipe(
       startWith(''),
-      map(value => this._filter(value))
+      map((value) => this._filter(value))
     );
 
     this.addTestData();
@@ -37,7 +37,7 @@ export class PlantsCatalogueComponent implements OnInit {
     const filterValue = value.toLowerCase();
 
     return this.options.filter(
-      option => option.toLowerCase().indexOf(filterValue) === 0
+      (option) => option.toLowerCase().indexOf(filterValue) === 0
     );
   }
 
@@ -48,22 +48,22 @@ export class PlantsCatalogueComponent implements OnInit {
         image: '../../../assets/img/temp/1.jpg',
         name: 'Tomato',
         sciName: 'Lycopersicon esculentum',
-        username: 'tomato'
+        username: 'tomato',
       },
       {
         id: '876543',
         image: '../../../assets/img/temp/1.jpg',
         name: 'Tomato',
         sciName: 'Lycopersicon esculentum',
-        username: 'tomato'
+        username: 'tomato',
       },
       {
         id: '876543',
         image: '../../../assets/img/temp/1.jpg',
         name: 'Tomato',
         sciName: 'Lycopersicon esculentum',
-        username: 'tomato'
-      }
+        username: 'tomato',
+      },
     ]);
   }
 

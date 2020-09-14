@@ -7,7 +7,7 @@ import {
   ApexDataLabels,
   ApexTitleSubtitle,
   ApexStroke,
-  ApexGrid
+  ApexGrid,
 } from 'ng-apexcharts';
 
 export interface ChartOptions {
@@ -23,7 +23,7 @@ export interface ChartOptions {
 @Component({
   selector: 'pelaguru-behavior-chart',
   templateUrl: './behavior-chart.component.html',
-  styleUrls: ['./behavior-chart.component.scss']
+  styleUrls: ['./behavior-chart.component.scss'],
 })
 export class BehaviorChartComponent implements OnInit {
   @ViewChild('chart') chart: ChartComponent;
@@ -33,25 +33,25 @@ export class BehaviorChartComponent implements OnInit {
       series: [
         {
           name: 'Shop views',
-          data: [10, 41, 35, 51, 49, 62, 69, 91, 148]
+          data: [10, 41, 35, 51, 49, 62, 69, 91, 148],
         },
         {
           name: 'Clicks for contact details',
-          data: [10, 41, 35, 51, 49, 62, 69, 91, 148].reverse()
-        }
+          data: [10, 41, 35, 51, 49, 62, 69, 91, 148].reverse(),
+        },
       ],
       chart: {
         height: 300,
         type: 'line',
         zoom: {
-          enabled: true
-        }
+          enabled: true,
+        },
       },
       dataLabels: {
-        enabled: false
+        enabled: false,
       },
       stroke: {
-        curve: 'straight'
+        curve: 'straight',
       },
       // title: {
       //   text: 'Product Trends by Month',
@@ -60,8 +60,8 @@ export class BehaviorChartComponent implements OnInit {
       grid: {
         row: {
           colors: ['transparent', 'transparent'], // takes an array which will be repeated on columns
-          opacity: 0.5
-        }
+          opacity: 0.5,
+        },
       },
       xaxis: {
         categories: [
@@ -73,9 +73,9 @@ export class BehaviorChartComponent implements OnInit {
           'Jun',
           'Jul',
           'Aug',
-          'Sep'
-        ]
-      }
+          'Sep',
+        ],
+      },
     };
   }
 

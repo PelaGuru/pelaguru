@@ -11,8 +11,8 @@ import { ViewDiseaseComponent } from './view-disease/view-disease.component';
   declarations: [
     DiseasesComponent,
     DiseasesCatalogueComponent,
-    ViewDiseaseComponent
+    ViewDiseaseComponent,
   ],
-  imports: [CommonModule, DiseasesRoutingModule, SharedModule]
+  imports: [CommonModule, DiseasesRoutingModule, SharedModule],
 })
 export class DiseasesModule {}

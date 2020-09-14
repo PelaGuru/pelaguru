@@ -8,7 +8,7 @@ describe('ShopItemsOverviewComponent', () => {
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      declarations: [ShopItemsOverviewComponent]
+      declarations: [ShopItemsOverviewComponent],
     }).compileComponents();
   }));
 

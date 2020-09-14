@@ -4,7 +4,7 @@ import { Component, OnInit } from '@angular/core';
 @Component({
   selector: 'pelaguru-suggestion',
   templateUrl: './suggestion.component.html',
-  styleUrls: ['./suggestion.component.scss']
+  styleUrls: ['./suggestion.component.scss'],
 })
 export class SuggestionComponent implements OnInit {
   constructor() {}
