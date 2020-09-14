@@ -10,6 +10,7 @@ import { RightDrawerServiceService } from './right-drawer-service/right-drawer-s
 import { NavDrawerService } from './nav-drawer-service/nav-drawer.service';
 import { AuthModule } from './auth/auth.module';
 import { PageGuard } from './page-guard/page.guard';
+import { ProfileService } from './profile-service/profile.service';
 
 @NgModule({
   declarations: [],
@@ -23,6 +24,6 @@ import { PageGuard } from './page-guard/page.guard';
     AuthModule,
   ],
   exports: [AuthModule],
-  providers: [RightDrawerServiceService, NavDrawerService, PageGuard],
+  providers: [RightDrawerServiceService, NavDrawerService, PageGuard,ProfileService]
 })
 export class CoreModule {}
