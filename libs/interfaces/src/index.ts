@@ -20,5 +20,10 @@ export * from './lib/shop-item';
 ////////////////////////////////////////////////////////////////////////////
 export * from './lib/plants/plant-catalogue-item';
 export * from './lib/diseases/disease-catalogue-item';
+
+//marketplace
+export * from './lib/shops/shop-catalogue-item';
+// My Shop
+/// Messaging
 export * from './lib/my-shop/messaging/message-chat-container-data';
 export * from './lib/chemical/chemical-suggestion-item';

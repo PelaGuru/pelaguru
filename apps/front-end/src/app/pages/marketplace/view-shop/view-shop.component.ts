@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-
+import { SHOP } from './shop';
 @Component({
   selector: 'pelaguru-view-shop',
   templateUrl: './view-shop.component.html',
@@ -7,6 +7,12 @@ import { Component, OnInit } from '@angular/core';
 })
 export class ViewShopComponent implements OnInit {
   constructor() {}
+  shop = SHOP;
+  ngOnInit(): void {
+    this.getShop();
+  }
 
-  ngOnInit(): void {}
+  getShop(): void {
+    //this.plantService.getPlant().subscribe(plant => this.plant = plant);
+  }
 }
