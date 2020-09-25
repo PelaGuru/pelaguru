@@ -32,6 +32,7 @@ import { RightDrawerComponent } from './right-drawer/right-drawer.component';
 import { FooterComponent } from './footer/footer.component';
 import { BreadcrumbComponent } from './breadcrumb/breadcrumb.component';
 import { SuggestionComponent } from './suggestion/suggestion.component';
+import { NotificationsComponent } from './notifications/notifications.component';
 
 const nativeModules = [
   CommonModule,
@@ -72,7 +73,8 @@ const externalModules = [
     RightDrawerComponent,
     FooterComponent,
     BreadcrumbComponent,
-    SuggestionComponent
+    SuggestionComponent,
+    NotificationsComponent
   ],
   imports: [CommonModule, ...nativeModules, ...externalModules],
   exports: [
