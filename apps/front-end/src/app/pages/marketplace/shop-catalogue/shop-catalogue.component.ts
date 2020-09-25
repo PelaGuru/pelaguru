@@ -45,36 +45,36 @@ export class ShopCatalogueComponent implements OnInit {
         image: '../../../assets/img/temp/shop.webp',
         name: 'Tomato',
         sciName: 'Lycopersicon esculentum',
-        username: 'tomato'
+        username: 'tomato',
       },
       {
         id: '876543',
         image: '../../../assets/img/temp/1.jpg',
         name: 'Tomato',
         sciName: 'Lycopersicon esculentum',
-        username: 'tomato'
+        username: 'tomato',
       },
       {
         id: '876543',
         image: '../../../assets/img/temp/1.jpg',
         name: 'Tomato',
         sciName: 'Lycopersicon esculentum',
-        username: 'tomato'
+        username: 'tomato',
       },
       {
         id: '876543',
         image: '../../../assets/img/temp/shop.webp',
         name: 'Tomato',
         sciName: 'Lycopersicon esculentum',
-        username: 'tomato'
+        username: 'tomato',
       },
       {
         id: '876543',
         image: '../../../assets/img/temp/shop.webp',
         name: 'Tomato',
         sciName: 'Lycopersicon esculentum',
-        username: 'tomato'
-      }
+        username: 'tomato',
+      },
     ]);
   }
 

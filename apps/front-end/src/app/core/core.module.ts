@@ -24,6 +24,11 @@ import { ProfileService } from './profile-service/profile.service';
     AuthModule,
   ],
   exports: [AuthModule],
-  providers: [RightDrawerServiceService, NavDrawerService, PageGuard,ProfileService]
+  providers: [
+    RightDrawerServiceService,
+    NavDrawerService,
+    PageGuard,
+    ProfileService,
+  ],
 })
 export class CoreModule {}

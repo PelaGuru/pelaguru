@@ -6,5 +6,5 @@ export const SHOP: ShopDetails = {
   uses: ['Sauce,Jam'],
   commonDiseases: ['bacterial'],
   image:
-    'https://content.jdmagicbox.com/comp/bangalore/q1/080pxx80.xx80.140103171932.j4q1/catalogue/karnataka-seeds-and-pesticides-gandhi-nagar-bangalore-pesticide-dealers-23esy2g.jpg'
+    'https://content.jdmagicbox.com/comp/bangalore/q1/080pxx80.xx80.140103171932.j4q1/catalogue/karnataka-seeds-and-pesticides-gandhi-nagar-bangalore-pesticide-dealers-23esy2g.jpg',
 };
