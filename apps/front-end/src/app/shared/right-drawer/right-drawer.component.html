@@ -27,6 +27,7 @@
         </div>
       </div>
     </div>
+
     <div class="notification-container" *ngIf="viewState === 'NOTIFICATION'">
       <div class="notification-container-inner">
         <div class="header-container">
@@ -37,38 +38,9 @@
         </div>
         <div class="notification-list-container">
           <div class="notification-list-container-inner">
-            <div class="notification-item">
-              <div class="header">
-                <div class="label">Title</div>
-                <div class="close-button">
-                  <button>
-                    <span class="material-icons">close</span>
-                  </button>
-                </div>
-              </div>
-              <div class="content">
-                Lorem ipsum dolor, sit amet consectetur adipisicing elit. Quasi
-                provident tempore accusantium consequatur necessitatibus alias
-                ab doloribus facilis, optio enim?
-              </div>
-              <div class="time">April 22, 2020</div>
-            </div>
-            <div class="notification-item">
-              <div class="header">
-                <div class="label">Title</div>
-                <div class="close-button">
-                  <button>
-                    <span class="material-icons">close</span>
-                  </button>
-                </div>
-              </div>
-              <div class="content">
-                Lorem ipsum dolor, sit amet consectetur adipisicing elit. Quasi
-                provident tempore accusantium consequatur necessitatibus alias
-                ab doloribus facilis, optio enim?
-              </div>
-              <div class="time">April 22, 2020</div>
-            </div>
+            <pelaguru-notifications
+              title="New Notification"
+            ></pelaguru-notifications>
           </div>
         </div>
       </div>

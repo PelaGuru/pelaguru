@@ -34,6 +34,7 @@ import { FooterComponent } from './footer/footer.component';
 import { BreadcrumbComponent } from './breadcrumb/breadcrumb.component';
 import { SuggestionComponent } from './suggestion/suggestion.component';
 import { BtnLoadingComponent } from './btn-loading/btn-loading.component';
+import { NotificationsComponent } from './notifications/notifications.component';
 
 const nativeModules = [
   CommonModule,
@@ -77,6 +78,7 @@ const externalModules = [
     BreadcrumbComponent,
     SuggestionComponent,
     BtnLoadingComponent,
+    NotificationsComponent
   ],
   imports: [CommonModule, ...nativeModules, ...externalModules],
   exports: [
