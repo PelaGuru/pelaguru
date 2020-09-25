@@ -19,8 +19,8 @@ import { DeleteShopComponent } from './settings-list/delete-shop/delete-shop.com
     ShopVisibilityComponent,
     ShopKeyWordsComponent,
     ShopLocationComponent,
-    DeleteShopComponent
+    DeleteShopComponent,
   ],
-  imports: [CommonModule, SettingsRoutingModule, SharedModule]
+  imports: [CommonModule, SettingsRoutingModule, SharedModule],
 })
 export class SettingsModule {}

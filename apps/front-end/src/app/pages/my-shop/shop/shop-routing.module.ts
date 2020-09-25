@@ -14,13 +14,13 @@ const routes: Routes = [
       { path: '', component: ShopItemsOverviewComponent },
       { path: 'add-item', component: AddShopItemComponent },
       { path: 'edit-item/:id', component: EditShopItemComponent },
-      { path: ':id', component: ViewShopItemComponent }
-    ]
-  }
+      { path: ':id', component: ViewShopItemComponent },
+    ],
+  },
 ];
 
 @NgModule({
   imports: [RouterModule.forChild(routes)],
-  exports: [RouterModule]
+  exports: [RouterModule],
 })
 export class ShopRoutingModule {}

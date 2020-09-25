@@ -10,13 +10,13 @@ const routes: Routes = [
     component: DiseasesComponent,
     children: [
       { path: '', component: DiseasesCatalogueComponent },
-      { path: ':plantUsername', component: ViewDiseaseComponent }
-    ]
-  }
+      { path: ':plantUsername', component: ViewDiseaseComponent },
+    ],
+  },
 ];
 
 @NgModule({
   imports: [RouterModule.forChild(routes)],
-  exports: [RouterModule]
+  exports: [RouterModule],
 })
 export class DiseasesRoutingModule {}

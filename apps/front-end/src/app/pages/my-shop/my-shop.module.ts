@@ -9,6 +9,6 @@ import { ShopSidenavComponent } from './shop-sidenav/shop-sidenav.component';
 
 @NgModule({
   declarations: [MyShopComponent, PaymentsComponent, ShopSidenavComponent],
-  imports: [CommonModule, MyShopRoutingModule, SharedModule]
+  imports: [CommonModule, MyShopRoutingModule, SharedModule],
 })
 export class MyShopModule {}

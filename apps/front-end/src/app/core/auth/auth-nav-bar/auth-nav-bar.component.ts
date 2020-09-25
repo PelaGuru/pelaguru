@@ -6,7 +6,7 @@ import { Observable } from 'rxjs';
 @Component({
   selector: 'pelaguru-auth-nav-bar',
   templateUrl: './auth-nav-bar.component.html',
-  styleUrls: ['./auth-nav-bar.component.scss']
+  styleUrls: ['./auth-nav-bar.component.scss'],
 })
 export class AuthNavBarComponent implements OnInit {
   @Input() authPage: string;
@@ -15,7 +15,7 @@ export class AuthNavBarComponent implements OnInit {
     { label: 'Home', link: '/home' },
     { label: 'Plants', link: '/plants' },
     { label: 'Diseases', link: '/diseases' },
-    { label: 'Marketplace', link: '/marketplace' }
+    { label: 'Marketplace', link: '/marketplace' },
     // { label: 'My Shop', link: '/my-shop' }
   ];
   constructor(private navDrawerService: NavDrawerService) {}

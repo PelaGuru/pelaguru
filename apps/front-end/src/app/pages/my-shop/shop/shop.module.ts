@@ -17,8 +17,8 @@ import { ShopItemCardComponent } from './shop-item-card/shop-item-card.component
     ShopItemsOverviewComponent,
     ViewShopItemComponent,
     EditShopItemComponent,
-    ShopItemCardComponent
+    ShopItemCardComponent,
   ],
-  imports: [CommonModule, ShopRoutingModule, SharedModule]
+  imports: [CommonModule, ShopRoutingModule, SharedModule],
 })
 export class ShopModule {}

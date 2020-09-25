@@ -3,7 +3,7 @@ import { Component, OnInit, Input } from '@angular/core';
 @Component({
   selector: 'pelaguru-user-review-item',
   templateUrl: './user-review-item.component.html',
-  styleUrls: ['./user-review-item.component.scss']
+  styleUrls: ['./user-review-item.component.scss'],
 })
 export class UserReviewItemComponent implements OnInit {
   @Input() rating: number;

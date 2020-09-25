@@ -8,7 +8,7 @@ describe('MessageContactListItemComponent', () => {
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      declarations: [MessageContactListItemComponent]
+      declarations: [MessageContactListItemComponent],
     }).compileComponents();
   }));
 

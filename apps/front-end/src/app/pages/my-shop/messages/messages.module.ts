@@ -18,9 +18,9 @@ import { MessageChatContainerService } from '../../../core/message-chat-containe
     MessageChatContainerComponent,
     MessageContactListItemComponent,
     MessageChatLeftItemComponent,
-    MessageChatRightItemComponent
+    MessageChatRightItemComponent,
   ],
   imports: [CommonModule, MessagesRoutingModule, SharedModule],
-  providers: [MessageChatContainerService]
+  providers: [MessageChatContainerService],
 })
 export class MessagesModule {}

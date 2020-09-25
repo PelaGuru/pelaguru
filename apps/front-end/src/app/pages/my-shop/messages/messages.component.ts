@@ -3,7 +3,7 @@ import {
   OnInit,
   ViewChild,
   AfterViewInit,
-  OnDestroy
+  OnDestroy,
 } from '@angular/core';
 import { MediaMatcher } from '@angular/cdk/layout';
 import { MatSidenav } from '@angular/material/sidenav';
@@ -13,7 +13,7 @@ import { Subscription } from 'rxjs';
 @Component({
   selector: 'pelaguru-messages',
   templateUrl: './messages.component.html',
-  styleUrls: ['./messages.component.scss']
+  styleUrls: ['./messages.component.scss'],
 })
 export class MessagesComponent implements OnInit, AfterViewInit, OnDestroy {
   mobileQuery: MediaQueryList;
@@ -37,7 +37,7 @@ export class MessagesComponent implements OnInit, AfterViewInit, OnDestroy {
   };
 
   ngOnDestroy(): void {
-    this.subscriptions.forEach(s => {
+    this.subscriptions.forEach((s) => {
       s.unsubscribe();
     });
   }
@@ -45,7 +45,7 @@ export class MessagesComponent implements OnInit, AfterViewInit, OnDestroy {
   ngAfterViewInit(): void {
     const messageChatContainerServiceSubscription = this.messageChatContainerService
       .getChatData()
-      .subscribe(response => {
+      .subscribe((response) => {
         if (response.isOpen) {
           this.chatDrawer.open();
         }

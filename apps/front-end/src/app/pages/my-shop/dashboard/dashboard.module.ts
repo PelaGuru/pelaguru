@@ -13,8 +13,8 @@ import { UserReviewItemComponent } from './user-review-item/user-review-item.com
     DashboardComponent,
     BehaviorChartComponent,
     PopularProductsComponent,
-    UserReviewItemComponent
+    UserReviewItemComponent,
   ],
-  imports: [CommonModule, DashboardRoutingModule, SharedModule]
+  imports: [CommonModule, DashboardRoutingModule, SharedModule],
 })
 export class DashboardModule {}

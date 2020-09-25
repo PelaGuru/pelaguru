@@ -21,6 +21,7 @@ import { MatStepperModule } from '@angular/material/stepper';
 import { MatSlideToggleModule } from '@angular/material/slide-toggle';
 import { MatChipsModule } from '@angular/material/chips';
 import { MatSnackBarModule } from '@angular/material/snack-bar';
+import { MaterialFileInputModule } from 'ngx-material-file-input';
 
 import { NgApexchartsModule } from 'ng-apexcharts';
 import { NgxDropzoneModule } from 'ngx-dropzone';
@@ -32,13 +33,14 @@ import { RightDrawerComponent } from './right-drawer/right-drawer.component';
 import { FooterComponent } from './footer/footer.component';
 import { BreadcrumbComponent } from './breadcrumb/breadcrumb.component';
 import { SuggestionComponent } from './suggestion/suggestion.component';
+import { BtnLoadingComponent } from './btn-loading/btn-loading.component';
 import { NotificationsComponent } from './notifications/notifications.component';
 
 const nativeModules = [
   CommonModule,
   FormsModule,
   ReactiveFormsModule,
-  RouterModule
+  RouterModule,
 ];
 
 const externalModules = [
@@ -61,7 +63,8 @@ const externalModules = [
   NgxDropzoneModule,
   MatSlideToggleModule,
   MatChipsModule,
-  MatSnackBarModule
+  MatSnackBarModule,
+  MaterialFileInputModule,
 ];
 
 @NgModule({
@@ -74,6 +77,7 @@ const externalModules = [
     FooterComponent,
     BreadcrumbComponent,
     SuggestionComponent,
+    BtnLoadingComponent,
     NotificationsComponent
   ],
   imports: [CommonModule, ...nativeModules, ...externalModules],
@@ -87,7 +91,8 @@ const externalModules = [
     RightDrawerComponent,
     FooterComponent,
     BreadcrumbComponent,
-    SuggestionComponent
-  ]
+    SuggestionComponent,
+    BtnLoadingComponent,
+  ],
 })
 export class SharedModule {}

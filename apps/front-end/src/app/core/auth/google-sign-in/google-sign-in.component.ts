@@ -5,7 +5,7 @@ import { MatSnackBar } from '@angular/material/snack-bar';
 @Component({
   selector: 'pelaguru-google-sign-in',
   templateUrl: './google-sign-in.component.html',
-  styleUrls: ['./google-sign-in.component.scss']
+  styleUrls: ['./google-sign-in.component.scss'],
 })
 export class GoogleSignInComponent implements OnInit {
   constructor(

@@ -8,7 +8,7 @@ describe('ViewShopItemComponent', () => {
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      declarations: [ViewShopItemComponent]
+      declarations: [ViewShopItemComponent],
     }).compileComponents();
   }));
 

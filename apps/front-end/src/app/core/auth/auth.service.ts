@@ -1,39 +1,41 @@
 import { Injectable } from '@angular/core';
-import { BehaviorSubject, from, Observable } from 'rxjs';
+import { BehaviorSubject, from, Observable, of } from 'rxjs';
 import { AngularFireAuth } from '@angular/fire/auth';
-import { first, map } from 'rxjs/operators';
+import { map, first, switchMap } from 'rxjs/operators';
 import { auth } from 'firebase/app';
 import {
   AngularFirestore,
-  AngularFirestoreDocument
+  AngularFirestoreDocument,
 } from '@angular/fire/firestore';
-import { User, NormalUserRole, ServiceResponse } from '@pelaguru/interfaces';
+import {
+  User,
+  UserRole,
+  ServiceResponse,
+  ServerResponse,
+} from '@pelaguru/interfaces';
 import { Router } from '@angular/router';
+import { HttpClient } from '@angular/common/http';
+import { CommonErrorCodes } from '@pelaguru/error-codes';
 
 @Injectable({
-  providedIn: 'root'
+  providedIn: 'root',
 })
 export class AuthService {
   constructor(
+    private http: HttpClient,
     private firebaseAuth: AngularFireAuth,
     private fireStore: AngularFirestore,
     private router: Router
   ) {
-    this.firebaseAuth.authState.pipe(map(async u => !!u)).subscribe(async u => {
-      AuthService.isUserAuthenticated.next(await u);
-    });
+    this.firebaseAuth.authState
+      .pipe(map(async (u) => !!u))
+      .subscribe(async (u) => {
+        AuthService.isUserAuthenticated.next(await u);
+      });
 
-    this.firebaseAuth.onAuthStateChanged(async u => {
+    this.firebaseAuth.onAuthStateChanged(async (u) => {
       if (!!u) {
-        const afsUserRef: AngularFirestoreDocument<User> = this.fireStore.doc(
-          `users/${u.uid}`
-        );
-        const user = await afsUserRef.get().toPromise();
-        if (user.exists) {
-          AuthService.userObservable.next(user.data() as User);
-        } else {
-          AuthService.userObservable.next(null);
-        }
+        this.getUserDetails(u.uid);
       } else {
         AuthService.userObservable.next(null);
       }
@@ -45,19 +47,42 @@ export class AuthService {
   > = new BehaviorSubject<boolean>(false);
   private static userObservable = new BehaviorSubject<User>(null);
 
-  isAuthenticated(): Observable<boolean> {
-    return AuthService.isUserAuthenticated.asObservable();
+  async getUserDetails(uid: string) {
+    try {
+      const afsUserRef: AngularFirestoreDocument<User> = this.fireStore.doc(
+        `Users/${uid}`
+      );
+      const user = await afsUserRef.get().toPromise();
+      if (user.exists) {
+        AuthService.userObservable.next(user.data() as User);
+      } else {
+        AuthService.userObservable.next(null);
+      }
+    } catch (error) {
+      console.log('Error while getting data.', error);
+      AuthService.userObservable.next(null);
+      this.logout();
+    }
+  }
+
+  isAuthenticated() {
+    return this.firebaseAuth.user.pipe(
+      switchMap((user) => {
+        console.log(user);
+        return of(!!user);
+      })
+    );
   }
 
   isVendor() {
     return AuthService.userObservable.pipe(
-      map(user => user?.role === NormalUserRole.vendor)
+      map((user) => user?.role === UserRole.Vendor)
     );
   }
 
   isNormalUser() {
     return AuthService.userObservable.pipe(
-      map(user => user?.role === NormalUserRole.normalUser)
+      map((user) => user?.role === UserRole.NormalUser)
     );
   }
 
@@ -69,53 +94,85 @@ export class AuthService {
     email: string,
     password: string
   ): Promise<ServiceResponse> {
-    return new Promise<ServiceResponse>(async _resolve => {
+    return new Promise<ServiceResponse>(async (_resolve) => {
       try {
         const credentials = await this.firebaseAuth.signInWithEmailAndPassword(
           email,
           password
         );
-        _resolve(new ServiceResponse(true, 'SUCCESS', null, credentials.user));
+        _resolve(
+          new ServiceResponse(
+            true,
+            'Logged in',
+            null,
+            null,
+            credentials.user.uid
+          )
+        );
       } catch (error) {
-        _resolve(new ServiceResponse(false, 'FIREAUTH_ERROR', error, null));
+        _resolve(
+          new ServiceResponse(false, 'Not logged in', error.code, error, null)
+        );
       }
     });
   }
 
   async signUpWithEmailPassword(
-    displayName: string,
+    name: string,
     email: string,
     password: string
   ): Promise<ServiceResponse> {
-    return new Promise<ServiceResponse>(async _resolve => {
+    return new Promise<ServiceResponse>(async (_resolve) => {
       try {
-        const credentials = await this.firebaseAuth.createUserWithEmailAndPassword(
-          email,
-          password
-        );
-        const createUserResponse = await this.createUser({
-          uid: credentials.user.uid,
-          displayName: displayName,
-          email: credentials.user.email,
-          emailVerified: false,
-          photoURL: 'https://pelaguru-dev.web.app/assets/img/temp/temp-user.svg'
-        });
-        _resolve(createUserResponse);
+        const data = { email, password, name };
+        const authResult = await this.http
+          .post<ServerResponse>('/api/auth/normal-user', data)
+          .toPromise();
+        if (authResult.success) {
+          this.firebaseAuth.signInWithEmailAndPassword(email, password);
+          _resolve(
+            new ServiceResponse(
+              true,
+              'User added',
+              authResult.errorCode,
+              null,
+              authResult.data
+            )
+          );
+        } else {
+          _resolve(
+            new ServiceResponse(
+              false,
+              'User not added',
+              authResult.errorCode,
+              null,
+              authResult.data
+            )
+          );
+        }
       } catch (error) {
-        _resolve(new ServiceResponse(false, 'FIREAUTH_ERROR', error, null));
+        _resolve(
+          new ServiceResponse(
+            false,
+            'User not added',
+            CommonErrorCodes.InternalError,
+            error,
+            null
+          )
+        );
       }
     });
   }
 
   async loginWithGoogle() {
-    return new Promise<ServiceResponse>(async _resolve => {
+    return new Promise<ServiceResponse>(async (_resolve) => {
       try {
         const provider = new auth.GoogleAuthProvider();
         const credentials = await this.firebaseAuth.signInWithPopup(provider);
         this.updateUser(credentials.user);
-        _resolve(new ServiceResponse(true, 'SUCCESS', null, null));
+        // _resolve(new ServiceResponse(true, 'SUCCESS', null, null));
       } catch (error) {
-        _resolve(new ServiceResponse(false, 'FIREAUTH_ERROR', error, null));
+        // _resolve(new ServiceResponse(false, 'FIREAUTH_ERROR', error, null));
       }
     });
   }
@@ -125,7 +182,7 @@ export class AuthService {
     displayName,
     email,
     photoURL,
-    emailVerified
+    emailVerified,
   }) {
     const afsUserRef: AngularFirestoreDocument<User> = this.fireStore.doc(
       `users/${uid}`
@@ -137,52 +194,20 @@ export class AuthService {
       const userData: User = {
         displayName,
         email,
-        profilePic: photoURL,
-        role: NormalUserRole.normalUser
-      };
+        profilePictureUrl: photoURL,
+      } as User;
 
       afsUserRef.set(userData, { merge: true });
     } else {
       const userData: User = {
         displayName,
         email,
-        profilePic: photoURL
-      };
+        profilePictureUrl: photoURL,
+      } as User;
 
       afsUserRef.set(userData, { merge: true });
     }
     this.router.navigate(['/']);
-  }
-
-  private async createUser({
-    uid,
-    displayName,
-    email,
-    photoURL,
-    emailVerified
-  }) {
-    return new Promise<ServiceResponse>(async _resolve => {
-      try {
-        const afsUserRef: AngularFirestoreDocument<User> = this.fireStore.doc(
-          `users/${uid}`
-        );
-        const user = await afsUserRef.get().toPromise();
-        if (!user.exists) {
-          const userData: User = {
-            displayName,
-            email,
-            profilePic: photoURL,
-            role: NormalUserRole.normalUser
-          };
-          const result = await afsUserRef.set(userData, { merge: true });
-          _resolve(new ServiceResponse(true, 'USER_ADDED_TO_DB', null, null));
-        } else {
-          _resolve(new ServiceResponse(false, 'USER_EXIST', null, null));
-        }
-      } catch (error) {
-        _resolve(new ServiceResponse(false, 'FRIRESTORE_ERROR', error, null));
-      }
-    });
   }
 
   get userData(): Observable<User> {

@@ -4,7 +4,7 @@
     "front-end": {
       "projectType": "application",
       "schematics": {
-        "@nrwl/angular:component": {
+        "@schematics/angular:component": {
           "style": "scss"
         }
       },
@@ -30,7 +30,16 @@
             "scripts": ["node_modules/apexcharts/dist/apexcharts.min.js"],
             "stylePreprocessorOptions": {
               "includePaths": ["apps/front-end/src/assets/scss"]
-            }
+            },
+            "allowedCommonJsDependencies": [
+              "firebase/app",
+              "@firebase/firestore",
+              "@firebase/app",
+              "@firebase/auth",
+              "apexcharts",
+              "@firebase/component",
+              "@firebase/util"
+            ]
           },
           "configurations": {
             "production": {
@@ -68,7 +77,8 @@
         "serve": {
           "builder": "@angular-devkit/build-angular:dev-server",
           "options": {
-            "browserTarget": "front-end:build"
+            "browserTarget": "front-end:build",
+            "proxyConfig": "apps/front-end/src/proxy.conf.json"
           },
           "configurations": {
             "production": {
@@ -87,19 +97,22 @@
           "options": {
             "tsConfig": [
               "apps/front-end/tsconfig.app.json",
-              "apps/front-end/tsconfig.spec.json"
+              "apps/front-end/tsconfig.spec.json",
+              "apps/front-end/tsconfig.server.json"
             ],
-            "exclude": ["**/node_modules/**", "!apps/front-end/**"]
+            "exclude": ["**/node_modules/**", "!apps/front-end/**/*"]
           }
         },
         "test": {
           "builder": "@nrwl/jest:jest",
           "options": {
             "jestConfig": "apps/front-end/jest.config.js",
-            "tsConfig": "apps/front-end/tsconfig.spec.json",
-            "passWithNoTests": true,
-            "setupFile": "apps/front-end/src/test-setup.ts"
+            "passWithNoTests": true
           }
+        },
+        "deploy": {
+          "builder": "@angular/fire:deploy",
+          "options": {}
         },
         "server": {
           "builder": "@angular-devkit/build-angular:server",
@@ -160,7 +173,7 @@
           "builder": "@angular-devkit/build-angular:tslint",
           "options": {
             "tsConfig": ["apps/front-end-e2e/tsconfig.e2e.json"],
-            "exclude": ["**/node_modules/**", "!apps/front-end-e2e/**"]
+            "exclude": ["**/node_modules/**", "!apps/front-end-e2e/**/*"]
           }
         }
       }
@@ -207,24 +220,23 @@
               "apps/back-end/tsconfig.app.json",
               "apps/back-end/tsconfig.spec.json"
             ],
-            "exclude": ["**/node_modules/**", "!apps/back-end/**"]
+            "exclude": ["**/node_modules/**", "!apps/back-end/**/*"]
           }
         },
         "test": {
           "builder": "@nrwl/jest:jest",
           "options": {
             "jestConfig": "apps/back-end/jest.config.js",
-            "tsConfig": "apps/back-end/tsconfig.spec.json",
             "passWithNoTests": true
           }
         }
       }
     },
     "interfaces": {
-      "projectType": "library",
       "root": "libs/interfaces",
       "sourceRoot": "libs/interfaces/src",
-      "prefix": "pelaguru",
+      "projectType": "library",
+      "schematics": {},
       "architect": {
         "lint": {
           "builder": "@angular-devkit/build-angular:tslint",
@@ -233,29 +245,47 @@
               "libs/interfaces/tsconfig.lib.json",
               "libs/interfaces/tsconfig.spec.json"
             ],
-            "exclude": ["**/node_modules/**", "!libs/interfaces/**"]
+            "exclude": ["**/node_modules/**", "!libs/interfaces/**/*"]
           }
         },
         "test": {
           "builder": "@nrwl/jest:jest",
           "options": {
             "jestConfig": "libs/interfaces/jest.config.js",
-            "tsConfig": "libs/interfaces/tsconfig.spec.json",
-            "passWithNoTests": true,
-            "setupFile": "libs/interfaces/src/test-setup.ts"
+            "passWithNoTests": true
           }
         }
-      },
-      "schematics": {
-        "@nrwl/angular:component": {
-          "style": "scss"
+      }
+    },
+    "error-codes": {
+      "root": "libs/error-codes",
+      "sourceRoot": "libs/error-codes/src",
+      "projectType": "library",
+      "schematics": {},
+      "architect": {
+        "lint": {
+          "builder": "@angular-devkit/build-angular:tslint",
+          "options": {
+            "tsConfig": [
+              "libs/error-codes/tsconfig.lib.json",
+              "libs/error-codes/tsconfig.spec.json"
+            ],
+            "exclude": ["**/node_modules/**", "!libs/error-codes/**/*"]
+          }
+        },
+        "test": {
+          "builder": "@nrwl/jest:jest",
+          "options": {
+            "jestConfig": "libs/error-codes/jest.config.js",
+            "passWithNoTests": true
+          }
         }
       }
     },
     "admin-dashboard": {
       "projectType": "application",
       "schematics": {
-        "@nrwl/angular:component": {
+        "@schematics/angular:component": {
           "style": "scss"
         }
       },
@@ -280,7 +310,15 @@
             "scripts": [],
             "stylePreprocessorOptions": {
               "includePaths": ["apps/admin-dashboard/src/assets/scss"]
-            }
+            },
+            "allowedCommonJsDependencies": [
+              "firebase/app",
+              "@firebase/firestore",
+              "@firebase/app",
+              "@firebase/auth",
+              "@firebase/component",
+              "@firebase/util"
+            ]
           },
           "configurations": {
             "production": {
@@ -316,7 +354,8 @@
         "serve": {
           "builder": "@angular-devkit/build-angular:dev-server",
           "options": {
-            "browserTarget": "admin-dashboard:build"
+            "browserTarget": "admin-dashboard:build",
+            "proxyConfig": "apps/admin-dashboard/src/proxy.conf.json"
           },
           "configurations": {
             "production": {
@@ -337,16 +376,14 @@
               "apps/admin-dashboard/tsconfig.app.json",
               "apps/admin-dashboard/tsconfig.spec.json"
             ],
-            "exclude": ["**/node_modules/**", "!apps/admin-dashboard/**"]
+            "exclude": ["**/node_modules/**", "!apps/admin-dashboard/**/*"]
           }
         },
         "test": {
           "builder": "@nrwl/jest:jest",
           "options": {
             "jestConfig": "apps/admin-dashboard/jest.config.js",
-            "tsConfig": "apps/admin-dashboard/tsconfig.spec.json",
-            "passWithNoTests": true,
-            "setupFile": "apps/admin-dashboard/src/test-setup.ts"
+            "passWithNoTests": true
           }
         }
       }
@@ -373,17 +410,50 @@
           "builder": "@angular-devkit/build-angular:tslint",
           "options": {
             "tsConfig": ["apps/admin-dashboard-e2e/tsconfig.e2e.json"],
-            "exclude": ["**/node_modules/**", "!apps/admin-dashboard-e2e/**"]
+            "exclude": ["**/node_modules/**", "!apps/admin-dashboard-e2e/**/*"]
           }
         }
       }
     }
   },
   "cli": {
-    "defaultCollection": "@nrwl/angular",
-    "analytics": "5e1c9de7-eacf-476c-b5fd-b622f8cf7f25"
+    "defaultCollection": "@nrwl/angular"
   },
   "schematics": {
+    "@nrwl/workspace": {
+      "library": {
+        "linter": "tslint"
+      }
+    },
+    "@nrwl/cypress": {
+      "cypress-project": {
+        "linter": "tslint"
+      }
+    },
+    "@nrwl/node": {
+      "application": {
+        "linter": "tslint"
+      },
+      "library": {
+        "linter": "tslint"
+      }
+    },
+    "@nrwl/nest": {
+      "application": {
+        "linter": "tslint"
+      },
+      "library": {
+        "linter": "tslint"
+      }
+    },
+    "@nrwl/express": {
+      "application": {
+        "linter": "tslint"
+      },
+      "library": {
+        "linter": "tslint"
+      }
+    },
     "@nrwl/angular:application": {
       "unitTestRunner": "jest",
       "e2eTestRunner": "cypress"
@@ -392,5 +462,5 @@
       "unitTestRunner": "jest"
     }
   },
-  "defaultProject": "front-end"
+  "defaultProject": "admin-dashboard"
 }

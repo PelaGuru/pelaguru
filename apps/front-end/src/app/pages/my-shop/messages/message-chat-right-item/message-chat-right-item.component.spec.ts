@@ -8,7 +8,7 @@ describe('MessageChatRightItemComponent', () => {
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      declarations: [MessageChatRightItemComponent]
+      declarations: [MessageChatRightItemComponent],
     }).compileComponents();
   }));
 

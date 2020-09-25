@@ -9,7 +9,7 @@ interface ShopSideNavData {
 @Component({
   selector: 'pelaguru-shop-sidenav',
   templateUrl: './shop-sidenav.component.html',
-  styleUrls: ['./shop-sidenav.component.scss']
+  styleUrls: ['./shop-sidenav.component.scss'],
 })
 export class ShopSidenavComponent implements OnInit {
   shopSideNavData: Array<ShopSideNavData> = [
@@ -19,9 +19,9 @@ export class ShopSidenavComponent implements OnInit {
     {
       icon: 'account_balance_wallet',
       label: 'Payments',
-      link: '/my-shop/payments'
+      link: '/my-shop/payments',
     },
-    { icon: 'settings', label: 'Settings', link: '/my-shop/settings' }
+    { icon: 'settings', label: 'Settings', link: '/my-shop/settings' },
   ];
   constructor() {}
 

@@ -1,12 +1,15 @@
 {
   "npmScope": "pelaguru",
+  "affected": {
+    "defaultBase": "master"
+  },
   "implicitDependencies": {
     "angular.json": "*",
     "package.json": {
       "dependencies": "*",
       "devDependencies": "*"
     },
-    "tsconfig.json": "*",
+    "tsconfig.base.json": "*",
     "tslint.json": "*",
     "nx.json": "*"
   },
@@ -30,6 +33,9 @@
       "tags": []
     },
     "interfaces": {
+      "tags": []
+    },
+    "error-codes": {
       "tags": []
     },
     "admin-dashboard": {

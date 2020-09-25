@@ -8,7 +8,7 @@ describe('UserReviewItemComponent', () => {
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      declarations: [UserReviewItemComponent]
+      declarations: [UserReviewItemComponent],
     }).compileComponents();
   }));
 

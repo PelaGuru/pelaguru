@@ -9,7 +9,7 @@ import { MatSidenav } from '@angular/material/sidenav';
 @Component({
   selector: 'pelaguru-pages',
   templateUrl: './pages.component.html',
-  styleUrls: ['./pages.component.scss']
+  styleUrls: ['./pages.component.scss'],
 })
 export class PagesComponent implements OnInit {
   rightSidenavViewState: string;

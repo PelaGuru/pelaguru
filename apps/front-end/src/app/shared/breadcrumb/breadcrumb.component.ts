@@ -5,7 +5,7 @@ import { BehaviorSubject } from 'rxjs';
 @Component({
   selector: 'pelaguru-breadcrumb',
   templateUrl: './breadcrumb.component.html',
-  styleUrls: ['./breadcrumb.component.scss']
+  styleUrls: ['./breadcrumb.component.scss'],
 })
 export class BreadcrumbComponent implements OnInit {
   @Input() id = '';
@@ -18,7 +18,9 @@ export class BreadcrumbComponent implements OnInit {
 
   ngOnInit(): void {
     if (this.id) {
-      this.BREADCRUMBS.next(this.routeData.find(d => d.id === this.id).routes);
+      this.BREADCRUMBS.next(
+        this.routeData.find((d) => d.id === this.id).routes
+      );
     } else if (this.data) {
       try {
         this.BREADCRUMBS.next(JSON.parse(this.data));

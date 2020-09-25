@@ -3,7 +3,7 @@ import { BehaviorSubject, Observable } from 'rxjs';
 import { MessageChatContainerData } from '@pelaguru/interfaces';
 
 @Injectable({
-  providedIn: 'root'
+  providedIn: 'root',
 })
 export class MessageChatContainerService {
   private static messageData: BehaviorSubject<

@@ -7,7 +7,7 @@ import { RightDrawerServiceService } from '../../core/right-drawer-service/right
 @Component({
   selector: 'pelaguru-right-drawer',
   templateUrl: './right-drawer.component.html',
-  styleUrls: ['./right-drawer.component.scss']
+  styleUrls: ['./right-drawer.component.scss'],
 })
 export class RightDrawerComponent implements OnInit {
   @Input() viewState: string;

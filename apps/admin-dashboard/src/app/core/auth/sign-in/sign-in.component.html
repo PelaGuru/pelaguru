@@ -1,0 +1,135 @@
+<nb-layout>
+  <nb-layout-column>
+    <div class="card-container">
+      <nb-card>
+        <nb-card-body>
+          <div class="header-container">
+            <div class="image-container">
+              <div class="image">
+                <img
+                  src="../../../../assets/img/logo/main-logo.svg"
+                  class="img-resp"
+                  alt=""
+                />
+              </div>
+            </div>
+            <div class="title-container">
+              <h5 class="title-text">Admin</h5>
+              <p class="sub-title">Log in with your email.</p>
+            </div>
+          </div>
+
+          <div class="form-container">
+            <form
+              (submit)="login()"
+              [formGroup]="formControl"
+              aria-labelledby="title"
+            >
+              <div class="form-control-group">
+                <input
+                  nbInput
+                  fullWidth
+                  formControlName="email"
+                  id="input-email"
+                  placeholder="Email address"
+                  fieldSize="medium"
+                  autofocus
+                  [status]="
+                    formControl.get('email').dirty
+                      ? formControl.get('email').invalid
+                        ? 'danger'
+                        : 'success'
+                      : 'basic'
+                  "
+                  [required]="true"
+                  [attr.aria-invalid]="
+                    formControl.get('email').invalid &&
+                    formControl.get('email').touched
+                      ? true
+                      : null
+                  "
+                />
+                <ng-container
+                  *ngIf="
+                    formControl.get('email').invalid &&
+                    formControl.get('email').touched
+                  "
+                >
+                  <p
+                    class="caption status-danger"
+                    *ngIf="formControl.get('email').hasError('required')"
+                  >
+                    Email is required!
+                  </p>
+                  <p
+                    class="caption status-danger"
+                    *ngIf="formControl.get('email').hasError('email')"
+                  >
+                    Email should be the real one!
+                  </p>
+                </ng-container>
+              </div>
+
+              <div class="form-control-group">
+                <input
+                  nbInput
+                  fullWidth
+                  formControlName="password"
+                  type="password"
+                  id="input-password"
+                  placeholder="Password"
+                  fieldSize="medium"
+                  [status]="
+                    formControl.get('password').dirty
+                      ? formControl.get('password').invalid
+                        ? 'danger'
+                        : 'success'
+                      : 'basic'
+                  "
+                  [required]="true"
+                  [attr.aria-invalid]="
+                    formControl.get('password').invalid &&
+                    formControl.get('password').touched
+                      ? true
+                      : null
+                  "
+                />
+                <ng-container
+                  *ngIf="
+                    formControl.get('password').invalid &&
+                    formControl.get('password').touched
+                  "
+                >
+                  <p
+                    class="caption status-danger"
+                    *ngIf="formControl.get('password').hasError('required')"
+                  >
+                    Password is required!
+                  </p>
+                </ng-container>
+              </div>
+              <div class="forgot-password-container">
+                <a
+                  class="forgot-password caption-2"
+                  routerLink="/account-recovery-request"
+                >
+                  Forgot Password?
+                </a>
+              </div>
+              <button
+                nbButton
+                fullWidth
+                status="primary"
+                size="small"
+                [disabled]="submitted || !formControl.valid"
+                [class.btn-pulse]="submitted"
+              >
+                Log In
+              </button>
+            </form>
+          </div>
+        </nb-card-body>
+      </nb-card>
+    </div>
+  </nb-layout-column>
+</nb-layout>

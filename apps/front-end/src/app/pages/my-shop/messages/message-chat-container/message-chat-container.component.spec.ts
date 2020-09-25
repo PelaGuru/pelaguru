@@ -8,7 +8,7 @@ describe('MessageChatContainerComponent', () => {
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      declarations: [MessageChatContainerComponent]
+      declarations: [MessageChatContainerComponent],
     }).compileComponents();
   }));
 

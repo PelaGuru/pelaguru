@@ -13,29 +13,30 @@ const routes: Routes = [
       {
         path: 'dashboard',
         loadChildren: () =>
-          import('./dashboard/dashboard.module').then(m => m.DashboardModule)
+          import('./dashboard/dashboard.module').then((m) => m.DashboardModule),
       },
       {
         path: 'shop-items',
-        loadChildren: () => import('./shop/shop.module').then(m => m.ShopModule)
+        loadChildren: () =>
+          import('./shop/shop.module').then((m) => m.ShopModule),
       },
       {
         path: 'messages',
         loadChildren: () =>
-          import('./messages/messages.module').then(m => m.MessagesModule)
+          import('./messages/messages.module').then((m) => m.MessagesModule),
       },
       { path: 'payments', component: PaymentsComponent },
       {
         path: 'settings',
         loadChildren: () =>
-          import('./settings/settings.module').then(m => m.SettingsModule)
-      }
-    ]
-  }
+          import('./settings/settings.module').then((m) => m.SettingsModule),
+      },
+    ],
+  },
 ];
 
 @NgModule({
   imports: [RouterModule.forChild(routes)],
-  exports: [RouterModule]
+  exports: [RouterModule],
 })
 export class MyShopRoutingModule {}

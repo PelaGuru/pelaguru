@@ -40,8 +40,8 @@ This project was generated using [Nx](https://nx.dev).
 - Front-end - `ng serve front-end`
 - Admin Dashboard - `ng serve admin-dashboard`
 - Back-end
-  -- `npm run firebase:serve` (Ubuntu)
-  -- `npm run firebase:win_serve` (Windows)
+  -- `npm run firebase:serve:linux` (Ubuntu)
+  -- `npm run firebase:serve:win` (Windows)
 
 #### Step 4
 

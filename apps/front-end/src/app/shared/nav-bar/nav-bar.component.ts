@@ -9,7 +9,7 @@ import { User } from '@pelaguru/interfaces';
 @Component({
   selector: 'pelaguru-nav-bar',
   templateUrl: './nav-bar.component.html',
-  styleUrls: ['./nav-bar.component.scss']
+  styleUrls: ['./nav-bar.component.scss'],
 })
 export class NavBarComponent implements OnInit {
   profilePicUrl = '';
@@ -28,15 +28,15 @@ export class NavBarComponent implements OnInit {
     { label: 'Home', link: '/home' },
     { label: 'Plants', link: '/plants' },
     { label: 'Diseases', link: '/diseases' },
-    { label: 'Marketplace', link: '/marketplace' }
+    { label: 'Marketplace', link: '/marketplace' },
     // { label: 'My Shop', link: '/my-shop' }
   ];
   constructor(private authService: AuthService) {}
 
   ngOnInit(): void {
-    this.userData.subscribe(user => {
+    this.userData.subscribe((user) => {
       if (!!user) {
-        this.profilePicUrl = user.profilePic;
+        this.profilePicUrl = user.profilePictureUrl;
       }
     });
   }
@@ -44,7 +44,7 @@ export class NavBarComponent implements OnInit {
   navDrawerToggle() {
     this.toggleNavDrawer.emit({
       navDrawerState: this.navDrawerSatate,
-      rightDrawerState: this.rightDrawerSatate
+      rightDrawerState: this.rightDrawerSatate,
     });
   }
 
@@ -52,7 +52,7 @@ export class NavBarComponent implements OnInit {
     this.toggleRightDrawer.emit({
       view,
       navDrawerState: this.navDrawerSatate,
-      rightDrawerState: this.rightDrawerSatate
+      rightDrawerState: this.rightDrawerSatate,
     });
   }
 

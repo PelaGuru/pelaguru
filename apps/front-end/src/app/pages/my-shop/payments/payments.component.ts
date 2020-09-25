@@ -16,14 +16,14 @@ interface PaymentData {
 @Component({
   selector: 'pelaguru-payments',
   templateUrl: './payments.component.html',
-  styleUrls: ['./payments.component.scss']
+  styleUrls: ['./payments.component.scss'],
 })
 export class PaymentsComponent implements OnInit, AfterViewInit {
   displayedColumns: string[] = [
     'payment_date',
     'invoice_id',
     'amount',
-    'download'
+    'download',
   ];
   dataSource: MatTableDataSource<PaymentData> = new MatTableDataSource();
 

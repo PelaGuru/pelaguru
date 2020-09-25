@@ -7,7 +7,7 @@ import { DiseaseCatalogueItem } from '@pelaguru/interfaces';
 @Component({
   selector: 'pelaguru-diseases-catalogue',
   templateUrl: './diseases-catalogue.component.html',
-  styleUrls: ['./diseases-catalogue.component.scss']
+  styleUrls: ['./diseases-catalogue.component.scss'],
 })
 export class DiseasesCatalogueComponent implements OnInit {
   private DiseaseCatalogueItemsDataSource: BehaviorSubject<
@@ -20,14 +20,14 @@ export class DiseasesCatalogueComponent implements OnInit {
   searchController: FormGroup;
   constructor() {
     this.searchController = new FormGroup({
-      search: new FormControl()
+      search: new FormControl(),
     });
   }
 
   ngOnInit(): void {
     this.filteredOptions = this.myControl.valueChanges.pipe(
       startWith(''),
-      map(value => this._filter(value))
+      map((value) => this._filter(value))
     );
     this.addTestData();
   }
@@ -36,7 +36,7 @@ export class DiseasesCatalogueComponent implements OnInit {
     const filterValue = value.toLowerCase();
 
     return this.options.filter(
-      option => option.toLowerCase().indexOf(filterValue) === 0
+      (option) => option.toLowerCase().indexOf(filterValue) === 0
     );
   }
 
@@ -47,22 +47,22 @@ export class DiseasesCatalogueComponent implements OnInit {
         image: 'http://localhost:4200/assets/img/temp/1.jpg',
         name: 'Tomato',
         sciName: 'Lycopersicon esculentum',
-        username: 'tomato'
+        username: 'tomato',
       },
       {
         id: '876543',
         image: 'http://localhost:4200/assets/img/temp/1.jpg',
         name: 'Tomato',
         sciName: 'Lycopersicon esculentum',
-        username: 'tomato'
+        username: 'tomato',
       },
       {
         id: '876543',
         image: 'http://localhost:4200/assets/img/temp/1.jpg',
         name: 'Tomato',
         sciName: 'Lycopersicon esculentum',
-        username: 'tomato'
-      }
+        username: 'tomato',
+      },
     ]);
   }
   get diseaseCatalogueItems(): Observable<Array<DiseaseCatalogueItem>> {
