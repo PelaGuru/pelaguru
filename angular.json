@@ -15,7 +15,7 @@
         "build": {
           "builder": "@angular-devkit/build-angular:browser",
           "options": {
-            "outputPath": "dist/front-end/browser",
+            "outputPath": "dist/apps/front-end",
             "index": "apps/front-end/src/index.html",
             "main": "apps/front-end/src/main.ts",
             "polyfills": "apps/front-end/src/polyfills.ts",
@@ -281,6 +281,139 @@
           }
         }
       }
+    },
+    "admin-dashboard": {
+      "projectType": "application",
+      "schematics": {
+        "@schematics/angular:component": {
+          "style": "scss"
+        }
+      },
+      "root": "apps/admin-dashboard",
+      "sourceRoot": "apps/admin-dashboard/src",
+      "prefix": "pelaguru",
+      "architect": {
+        "build": {
+          "builder": "@angular-devkit/build-angular:browser",
+          "options": {
+            "outputPath": "dist/apps/admin-dashboard",
+            "index": "apps/admin-dashboard/src/index.html",
+            "main": "apps/admin-dashboard/src/main.ts",
+            "polyfills": "apps/admin-dashboard/src/polyfills.ts",
+            "tsConfig": "apps/admin-dashboard/tsconfig.app.json",
+            "aot": true,
+            "assets": [
+              "apps/admin-dashboard/src/favicon.ico",
+              "apps/admin-dashboard/src/assets"
+            ],
+            "styles": ["apps/admin-dashboard/src/styles.scss"],
+            "scripts": [],
+            "stylePreprocessorOptions": {
+              "includePaths": ["apps/admin-dashboard/src/assets/scss"]
+            },
+            "allowedCommonJsDependencies": [
+              "firebase/app",
+              "@firebase/firestore",
+              "@firebase/app",
+              "@firebase/auth",
+              "@firebase/component",
+              "@firebase/util"
+            ]
+          },
+          "configurations": {
+            "production": {
+              "fileReplacements": [
+                {
+                  "replace": "apps/admin-dashboard/src/environments/environment.ts",
+                  "with": "apps/admin-dashboard/src/environments/environment.prod.ts"
+                }
+              ],
+              "optimization": true,
+              "outputHashing": "all",
+              "sourceMap": false,
+              "extractCss": true,
+              "namedChunks": false,
+              "extractLicenses": true,
+              "vendorChunk": false,
+              "buildOptimizer": true,
+              "budgets": [
+                {
+                  "type": "initial",
+                  "maximumWarning": "2mb",
+                  "maximumError": "5mb"
+                },
+                {
+                  "type": "anyComponentStyle",
+                  "maximumWarning": "6kb",
+                  "maximumError": "10kb"
+                }
+              ]
+            }
+          }
+        },
+        "serve": {
+          "builder": "@angular-devkit/build-angular:dev-server",
+          "options": {
+            "browserTarget": "admin-dashboard:build",
+            "proxyConfig": "apps/admin-dashboard/src/proxy.conf.json"
+          },
+          "configurations": {
+            "production": {
+              "browserTarget": "admin-dashboard:build:production"
+            }
+          }
+        },
+        "extract-i18n": {
+          "builder": "@angular-devkit/build-angular:extract-i18n",
+          "options": {
+            "browserTarget": "admin-dashboard:build"
+          }
+        },
+        "lint": {
+          "builder": "@angular-devkit/build-angular:tslint",
+          "options": {
+            "tsConfig": [
+              "apps/admin-dashboard/tsconfig.app.json",
+              "apps/admin-dashboard/tsconfig.spec.json"
+            ],
+            "exclude": ["**/node_modules/**", "!apps/admin-dashboard/**/*"]
+          }
+        },
+        "test": {
+          "builder": "@nrwl/jest:jest",
+          "options": {
+            "jestConfig": "apps/admin-dashboard/jest.config.js",
+            "passWithNoTests": true
+          }
+        }
+      }
+    },
+    "admin-dashboard-e2e": {
+      "root": "apps/admin-dashboard-e2e",
+      "sourceRoot": "apps/admin-dashboard-e2e/src",
+      "projectType": "application",
+      "architect": {
+        "e2e": {
+          "builder": "@nrwl/cypress:cypress",
+          "options": {
+            "cypressConfig": "apps/admin-dashboard-e2e/cypress.json",
+            "tsConfig": "apps/admin-dashboard-e2e/tsconfig.e2e.json",
+            "devServerTarget": "admin-dashboard:serve"
+          },
+          "configurations": {
+            "production": {
+              "devServerTarget": "admin-dashboard:serve:production"
+            }
+          }
+        },
+        "lint": {
+          "builder": "@angular-devkit/build-angular:tslint",
+          "options": {
+            "tsConfig": ["apps/admin-dashboard-e2e/tsconfig.e2e.json"],
+            "exclude": ["**/node_modules/**", "!apps/admin-dashboard-e2e/**/*"]
+          }
+        }
+      }
     }
   },
   "cli": {
@@ -329,5 +462,5 @@
       "unitTestRunner": "jest"
     }
   },
-  "defaultProject": "front-end"
+  "defaultProject": "admin-dashboard"
 }
