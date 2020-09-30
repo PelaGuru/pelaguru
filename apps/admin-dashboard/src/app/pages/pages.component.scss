@@ -1,0 +1,17 @@
+.header-conteiner {
+  width: 100%;
+  display: grid;
+  grid-template-areas: 'brand ... prof';
+  grid-template-columns: 100px auto max-content;
+  .brand-container {
+    grid-area: brand;
+  }
+  .profile-container {
+    grid-area: prof;
+    .user-button {
+      border: 0;
+      background-color: transparent;
+      cursor: pointer;
+    }
+  }
+}
