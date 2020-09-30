@@ -14,6 +14,7 @@ import {
   NbSidebarModule,
   NbUserModule,
   NbContextMenuModule,
+  NbMenuModule,
 } from '@nebular/theme';
 import { NbEvaIconsModule } from '@nebular/eva-icons';
 import { RouterModule } from '@angular/router';
@@ -38,6 +39,7 @@ const externalModules = [
   NbSidebarModule,
   NbUserModule,
   NbContextMenuModule,
+  NbMenuModule,
 ];
 
 @NgModule({
