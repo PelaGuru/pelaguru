@@ -1,6 +1,5 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import {
@@ -19,7 +18,6 @@ import { RouterModule } from '@angular/router';
 const nativeModules = [
   CommonModule,
   RouterModule,
-  BrowserAnimationsModule,
   FormsModule,
   ReactiveFormsModule,
 ];

@@ -7,7 +7,6 @@ import { AccountRecoveryRequestComponent } from './core/auth/account-recovery-re
 import { ResetPasswordComponent } from './core/auth/reset-password/reset-password.component';
 
 const routes: Routes = [
-  { path: '', redirectTo: 'sign-in', pathMatch: 'full' },
   { path: 'sign-in', component: SignInComponent /*canActivate: [AuthGuard]*/ },
   {
     path: 'account-recovery-request',
