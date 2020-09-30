@@ -78,7 +78,7 @@ const externalModules = [
     BreadcrumbComponent,
     SuggestionComponent,
     BtnLoadingComponent,
-    NotificationsComponent
+    NotificationsComponent,
   ],
   imports: [CommonModule, ...nativeModules, ...externalModules],
   exports: [
