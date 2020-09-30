@@ -11,6 +11,7 @@ import {
   NbInputModule,
   NbButtonModule,
   NbCardModule,
+  NbFormFieldModule,
 } from '@nebular/theme';
 import { NbEvaIconsModule } from '@nebular/eva-icons';
 import { RouterModule } from '@angular/router';
@@ -32,6 +33,7 @@ const externalModules = [
   NbInputModule,
   NbButtonModule,
   NbCardModule,
+  NbFormFieldModule,
 ];
 
 @NgModule({
