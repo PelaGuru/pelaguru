@@ -11,8 +11,8 @@
             </a>
           </div>
           <img
-            *ngIf="(userData | async) && (userData | async).profilePic"
-            [src]="(userData | async).profilePic"
+            *ngIf="(userData | async) && (userData | async).profilePictureUrl"
+            [src]="(userData | async).profilePictureUrl"
             alt=""
           />
           <img
@@ -123,11 +123,11 @@
               <div class="form-wrapper">
                 <mat-form-field class="example-full-width">
                   <!-- <mat-label>Last Name</mat-label> -->
-                  <ngx-mat-file-input
+                  <!-- <ngx-mat-file-input
                     formControlName="profilepic"
                     placeholder="Profile Pic"
                     [accept]="'.jpg'"
-                  ></ngx-mat-file-input>
+                  ></ngx-mat-file-input> -->
                   <mat-icon matSuffix>folder</mat-icon>
                   <mat-hint>Insert Your Profile Pic.</mat-hint>
                   <mat-error>Insert Your Profile Pic</mat-error>

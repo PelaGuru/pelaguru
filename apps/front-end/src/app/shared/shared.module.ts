@@ -21,7 +21,6 @@ import { MatStepperModule } from '@angular/material/stepper';
 import { MatSlideToggleModule } from '@angular/material/slide-toggle';
 import { MatChipsModule } from '@angular/material/chips';
 import { MatSnackBarModule } from '@angular/material/snack-bar';
-import { MaterialFileInputModule } from 'ngx-material-file-input';
 
 import { NgApexchartsModule } from 'ng-apexcharts';
 import { NgxDropzoneModule } from 'ngx-dropzone';
@@ -64,7 +63,6 @@ const externalModules = [
   MatSlideToggleModule,
   MatChipsModule,
   MatSnackBarModule,
-  MaterialFileInputModule,
 ];
 
 @NgModule({
