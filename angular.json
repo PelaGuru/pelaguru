@@ -462,5 +462,5 @@
       "unitTestRunner": "jest"
     }
   },
-  "defaultProject": "admin-dashboard"
+  "defaultProject": "front-end"
 }
