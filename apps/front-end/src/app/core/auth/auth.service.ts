@@ -211,4 +211,34 @@ export class AuthService {
   get userData(): Observable<User> {
     return AuthService.userObservable;
   }
+
+  getUserStream() {
+    return this.firebaseAuth.user.pipe(
+      switchMap((user) => {
+        if (!user) return of(null);
+        return from(user.getIdTokenResult());
+      }),
+      map((result) => {
+        if (result) {
+          // user is logged in
+          const user = {
+            userId: result.claims.user_id,
+            email: result.claims.email,
+            displayName: result.claims.name,
+            profilePicture: result.claims.picture,
+            role:
+              typeof result.claims.role === 'string'
+                ? result.claims.role
+                : UserRole.NormalUser,
+          };
+          return user;
+        }
+        return null;
+      })
+    );
+  }
+
+  isAppUserAuthenticated() {
+    return AuthService.isUserAuthenticated.asObservable();
+  }
 }

@@ -2,9 +2,10 @@ import { Component, OnInit, Output, EventEmitter, Input } from '@angular/core';
 import { DrawerSatateData } from '../models/drawer-satate-data';
 import { RightDrawerStateData } from '../models/right-drawer-state-data';
 import { NavLinkData } from '../models/nav-link-data';
-import { BehaviorSubject, Observable } from 'rxjs';
+import { BehaviorSubject, Observable, of } from 'rxjs';
 import { AuthService } from '../../core/auth/auth.service';
 import { User } from '@pelaguru/interfaces';
+import { map } from 'rxjs/operators';
 
 @Component({
   selector: 'pelaguru-nav-bar',
@@ -57,7 +58,7 @@ export class NavBarComponent implements OnInit {
   }
 
   get isAuthenticated(): Observable<boolean> {
-    return this.authService.isAuthenticated();
+    return this.authService.isAppUserAuthenticated();
   }
 
   get userData() {
