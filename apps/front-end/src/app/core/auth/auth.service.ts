@@ -66,11 +66,9 @@ export class AuthService {
   }
 
   isAuthenticated() {
-    return this.firebaseAuth.user.pipe(
-      switchMap((user) => {
-        console.log(user);
-        return of(!!user);
-      })
+    return this.firebaseAuth.authState.pipe(
+      first(),
+      map((u) => !!u)
     );
   }
 
