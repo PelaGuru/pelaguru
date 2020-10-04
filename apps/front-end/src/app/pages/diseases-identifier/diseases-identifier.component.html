@@ -153,17 +153,20 @@
                 "
               ></div>
             </mat-card>
-            <br /><br />
-            <h3>Plant Name:</h3>
-            <h3>Disease Category:</h3>
-            <h3>Description</h3>
+            <br />
+            <h2>Plant Name:</h2>
+            <h3>Tomato</h3>
+            <br />
+            <h2>Disease Name:</h2>
+            <h3>Get from ML model</h3>
+            <br />
+            <h2>Description</h2>
             <p>
-              Lorem ipsum dolor sit amet consectetur adipisicing elit. Molestias
-              quas amet autem magni est nobis corrupti cum numquam illo
-              doloribus quidem perferendis accusantium fugiat, exercitationem
-              ipsa veniam quo rerum dolorem.
+              -Get Image, Description, Rating and Solutions according to Disease
+              Name from Database. -
             </p>
-            <h3>Rating</h3>
+            <br />
+            <h2>How satisfied are you with the result? Please rate.</h2>
             <div class="rating">
               <div class="rating-inner">
                 <span class="material-icons">star</span>
@@ -174,17 +177,32 @@
               </div>
             </div>
             <br />
-            <h2>Solution</h2>
+            <h2>Solutions</h2>
+            <p>Retrive Items from database and show as an image slider</p>
           </mat-card>
           <div style="padding-top: 20px; text-align: right;">
+            <p>
+              Click "Reset" to try again or click "Finish" to return to Home
+              page.
+            </p>
             <button
               class="mat-elevation-z5"
               mat-button
               (click)="stepper.reset()"
               style="background-color: #84a03c; border-radius: 30px;"
             >
-              <span class="material-icons">west</span>
+              <span class="material-icons">cached</span>
               <strong> Reset</strong>
+            </button>
+            &nbsp;&nbsp;&nbsp;
+            <button
+              class="mat-elevation-z5"
+              mat-button
+              (click)="stepper.reset()"
+              style="background-color: #84a03c; border-radius: 30px;"
+            >
+              <span class="material-icons">check_circle</span>
+              <strong> Finish</strong>
             </button>
           </div>
         </mat-step>
