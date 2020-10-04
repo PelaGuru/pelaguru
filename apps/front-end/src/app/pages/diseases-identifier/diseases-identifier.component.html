@@ -166,6 +166,9 @@
               Name from Database. -
             </p>
             <br />
+            <h2>Solutions</h2>
+            <p>Retrive Items from database and show as an image slider</p>
+            <br />
             <h2>How satisfied are you with the result? Please rate.</h2>
             <div class="rating">
               <div class="rating-inner">
@@ -176,9 +179,6 @@
                 <span class="material-icons">star_border</span>
               </div>
             </div>
-            <br />
-            <h2>Solutions</h2>
-            <p>Retrive Items from database and show as an image slider</p>
           </mat-card>
           <div style="padding-top: 20px; text-align: right;">
             <p>
@@ -195,15 +195,16 @@
               <strong> Reset</strong>
             </button>
             &nbsp;&nbsp;&nbsp;
-            <button
-              class="mat-elevation-z5"
-              mat-button
-              (click)="stepper.reset()"
-              style="background-color: #84a03c; border-radius: 30px;"
+            <a routerLink="../">
+              <button
+                class="mat-elevation-z5"
+                mat-button
+                style="background-color: #dbdbd9; border-radius: 30px;"
+              >
+                <span class="material-icons">check_circle</span>
+                <strong> Finish</strong>
+              </button></a
             >
-              <span class="material-icons">check_circle</span>
-              <strong> Finish</strong>
-            </button>
           </div>
         </mat-step>
       </mat-vertical-stepper>
