@@ -17,20 +17,22 @@
                     <h1
                       style="font-family: Verdana, Geneva, Tahoma, sans-serif;"
                     >
-                      Follow The Guideline
+                      Follow The Guidelines
                     </h1>
                     <hr />
-                    Lorem, ipsum dolor sit amet consectetur adipisicing elit.
-                    Delectus, voluptatem doloremque fugiat officiis accusantium
-                    ducimus ullam ex aut eaque illum, corrupti dolor? Mollitia
-                    dignissimos laboriosam porro eligendi, rerum sequi
-                    molestias?
-                    <br /><br />
-                    Lorem, ipsum dolor sit amet consectetur adipisicing elit.
-                    Delectus, voluptatem doloremque fugiat officiis accusantium
-                    ducimus ullam ex aut eaque illum, corrupti dolor? Mollitia
-                    dignissimos laboriosam porro eligendi, rerum sequi
-                    molestias?
+                    1. Snap a photo in a clear and well lit environment for
+                    better precision.
+                    <br />
+                    2. Make sure there aren't multiple objects in the
+                    background.
+                    <br />
+                    3. Use a white background to get a good prediction.
+                    <br />
+                    4. Upload an image less than 10MB.
+                    <br />
+                    5. You can drag and drop your images.
+                    <br />
+                    6. Then click "Upload".
                   </div>
                 </div>
                 <div class="col-4">
@@ -92,15 +94,9 @@
               </div>
               <div class="col-9">
                 <div class="col-8">
-                  Lorem ipsum dolor sit amet, consectetur adipisicing elit.
-                  Aperiam rerum, culpa reprehenderit magnam adipisci
-                  perspiciatis veniam consequuntur eum unde eos quo doloremque
-                  qui dicta ea harum. Quidem tenetur impedit atque.
+                  Click "Predict" to continue.
                   <br /><br />
-                  Lorem ipsum dolor sit amet, consectetur adipisicing elit.
-                  Aperiam rerum, culpa reprehenderit magnam adipisci
-                  perspiciatis veniam consequuntur eum unde eos quo doloremque
-                  qui dicta ea harum. Quidem tenetur impedit atque.
+                  Click "Back" to upload a different image.
                 </div>
                 <div class="col-4"></div>
 
@@ -136,12 +132,27 @@
           <ng-template matStepLabel>Done</ng-template>
           <mat-card>
             <br />
-            <div
-              class="image-container col-3"
-              style="background-image: url('../../assets/img/temp/shop.webp');"
-            ></div>
+            <h1>Your Image</h1>
+            <mat-card>
+              <ngx-dropzone-image-preview
+                ngProjectAs="ngx-dropzone-preview"
+                *ngFor="let f of files"
+                [file]="f"
+              >
+                <!-- <ngx-dropzone-label>{{ f.name }} ({{ f.type }})</ngx-dropzone-label> -->
+              </ngx-dropzone-image-preview>
+            </mat-card>
+
             <br /><br />
             <h1>Final Prediction</h1>
+            <mat-card>
+              <div
+                class="image-container col-3"
+                style="
+                  background-image: url('../../assets/img/temp/shop.webp');
+                "
+              ></div>
+            </mat-card>
             <br /><br />
             <h3>Plant Name:</h3>
             <h3>Disease Category:</h3>
