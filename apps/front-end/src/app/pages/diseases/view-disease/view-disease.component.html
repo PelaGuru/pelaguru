@@ -28,25 +28,28 @@
           <mat-list>
             <mat-divider></mat-divider>
             <mat-list-item>
-              Plant Name : {{ disease.diseaseName }}
+              Disease Name : {{ disease.diseaseName }}
             </mat-list-item>
             <mat-divider></mat-divider>
             <mat-list-item>
-              Popular Districts : {{ disease.symptoms }}
+              Common Symptoms : {{ disease.symptoms }}
             </mat-list-item>
             <mat-divider></mat-divider>
-            <mat-list-item> Uses : {{ disease.causativeAgent }}</mat-list-item>
+            <mat-list-item>
+              Causes : {{ disease.causativeAgent }}</mat-list-item
+            >
             <mat-divider></mat-divider>
             <mat-list-item
               >Additional Features :
               {{ disease.additionalFeatures }}</mat-list-item
             >
             <mat-divider></mat-divider>
-            <mat-list-item>Solutions : {{ disease.chemicals }}</mat-list-item>
-            <mat-divider></mat-divider>
             <mat-list-item
-              >Common Plants : {{ disease.commonPlants }}</mat-list-item
+              >Common Plants that are affected by the disease:
+              {{ disease.commonPlants }}</mat-list-item
             >
+            <mat-divider></mat-divider>
+            <mat-list-item>Solutions : {{ disease.chemicals }}</mat-list-item>
           </mat-list>
         </div>
       </div>
