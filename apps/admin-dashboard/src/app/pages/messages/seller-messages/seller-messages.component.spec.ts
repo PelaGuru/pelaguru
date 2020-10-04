@@ -1,20 +1,19 @@
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { SuggestionComponent } from './suggestion.component';
+import { SellerMessagesComponent } from './seller-messages.component';
 
-describe('SuggestionComponent', () => {
-  let component: SuggestionComponent;
-  let fixture: ComponentFixture<SuggestionComponent>;
+describe('SellerMessagesComponent', () => {
+  let component: SellerMessagesComponent;
+  let fixture: ComponentFixture<SellerMessagesComponent>;
 
-  // tslint:disable-next-line: deprecation
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      declarations: [SuggestionComponent],
+      declarations: [SellerMessagesComponent],
     }).compileComponents();
   }));
 
   beforeEach(() => {
-    fixture = TestBed.createComponent(SuggestionComponent);
+    fixture = TestBed.createComponent(SellerMessagesComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });

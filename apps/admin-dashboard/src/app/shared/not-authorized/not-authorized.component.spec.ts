@@ -1,20 +1,19 @@
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { SuggestionComponent } from './suggestion.component';
+import { NotAuthorizedComponent } from './not-authorized.component';
 
-describe('SuggestionComponent', () => {
-  let component: SuggestionComponent;
-  let fixture: ComponentFixture<SuggestionComponent>;
+describe('NotAuthorizedComponent', () => {
+  let component: NotAuthorizedComponent;
+  let fixture: ComponentFixture<NotAuthorizedComponent>;
 
-  // tslint:disable-next-line: deprecation
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      declarations: [SuggestionComponent],
+      declarations: [NotAuthorizedComponent],
     }).compileComponents();
   }));
 
   beforeEach(() => {
-    fixture = TestBed.createComponent(SuggestionComponent);
+    fixture = TestBed.createComponent(NotAuthorizedComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });

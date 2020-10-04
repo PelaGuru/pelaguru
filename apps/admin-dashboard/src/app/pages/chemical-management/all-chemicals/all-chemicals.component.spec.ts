@@ -1,20 +1,19 @@
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { SuggestionComponent } from './suggestion.component';
+import { AllChemicalsComponent } from './all-chemicals.component';
 
-describe('SuggestionComponent', () => {
-  let component: SuggestionComponent;
-  let fixture: ComponentFixture<SuggestionComponent>;
+describe('AllChemicalsComponent', () => {
+  let component: AllChemicalsComponent;
+  let fixture: ComponentFixture<AllChemicalsComponent>;
 
-  // tslint:disable-next-line: deprecation
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      declarations: [SuggestionComponent],
+      declarations: [AllChemicalsComponent],
     }).compileComponents();
   }));
 
   beforeEach(() => {
-    fixture = TestBed.createComponent(SuggestionComponent);
+    fixture = TestBed.createComponent(AllChemicalsComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });

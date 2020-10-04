@@ -1,20 +1,19 @@
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { SuggestionComponent } from './suggestion.component';
+import { LabelImagesComponent } from './label-images.component';
 
-describe('SuggestionComponent', () => {
-  let component: SuggestionComponent;
-  let fixture: ComponentFixture<SuggestionComponent>;
+describe('LabelImagesComponent', () => {
+  let component: LabelImagesComponent;
+  let fixture: ComponentFixture<LabelImagesComponent>;
 
-  // tslint:disable-next-line: deprecation
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      declarations: [SuggestionComponent],
+      declarations: [LabelImagesComponent],
     }).compileComponents();
   }));
 
   beforeEach(() => {
-    fixture = TestBed.createComponent(SuggestionComponent);
+    fixture = TestBed.createComponent(LabelImagesComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });

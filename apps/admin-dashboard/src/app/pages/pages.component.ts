@@ -20,11 +20,11 @@ export class PagesComponent implements OnInit, OnDestroy {
       children: [
         {
           title: 'Add user',
-          link: '/add-user',
+          link: '/users/add',
         },
         {
           title: 'All users',
-          link: '/all-users',
+          link: '/users/all',
         },
       ],
     },
@@ -33,9 +33,11 @@ export class PagesComponent implements OnInit, OnDestroy {
       children: [
         {
           title: 'Seller Requests',
+          link: '/sellers/requests',
         },
         {
           title: 'All sellers',
+          link: '/sellers/all',
         },
       ],
     },
@@ -44,9 +46,11 @@ export class PagesComponent implements OnInit, OnDestroy {
       children: [
         {
           title: 'Add plant',
+          link: '/plants/add',
         },
         {
           title: 'All plants',
+          link: '/plants/all',
         },
       ],
     },
@@ -55,9 +59,11 @@ export class PagesComponent implements OnInit, OnDestroy {
       children: [
         {
           title: 'Add disease',
+          link: '/diseases/add',
         },
         {
           title: 'All diseases',
+          link: '/diseases',
         },
       ],
     },
@@ -66,9 +72,11 @@ export class PagesComponent implements OnInit, OnDestroy {
       children: [
         {
           title: 'Add chemical',
+          link: '/chemicals/add',
         },
         {
           title: 'All chemicals',
+          link: '/chemicals/all',
         },
       ],
     },
@@ -77,9 +85,11 @@ export class PagesComponent implements OnInit, OnDestroy {
       children: [
         {
           title: 'From sellers',
+          link: '/messages/sellers',
         },
         {
           title: 'From users',
+          link: '/messages/users',
         },
       ],
     },
@@ -88,12 +98,14 @@ export class PagesComponent implements OnInit, OnDestroy {
       children: [
         {
           title: 'Label images',
+          link: '/ml-model/label-images',
         },
       ],
     },
   ];
 
   constructor(private nbMenuService: NbMenuService) {}
+
   ngOnDestroy(): void {
     for (const s of this.subscriptions) {
       s.unsubscribe();

@@ -19,6 +19,9 @@ import {
 import { NbEvaIconsModule } from '@nebular/eva-icons';
 import { RouterModule } from '@angular/router';
 
+import { NotFoundComponent } from './not-found/not-found.component';
+import { NotAuthorizedComponent } from './not-authorized/not-authorized.component';
+
 const nativeModules = [
   CommonModule,
   RouterModule,
@@ -43,7 +46,7 @@ const externalModules = [
 ];
 
 @NgModule({
-  declarations: [],
+  declarations: [NotAuthorizedComponent, NotFoundComponent],
   imports: [CommonModule, ...nativeModules, ...externalModules],
   exports: [...nativeModules, ...externalModules],
 })
