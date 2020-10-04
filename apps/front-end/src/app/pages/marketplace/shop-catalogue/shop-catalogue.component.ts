@@ -43,37 +43,55 @@ export class ShopCatalogueComponent implements OnInit {
       {
         id: '876543',
         image: '../../../assets/img/temp/shop.webp',
-        name: 'Tomato',
-        sciName: 'Lycopersicon esculentum',
-        username: 'tomato',
+        name: 'Shop 1',
+        username: 'Shop 1',
+        telephone: '031-2223245',
+        address: '131, jude rd, Negombo',
+        description:
+          'Chemical storage is the storage of controlled substances or hazardous materials in chemical stores',
       },
       {
         id: '876543',
-        image: '../../../assets/img/temp/1.jpg',
-        name: 'Tomato',
-        sciName: 'Lycopersicon esculentum',
-        username: 'tomato',
+        image:
+          '../../../assets/img/temp/cleaning-supplies-sprays-liquids-detergents-260nw-1623039685.webp',
+        name: 'Shop 2',
+        username: 'Shop 2',
+        telephone: '031-2223245',
+        address: '131, jude rd, Negombo',
+        description:
+          'Chemical storage is the storage of controlled substances or hazardous materials in chemical stores',
       },
       {
         id: '876543',
-        image: '../../../assets/img/temp/1.jpg',
-        name: 'Tomato',
-        sciName: 'Lycopersicon esculentum',
-        username: 'tomato',
+        image:
+          '../../../assets/img/temp/minsk-belarus-march-14-2018-600w-1048132474.webp',
+        name: 'Shop 3',
+        username: 'Shop 3',
+        telephone: '031-2223245',
+        address: '131, jude rd, Negombo',
+        description:
+          'Chemical storage is the storage of controlled substances or hazardous materials in chemical stores',
       },
       {
         id: '876543',
         image: '../../../assets/img/temp/shop.webp',
-        name: 'Tomato',
-        sciName: 'Lycopersicon esculentum',
-        username: 'tomato',
+        name: 'Shop 4',
+        username: 'Shop 4',
+        telephone: '031-2223245',
+        address: '131, jude rd, Negombo',
+        description:
+          'Chemical storage is the storage of controlled substances or hazardous materials in chemical stores',
       },
       {
         id: '876543',
-        image: '../../../assets/img/temp/shop.webp',
-        name: 'Tomato',
-        sciName: 'Lycopersicon esculentum',
-        username: 'tomato',
+        image:
+          '../../../assets/img/temp/cleaning-supplies-sprays-liquids-detergents-260nw-1623039685.webp',
+        name: 'Shop 5',
+        username: 'Shop 5',
+        telephone: '031-2223245',
+        address: '131, jude rd, Negombo',
+        description:
+          'Chemical storage is the storage of controlled substances or hazardous materials in chemical stores',
       },
     ]);
   }

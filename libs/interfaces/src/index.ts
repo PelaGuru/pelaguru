@@ -16,7 +16,7 @@ export * from './lib/message';
 export * from './lib/plant';
 export * from './lib/shop';
 export * from './lib/shop-item';
-
+export * from './lib/viewshop';
 ////////////////////////////////////////////////////////////////////////////
 export * from './lib/plants/plant-catalogue-item';
 export * from './lib/diseases/disease-catalogue-item';

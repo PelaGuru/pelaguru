@@ -1,0 +1,119 @@
+$header-card-min-height: 60px;
+$header-card-inner-min-height: calc(60px - 32px);
+
+.container-inner {
+  padding: 2em 0;
+  mat-card.header-card {
+    position: relative;
+    min-height: $header-card-min-height;
+    overflow: hidden;
+
+    .back-button {
+      position: absolute;
+      top: 16px;
+      left: 16px;
+      z-index: 3;
+
+      button {
+        color: white;
+      }
+    }
+
+    .cover-image {
+      position: absolute;
+      height: 100%;
+      width: 100%;
+      margin: -16px;
+      background-repeat: no-repeat;
+      background-position: center;
+      background-size: cover;
+
+      &::after {
+        content: '';
+        position: absolute;
+        height: 100%;
+        width: 100%;
+        // background-color: #00000060;
+        // backdrop-filter: blur(5px);
+        background-color: var(--primary);
+
+        // @supports (
+        //   (-webkit-backdrop-filter: blur(5px)) or (backdrop-filter: blur(5px))
+        // ) {
+        //   background-color: #0000008f;
+        // }
+      }
+    }
+
+    .header-container {
+      color: white;
+      position: relative;
+      z-index: 2;
+      display: grid;
+      align-content: center;
+      min-height: $header-card-inner-min-height;
+      .header-container-inner {
+        text-align: center;
+        text-shadow: 0px 2px 1px -1px rgba(0, 0, 0, 0.2),
+          0px 1px 1px 0px rgba(0, 0, 0, 0.14),
+          0px 1px 3px 0px rgba(0, 0, 0, 0.12);
+        .title {
+          font-size: 2.3em;
+          font-weight: bold;
+          padding: 0 0 10px 0;
+        }
+        .desc {
+          font-size: 1.5em;
+          font-style: italic;
+        }
+      }
+    }
+  }
+
+  mat-card {
+    margin-bottom: 10px;
+  }
+
+  mat-card.basic-details-card {
+    .title-text {
+      font-size: 1.2em;
+      color: rgb(87, 87, 87);
+      font-weight: 500;
+    }
+  }
+  .image-container {
+    // height: auto;
+    width: 60%;
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+    border-radius: 8px;
+    display: block;
+    margin-top: 50px;
+  }
+  .description-container {
+    padding: 2em 1em;
+    background-color: white;
+    border-bottom-left-radius: 4px;
+    border-bottom-right-radius: 4px;
+    .description-container-inner {
+      .header-text {
+        font-weight: bold;
+        font-size: 1.5em;
+        color: var(--primary);
+        border-bottom: 1px solid #dfdfdf;
+        padding-bottom: 10px;
+      }
+      .desc-text {
+        padding: 1em 0;
+        font-size: 1.1em;
+      }
+      .price {
+        font-size: 30px;
+        font-weight: bold;
+        text-align: right;
+        color: var(--primary);
+      }
+    }
+  }
+}
