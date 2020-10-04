@@ -1,0 +1,63 @@
+<div class="container">
+  <div class="container-inner">
+    <mat-card class="header-card">
+      <!-- <div
+          class="cover-image"
+          style="background-image: url(https://images5.alphacoders.com/378/thumb-1920-378648.jpg);"
+        ></div> -->
+      <div class="cover-image"></div>
+      <div class="header-container">
+        <div class="header-container-inner">
+          <div class="title">{{ shopitem.name }}</div>
+          <!-- <div class="desc">{{ shopitem.price }}</div> -->
+        </div>
+      </div>
+      <div class="back-button">
+        <a routerLink="../">
+          <button mat-icon-button mat-ripple>
+            <mat-icon>arrow_back</mat-icon>
+          </button>
+        </a>
+      </div>
+    </mat-card>
+    <mat-card class="basic-details-card">
+      <div placement="center">
+        <div class="row">
+          <div class="col-5">
+            <img class="image-container" src="{{ shopitem.image }}" />
+          </div>
+          <div class="col-7">
+            <div class="description-container">
+              <div class="description-container-inner">
+                <mat-list>
+                  <div class="header-text">Description</div>
+                  <br />
+                  <mat-list-item> {{ shopitem.description }} </mat-list-item>
+                  <br /><br />
+                  <div class="header-text">Ingredients</div>
+                  <br />
+                  <mat-list-item>
+                    Lorem ipsum dolor, sit amet consectetur adipisicing elit.
+                    Repellendus optio odio natus. Sit dolore eaque non veniam
+                    provident corrupti dolor in minus quae libero assumenda
+                    reprehenderit pariatur, voluptates voluptate repellendus! </mat-list-item
+                  ><br /><br />
+                  <div class="header-text">Note</div>
+                  <br />
+                  <mat-list-item>
+                    Lorem ipsum dolor, sit amet consectetur adipisicing elit.
+                    Repellendus optio odio natus. Sit dolore eaque non veniam
+                    provident corrupti dolor in minus quae libero assumenda
+                    reprehenderit pariatur, voluptates voluptate repellendus!
+                  </mat-list-item>
+                  <br /><br /><br />
+                  <div class="price">{{ shopitem.price }} /=</div>
+                </mat-list>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </mat-card>
+  </div>
+</div>

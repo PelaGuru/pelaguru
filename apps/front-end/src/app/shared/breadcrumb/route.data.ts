@@ -43,4 +43,12 @@ export const routeData: Array<MainRouteData> = [
     id: '007',
     routes: [{ label: 'Home', link: '/home' }, { label: 'Disease Identifier' }],
   },
+  {
+    id: '008',
+    routes: [
+      { label: 'Home', link: '/home' },
+      { label: 'Marketplace', link: '/marketplace' },
+      { label: 'Shop Profile' },
+    ],
+  },
 ];
