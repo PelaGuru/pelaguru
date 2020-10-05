@@ -76,7 +76,7 @@ export class DiseasesIdentifierComponent implements OnInit {
   }
 
   async writeToFirestore(url, path) {
-    let data = {
+    const data = {
       timestamp: new Date(),
       url: url,
       path: path,
