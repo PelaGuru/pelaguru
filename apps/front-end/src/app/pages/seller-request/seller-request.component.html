@@ -1,10 +1,10 @@
-<!-- <div class="bcground_image">
+<div class="bcground_image">
   <div class="container x">
     <mat-card>
-      <form class="example-form" [formGroup]="formControl">
+      <form class="example-form" [formGroup]="formControl" >
         <h1 style="color: #84a03c;text-align: center;">Seller Request</h1>
         <hr />
-        <div class="form-group">
+        <div class="form-wrapper">
           <mat-form-field class="example-full-width">
             <mat-label>First Name</mat-label>
             <input
@@ -16,7 +16,8 @@
             <mat-hint>Enter your First name.</mat-hint>
             <mat-error>Enter your First name</mat-error>
           </mat-form-field>
-
+        </div><br>
+        <div class="form-wrapper">
           <mat-form-field class="example-full-width">
             <mat-label>Last Name</mat-label>
             <input
@@ -72,7 +73,7 @@
           </mat-form-field>
         </div>
         <br />
-        <div class="form-group">
+        <div class="form-wrapper">
           <mat-form-field class="example-full-width">
             <mat-label>NIC / BA</mat-label>
             <mat-select
@@ -87,18 +88,18 @@
             <mat-error>Select your Choice</mat-error>
             <mat-hint>NIC/BA</mat-hint>
           </mat-form-field>
+        </div>
+        <br>
+        <div class="form-wrapper">
+          <ngx-dropzone (change)="onSelect($event)">
+            <ngx-dropzone-label>Upload NIC/BA image</ngx-dropzone-label>
+            <ngx-dropzone-image-preview ngProjectAs="ngx-dropzone-preview" *ngFor="let f of files" [file]="f"
+                        [removable]="true" (removed)="onRemove(f)">
+                        <!-- <ngx-dropzone-label>{{ f.name }} ({{ f.type }})</ngx-dropzone-label> -->
+                      </ngx-dropzone-image-preview>
+        </ngx-dropzone>
 
-          <mat-form-field class="example-full-width"> -->
-<!-- <mat-label>Last Name</mat-label> -->
-<!-- <ngx-mat-file-input
-              formControlName="acceptfile"
-              placeholder="PDF file only"
-              [accept]="'.pdf'"
-            ></ngx-mat-file-input>
-            <mat-icon matSuffix>folder</mat-icon>
-            <mat-hint>Upload your NIC/BA.</mat-hint>
-            <mat-error>Upload your NIC/BA</mat-error>
-          </mat-form-field>
+          
         </div>
         <br />
         <div class="form-wrapper">
@@ -146,4 +147,4 @@
       </form>
     </mat-card>
   </div>
-</div> -->
+</div>

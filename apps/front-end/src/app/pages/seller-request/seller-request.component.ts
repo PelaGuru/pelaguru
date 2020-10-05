@@ -13,6 +13,9 @@ export class SellerRequestComponent implements OnInit {
   @Input() viewState: string;
   formControl: FormGroup;
   matcher: ErrorStateMatcher;
+  title = 'dropzone';
+  uploadedURL = '';
+  files: File[] = [];
   constructor(private authService: AuthService, private router: Router) {
     this.formControl = new FormGroup({
       firstName: new FormControl('', [Validators.required]),
@@ -29,8 +32,15 @@ export class SellerRequestComponent implements OnInit {
   }
 
   ngOnInit(): void {}
-
+  onSelect(event) {
+    console.log(event);
+    this.files.push(...event.addedFiles);
+  }
   get userData() {
     return this.authService.userData;
+  }
+  onRemove(event) {
+    console.log(event);
+    this.files.splice(this.files.indexOf(event), 1);
   }
 }
