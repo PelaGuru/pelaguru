@@ -70,6 +70,7 @@
     "firebase-functions": "^3.11.0",
     "ng-apexcharts": "^1.5.1",
     "ngx-dropzone": "^2.2.2",
+    "ngx-spinner": "^10.0.1",
     "nx": "^10.3.0",
     "rxjs": "~6.5.5",
     "ts-md5": "^1.2.7",
