@@ -14,9 +14,7 @@
               <div class="row">
                 <div class="col-8">
                   <div class="col-11">
-                    <h1
-                      style="font-family: Verdana, Geneva, Tahoma, sans-serif;"
-                    >
+                    <h1 style="font-family: Verdana, Geneva, Tahoma, sans-serif;">
                       Follow The Guidelines
                     </h1>
                     <hr />
@@ -37,25 +35,15 @@
                 </div>
                 <div class="col-4">
                   <mat-card>
-                    <div
-                      class="custom-dropzone"
-                      [multiple]="false"
-                      ngx-dropzone
-                      [accept]="'image/*'"
-                      (change)="onSelect($event)"
-                    >
+                    <div class="custom-dropzone" [multiple]="false" ngx-dropzone [accept]="'image/*'"
+                      (change)="onSelect($event)">
                       <ngx-dropzone-label>
                         <div>
                           <h2>Drag and drop your images</h2>
                         </div>
                       </ngx-dropzone-label>
-                      <ngx-dropzone-image-preview
-                        ngProjectAs="ngx-dropzone-preview"
-                        *ngFor="let f of files"
-                        [file]="f"
-                        [removable]="true"
-                        (removed)="onRemove(f)"
-                      >
+                      <ngx-dropzone-image-preview ngProjectAs="ngx-dropzone-preview" *ngFor="let f of files" [file]="f"
+                        [removable]="true" (removed)="onRemove(f)">
                         <!-- <ngx-dropzone-label>{{ f.name }} ({{ f.type }})</ngx-dropzone-label> -->
                       </ngx-dropzone-image-preview>
                     </div>
@@ -64,16 +52,13 @@
               </div>
 
               <div style="padding-top: 20px; text-align: right;">
-                <button
-                  class="mat-elevation-z5"
-                  mat-button
-                  matStepperNext
-                  style="background-color: #84a03c; border-radius: 30px;"
-                >
+                <button class="mat-elevation-z5" mat-button matStepperNext
+                  style="background-color: #84a03c; border-radius: 30px;" (click)="onUploadClick()">
                   <span class="material-icons">upgrade</span>
                   <strong>Upload</strong>
                 </button>
               </div>
+
             </mat-card>
           </form>
         </mat-step>
@@ -83,11 +68,7 @@
             <div class="row">
               <div class="col-3">
                 <mat-card>
-                  <ngx-dropzone-image-preview
-                    ngProjectAs="ngx-dropzone-preview"
-                    *ngFor="let f of files"
-                    [file]="f"
-                  >
+                  <ngx-dropzone-image-preview ngProjectAs="ngx-dropzone-preview" *ngFor="let f of files" [file]="f">
                     <!-- <ngx-dropzone-label>{{ f.name }} ({{ f.type }})</ngx-dropzone-label> -->
                   </ngx-dropzone-image-preview>
                 </mat-card>
@@ -101,25 +82,16 @@
                 <div class="col-4"></div>
 
                 <div style="padding-top: 20px; text-align: right;">
-                  <button
-                    class="mat-elevation-z5"
-                    mat-button
-                    matStepperPrevious
-                    style="
+                  <button class="mat-elevation-z5" mat-button matStepperPrevious style="
                       background-color: #84a03c;
                       margin-right: 10px;
                       border-radius: 30px;
-                    "
-                  >
+                    ">
                     <span class="material-icons">west</span>
                     <strong> Back</strong>
                   </button>
-                  <button
-                    class="mat-elevation-z5"
-                    mat-button
-                    matStepperNext
-                    style="background-color: #84a03c; border-radius: 30px;"
-                  >
+                  <button class="mat-elevation-z5" mat-button matStepperNext
+                    style="background-color: #84a03c; border-radius: 30px;">
                     <strong> Predict </strong>
                     <span class="material-icons">east</span>
                   </button>
@@ -134,11 +106,7 @@
             <br />
             <h1>Your Image</h1>
             <mat-card>
-              <ngx-dropzone-image-preview
-                ngProjectAs="ngx-dropzone-preview"
-                *ngFor="let f of files"
-                [file]="f"
-              >
+              <ngx-dropzone-image-preview ngProjectAs="ngx-dropzone-preview" *ngFor="let f of files" [file]="f">
                 <!-- <ngx-dropzone-label>{{ f.name }} ({{ f.type }})</ngx-dropzone-label> -->
               </ngx-dropzone-image-preview>
             </mat-card>
@@ -146,12 +114,9 @@
             <br /><br />
             <h1>Final Prediction</h1>
             <mat-card>
-              <div
-                class="image-container col-3"
-                style="
+              <div class="image-container col-3" style="
                   background-image: url('../../assets/img/temp/shop.webp');
-                "
-              ></div>
+                "></div>
             </mat-card>
             <br />
             <h2>Plant Name:</h2>
@@ -185,31 +150,22 @@
               Click "Reset" to try again or click "Finish" to return to Home
               page.
             </p>
-            <button
-              class="mat-elevation-z5"
-              mat-button
-              (click)="stepper.reset()"
-              style="background-color: #84a03c; border-radius: 30px;"
-            >
+            <button class="mat-elevation-z5" mat-button (click)="stepper.reset()"
+              style="background-color: #84a03c; border-radius: 30px;">
               <span class="material-icons">cached</span>
               <strong> Reset</strong>
             </button>
             &nbsp;&nbsp;&nbsp;
             <a routerLink="../">
-              <button
-                class="mat-elevation-z5"
-                mat-button
-                style="background-color: #dbdbd9; border-radius: 30px;"
-              >
+              <button class="mat-elevation-z5" mat-button style="background-color: #dbdbd9; border-radius: 30px;">
                 <span class="material-icons">check_circle</span>
                 <strong> Finish</strong>
-              </button></a
-            >
+              </button></a>
           </div>
         </mat-step>
       </mat-vertical-stepper>
     </mat-card>
   </div>
-
+  <ngx-spinner color="#84a03c"></ngx-spinner>
   <pelaguru-footer></pelaguru-footer>
 </div>

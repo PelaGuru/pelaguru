@@ -1,1 +1,81 @@
-<p>all-users works!</p>
+<nb-card [nbSpinner]="loading" nbSpinnerStatus="primary">
+  <nb-card-header>
+    <div class="interface-heading">
+      All Users
+    </div>
+  </nb-card-header>
+  <nb-card-body>
+    <form [formGroup]="formControl">
+      <div class="header-container">
+        <div></div>
+        <input nbInput placeholder="Search" formControlName="search" />
+        <nb-select placeholder="User role" formControlName="role">
+          <nb-option value="0" selected>All users</nb-option>
+          <nb-option value="1">Normal Users</nb-option>
+          <nb-option value="2">Vendor</nb-option>
+          <nb-option value="3">Admin</nb-option>
+          <nb-option value="4">Resource Person</nb-option>
+          <nb-option value="5">Moderator</nb-option>
+        </nb-select>
+      </div>
+    </form>
+    <table mat-table [dataSource]="users">
+      <ng-container matColumnDef="name">
+        <th mat-header-cell *matHeaderCellDef>Name</th>
+        <td mat-cell *matCellDef="let element">
+          <nb-user
+            size="medium"
+            [name]="element.displayName"
+            *ngIf="element.profilePictureUrl"
+            [picture]="element.profilePictureUrl"
+          >
+          </nb-user>
+          <nb-user
+            size="medium"
+            [name]="element.displayName"
+            *ngIf="!element.profilePictureUrl"
+          >
+          </nb-user>
+        </td>
+      </ng-container>
+
+      <ng-container matColumnDef="email">
+        <th mat-header-cell *matHeaderCellDef>Email</th>
+        <td mat-cell *matCellDef="let element">{{ element.email }}</td>
+      </ng-container>
+
+      <ng-container matColumnDef="role">
+        <th mat-header-cell *matHeaderCellDef>Role</th>
+        <td mat-cell *matCellDef="let element">
+          {{ element.role?.replace('-', ' ').toLocaleUpperCase() }}
+        </td>
+      </ng-container>
+
+      <ng-container matColumnDef="status">
+        <th mat-header-cell *matHeaderCellDef>Sastus</th>
+        <td mat-cell *matCellDef="let element">
+          <label *ngIf="element.disabled">Disabled</label>
+          <label *ngIf="!element.disabled">Active</label>
+        </td>
+      </ng-container>
+
+      <ng-container matColumnDef="action">
+        <th mat-header-cell *matHeaderCellDef></th>
+        <td mat-cell *matCellDef="let element">
+          <button
+            nbButton
+            hero
+            status="danger"
+            size="small"
+            (click)="deleteUser(element.userId)"
+          >
+            <nb-icon icon="trash-2-outline"></nb-icon>
+          </button>
+        </td>
+      </ng-container>
+
+      <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+      <tr mat-row *matRowDef="let row; columns: displayedColumns"></tr>
+    </table>
+  </nb-card-body>
+</nb-card>

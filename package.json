@@ -42,12 +42,6 @@
   "engines": {
     "node": "10"
   },
-  "husky": {
-    "hooks": {
-      "pre-commit": "npm run format:check",
-      "pre-push": "npm run format:check"
-    }
-  },
   "dependencies": {
     "@angular/animations": "^10.0.0",
     "@angular/cdk": "^10.2.3",
@@ -76,8 +70,10 @@
     "firebase-functions": "^3.11.0",
     "ng-apexcharts": "^1.5.1",
     "ngx-dropzone": "^2.2.2",
+    "ngx-spinner": "^10.0.1",
     "nx": "^10.3.0",
     "rxjs": "~6.5.5",
+    "ts-md5": "^1.2.7",
     "zone.js": "^0.10.2"
   },
   "devDependencies": {
