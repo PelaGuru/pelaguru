@@ -1,8 +1,75 @@
-<nb-card>
+<nb-card [nbSpinner]="loading" nbSpinnerStatus="primary">
   <nb-card-header>
     <div class="interface-heading">
-      Add Plant
+      Add Chemical
     </div>
   </nb-card-header>
-  <nb-card-body> </nb-card-body>
+  <nb-card-body>
+    <div class="container-fluid">
+      <form [formGroup]="formControl" (submit)="addChemical()">
+        <div class="row">
+          <div class="col-md-12">
+            <input nbInput fullWidth formControlName="name" type="text" id="input-name" placeholder="Name"
+              fieldSize="medium" [status]="
+                formControl.get('name').dirty
+                  ? formControl.get('name').invalid
+                    ? 'danger'
+                    : 'success'
+                  : 'basic'
+              " [required]="true" [attr.aria-invalid]="
+                formControl.get('name').invalid &&
+                formControl.get('name').touched
+                  ? true
+                  : null
+              " />
+            <ng-container *ngIf="
+                formControl.get('name').invalid &&
+                formControl.get('name').touched
+              ">
+              <p class="caption status-danger" *ngIf="formControl.get('name').hasError('required')">
+                Name is required.
+              </p>
+            </ng-container>
+          </div>
+          <div class="col-md-12">
+            <br />
+            <textarea nbInput fullWidth formControlName="description" type="text" id="input-description"
+              placeholder="Description" fieldSize="medium" rows="5" [status]="
+                formControl.get('description').dirty
+                  ? formControl.get('description').invalid
+                    ? 'danger'
+                    : 'success'
+                  : 'basic'
+              " [required]="true" [attr.aria-invalid]="
+                formControl.get('description').invalid &&
+                formControl.get('description').touched
+                  ? true
+                  : null
+              "></textarea>
+            <ng-container *ngIf="
+                formControl.get('description').invalid &&
+                formControl.get('description').touched
+              ">
+              <p class="caption status-danger" *ngIf="formControl.get('description').hasError('required')">
+                Description is required.
+              </p>
+            </ng-container>
+          </div>
+        </div>
+        <br />
+        <ngx-dropzone (change)="onSelect($event)">
+          <ngx-dropzone-label>Select files</ngx-dropzone-label>
+          <ngx-dropzone-preview *ngFor="let f of files" [removable]="true" (removed)="onRemove(f)">
+            <ngx-dropzone-label>
+              {{ f.name }} ({{ f.type }})
+            </ngx-dropzone-label>
+          </ngx-dropzone-preview>
+        </ngx-dropzone>
+        <br />
+        <p style="text-align: right;">
+          <button nbButton hero status="primary">Add chemical</button>
+        </p>
+      </form>
+    </div>
+  </nb-card-body>
 </nb-card>
