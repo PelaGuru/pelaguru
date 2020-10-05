@@ -7,6 +7,7 @@ import { AllPlantsComponent } from './all-plants/all-plants.component';
 import { AddPlantComponent } from './add-plant/add-plant.component';
 import { DetailsPlantComponent } from './details-plant/details-plant.component';
 import { EditPlantComponent } from './edit-plant/edit-plant.component';
+import { SharedModule } from '../../shared/shared.module';
 
 @NgModule({
   declarations: [
@@ -16,6 +17,6 @@ import { EditPlantComponent } from './edit-plant/edit-plant.component';
     DetailsPlantComponent,
     EditPlantComponent,
   ],
-  imports: [CommonModule, PlantManagementRoutingModule],
+  imports: [CommonModule, PlantManagementRoutingModule, SharedModule],
 })
 export class PlantManagementModule {}

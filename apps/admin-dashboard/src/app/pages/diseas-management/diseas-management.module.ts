@@ -7,6 +7,7 @@ import { EditDiseasComponent } from './edit-diseas/edit-diseas.component';
 import { AddDiseasComponent } from './add-diseas/add-diseas.component';
 import { AllDiseasesComponent } from './all-diseases/all-diseases.component';
 import { DetailDiseasComponent } from './detail-diseas/detail-diseas.component';
+import { SharedModule } from '../../shared/shared.module';
 
 @NgModule({
   declarations: [
@@ -16,6 +17,6 @@ import { DetailDiseasComponent } from './detail-diseas/detail-diseas.component';
     AllDiseasesComponent,
     DetailDiseasComponent,
   ],
-  imports: [CommonModule, DiseasManagementRoutingModule],
+  imports: [CommonModule, DiseasManagementRoutingModule, SharedModule],
 })
 export class DiseasManagementModule {}

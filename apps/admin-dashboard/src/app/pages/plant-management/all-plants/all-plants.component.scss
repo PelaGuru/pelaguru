@@ -1,0 +1,6 @@
+.header-container {
+  display: grid;
+  grid-template-columns: auto max-content max-content;
+  gap: 0 10px;
+  padding-bottom: 10px;
+}
