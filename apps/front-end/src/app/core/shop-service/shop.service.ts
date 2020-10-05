@@ -45,6 +45,12 @@ export class ShopService {
     
     return data;
   }
+  async getShopItem(shopId:string,itemId : string):Promise<ShopCatalogueItem>{
+    const colRef = await this.fireStore.doc(`Shops/${shopId}`).collection("items").doc(itemId);
+    const data = await colRef.get().toPromise();
+    console.log('Doc', data.data());
+    return data.data() as ShopCatalogueItem;
+  }
   // async getShopItems(docId: string) {
   //   console.log('DocId', docId);
 

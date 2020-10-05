@@ -8,7 +8,7 @@
       <div class="cover-image"></div>
       <div class="header-container">
         <div class="header-container-inner">
-          <div class="title">{{ shopitem.name }}</div>
+          <div class="title">{{ (shopCatalogueItems | async).name }}</div>
           <!-- <div class="desc">{{ shopitem.price }}</div> -->
         </div>
       </div>
@@ -24,7 +24,7 @@
       <div placement="center">
         <div class="row">
           <div class="col-5">
-            <img class="image-container" src="{{ shopitem.image }}" />
+            <img class="image-container" src="{{ (shopCatalogueItems | async).image }}" />
           </div>
           <div class="col-7">
             <div class="description-container">
@@ -32,26 +32,25 @@
                 <mat-list>
                   <div class="header-text">Description</div>
                   <br />
-                  <mat-list-item> {{ shopitem.description }} </mat-list-item>
+                  <mat-list-item> {{ (shopCatalogueItems | async).description }} </mat-list-item>
                   <br /><br />
                   <div class="header-text">Ingredients</div>
                   <br />
                   <mat-list-item>
-                    Lorem ipsum dolor, sit amet consectetur adipisicing elit.
-                    Repellendus optio odio natus. Sit dolore eaque non veniam
-                    provident corrupti dolor in minus quae libero assumenda
-                    reprehenderit pariatur, voluptates voluptate repellendus! </mat-list-item
+                    {{(shopCatalogueItems | async).ingredients}} </mat-list-item
                   ><br /><br />
                   <div class="header-text">Note</div>
                   <br />
                   <mat-list-item>
-                    Lorem ipsum dolor, sit amet consectetur adipisicing elit.
-                    Repellendus optio odio natus. Sit dolore eaque non veniam
-                    provident corrupti dolor in minus quae libero assumenda
-                    reprehenderit pariatur, voluptates voluptate repellendus!
+                    {{(shopCatalogueItems | async).note}}
                   </mat-list-item>
                   <br /><br /><br />
-                  <div class="price">{{ shopitem.price }} /=</div>
+                  <div class="header-text">Price</div>
+                  <br />
+                  <mat-list-item>
+                    {{(shopCatalogueItems | async).price}}
+                  </mat-list-item>
+                  <!-- <div class="price">{{ shopitem.price }} /=</div> -->
                 </mat-list>
               </div>
             </div>

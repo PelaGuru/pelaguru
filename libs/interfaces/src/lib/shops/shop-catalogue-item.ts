@@ -7,4 +7,6 @@ export interface ShopCatalogueItem {
   telephone: string;
   address: string;
   description: string;
+  ingredients:string;
+  note:string;
 }
