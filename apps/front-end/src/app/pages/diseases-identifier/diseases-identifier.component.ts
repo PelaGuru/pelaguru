@@ -1,6 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { HttpClient } from '@angular/common/http';
+import { AngularFirestore } from '@angular/fire/firestore';
+import { AngularFireStorage } from '@angular/fire/storage';
 @Component({
   selector: 'pelaguru-diseases-identifier',
   templateUrl: './diseases-identifier.component.html',
@@ -12,7 +14,12 @@ export class DiseasesIdentifierComponent implements OnInit {
   secondFormGroup: FormGroup;
   title = 'dropzone';
   files: File[] = [];
-  constructor(private _formBuilder: FormBuilder, private http: HttpClient) {}
+  constructor(
+    private _formBuilder: FormBuilder,
+    private http: HttpClient,
+    private fireStore: AngularFirestore,
+    private fireStorage: AngularFireStorage
+  ) {}
 
   ngOnInit(): void {
     this.firstFormGroup = this._formBuilder.group({
