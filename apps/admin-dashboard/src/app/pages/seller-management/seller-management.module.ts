@@ -5,6 +5,7 @@ import { SellerManagementRoutingModule } from './seller-management-routing.modul
 import { SellerManagementComponent } from './seller-management.component';
 import { AllSellersComponent } from './all-sellers/all-sellers.component';
 import { SellerRequestsComponent } from './seller-requests/seller-requests.component';
+import { SharedModule } from '../../shared/shared.module';
 
 @NgModule({
   declarations: [
@@ -12,6 +13,6 @@ import { SellerRequestsComponent } from './seller-requests/seller-requests.compo
     AllSellersComponent,
     SellerRequestsComponent,
   ],
-  imports: [CommonModule, SellerManagementRoutingModule],
+  imports: [CommonModule, SellerManagementRoutingModule, SharedModule],
 })
 export class SellerManagementModule {}

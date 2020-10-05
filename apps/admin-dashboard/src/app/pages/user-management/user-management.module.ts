@@ -6,6 +6,8 @@ import { AddUserComponent } from './add-user/add-user.component';
 import { AllUsersComponent } from './all-users/all-users.component';
 import { UserManagementComponent } from './user-management.component';
 import { DetailsUserComponent } from './details-user/details-user.component';
+import { SharedModule } from '../../shared/shared.module';
+import { CoreModule } from '../../core/core.module';
 
 @NgModule({
   declarations: [
@@ -14,6 +16,11 @@ import { DetailsUserComponent } from './details-user/details-user.component';
     UserManagementComponent,
     DetailsUserComponent,
   ],
-  imports: [CommonModule, UserManagementRoutingModule],
+  imports: [
+    CommonModule,
+    UserManagementRoutingModule,
+    SharedModule,
+    CoreModule,
+  ],
 })
 export class UserManagementModule {}

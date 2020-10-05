@@ -7,6 +7,7 @@ import { DetailChemicalComponent } from './detail-chemical/detail-chemical.compo
 import { AllChemicalsComponent } from './all-chemicals/all-chemicals.component';
 import { AddChemicalComponent } from './add-chemical/add-chemical.component';
 import { EditChemicalComponent } from './edit-chemical/edit-chemical.component';
+import { SharedModule } from '../../shared/shared.module';
 
 @NgModule({
   declarations: [
@@ -16,6 +17,6 @@ import { EditChemicalComponent } from './edit-chemical/edit-chemical.component';
     AddChemicalComponent,
     EditChemicalComponent,
   ],
-  imports: [CommonModule, ChemicalManagementRoutingModule],
+  imports: [CommonModule, ChemicalManagementRoutingModule, SharedModule],
 })
 export class ChemicalManagementModule {}

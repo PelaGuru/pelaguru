@@ -1,1 +1,56 @@
-<p>all-diseases works!</p>
+<nb-card [nbSpinner]="loading" nbSpinnerStatus="primary">
+  <nb-card-header>
+    <div class="interface-heading">
+      All Diseases
+    </div>
+  </nb-card-header>
+  <nb-card-body>
+    <form [formGroup]="formControl">
+      <div class="header-container">
+        <div></div>
+        <input nbInput placeholder="Search" formControlName="search" />
+      </div>
+    </form>
+    <table mat-table [dataSource]="disease.asObservable() | async">
+      <ng-container matColumnDef="name">
+        <th mat-header-cell *matHeaderCellDef>Name</th>
+        <td mat-cell *matCellDef="let element">
+          <nb-user
+            size="medium"
+            [name]="element.diseaseName"
+            [picture]="element.image"
+          >
+          </nb-user>
+        </td>
+      </ng-container>
+
+      <ng-container matColumnDef="action">
+        <th mat-header-cell *matHeaderCellDef></th>
+        <td mat-cell *matCellDef="let element">
+          <a [routerLink]="'/diseases/' + element.id">
+            <button nbButton hero status="info" size="small">
+              <nb-icon icon="external-link-outline"></nb-icon>
+            </button> </a
+          >&nbsp;
+          <a [routerLink]="'/diseases/' + element.id + '/edit'">
+            <button nbButton hero status="warning" size="small">
+              <nb-icon icon="edit-2-outline"></nb-icon>
+            </button> </a
+          >&nbsp;
+          <button
+            nbButton
+            hero
+            status="danger"
+            size="small"
+            (click)="getAllDiseases(element.id)"
+          >
+            <nb-icon icon="trash-2-outline"></nb-icon>
+          </button>
+        </td>
+      </ng-container>
+
+      <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+      <tr mat-row *matRowDef="let row; columns: displayedColumns"></tr>
+    </table>
+  </nb-card-body>
+</nb-card>
