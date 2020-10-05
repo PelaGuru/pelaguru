@@ -11,8 +11,8 @@
             </a>
           </div>
           <img
-            *ngIf="(userData | async) && (userData | async).profilePictureUrl"
-            [src]="(userData | async).profilePictureUrl"
+            *ngIf="(userData | async) && (userData | async)?.profilePictureUrl"
+            [src]="(userData | async)?.profilePictureUrl"
             alt=""
           />
           <img
@@ -25,11 +25,7 @@
             <p>{{ (userData | async)?.email }}</p>
             <br />
             <p>
-              <!-- {{ (userData | async)?.description }} -->
-              Lorem ipsum dolor sit amet consectetur adipisicing elit. Quis
-              quaerat sint, sapiente doloremque saepe omnis maxime quisquam
-              magni deleniti veniam officia, molestiae tempora excepturi
-              blanditiis veritatis. Pariatur ad quas hic!
+              {{ (userData | async)?.description }}
             </p>
           </mat-card>
         </mat-card>
@@ -48,28 +44,36 @@
           "
         >
           <div style="background-color: white;">
-            <form class="container" [formGroup]="formControl">
+            <form
+              class="container"
+              [formGroup]="formControl"
+              (submit)="updateUserProfile()"
+            >
               <h1 style="color: #84a03c;">My Profile</h1>
               <hr />
               <br /><br />
-              <div class="form-group">
+              <div class="form-wrapper">
                 <mat-form-field class="example-full-width">
                   <mat-label>First Name</mat-label>
                   <input
                     matInput
                     formControlName="firstName"
+                    value="{{ (userData | async)?.firstName }}"
                     [errorStateMatcher]="matcher"
                   />
                   <mat-icon matSuffix>account_box</mat-icon>
                   <mat-hint>Enter your First name.</mat-hint>
                   <mat-error>Enter your First name</mat-error>
                 </mat-form-field>
-
+              </div>
+              <br />
+              <div class="form-wrapper">
                 <mat-form-field class="example-full-width">
                   <mat-label>Last Name</mat-label>
                   <input
                     matInput
                     formControlName="lastName"
+                    value="{{ (userData | async)?.lastName }}"
                     [errorStateMatcher]="matcher"
                   />
                   <mat-icon matSuffix>account_box</mat-icon>
@@ -84,6 +88,7 @@
                   <input
                     matInput
                     formControlName="address"
+                    value="{{ (userData | async)?.address }}"
                     [errorStateMatcher]="matcher"
                   />
                   <mat-icon matSuffix>location_on</mat-icon>
@@ -98,7 +103,9 @@
                   <input
                     matInput
                     formControlName="email"
+                    value="{{ (userData | async)?.email }}"
                     [errorStateMatcher]="matcher"
+                    readonly
                   />
                   <mat-icon matSuffix>email</mat-icon>
                   <mat-hint>Enter your Email.</mat-hint>
@@ -112,6 +119,7 @@
                   <input
                     matInput
                     formControlName="telephone"
+                    value="{{ (userData | async)?.telephone }}"
                     [errorStateMatcher]="matcher"
                   />
                   <mat-icon matSuffix>phone</mat-icon>
@@ -122,20 +130,11 @@
               <br />
               <div class="form-wrapper">
                 <mat-form-field class="example-full-width">
-                  <mat-label>Last Name</mat-label>
-                  <input matInput />
-                  <mat-icon matSuffix>folder</mat-icon>
-                  <mat-hint>Insert Your Profile Pic.</mat-hint>
-                  <mat-error>Insert Your Profile Pic</mat-error>
-                </mat-form-field>
-              </div>
-              <br />
-              <div class="form-wrapper">
-                <mat-form-field class="example-full-width">
                   <mat-label>Description</mat-label>
                   <textarea
                     matInput
                     formControlName="description"
+                    value="{{ (userData | async)?.description }}"
                     [errorStateMatcher]="matcher"
                     placeholder="Ex. It makes me feel..."
                   ></textarea>
@@ -146,6 +145,7 @@
               </div>
               <br /><br />
               <button
+                type="submit"
                 mat-button
                 class="mat-elevation-z5"
                 name="button"
