@@ -3,6 +3,8 @@ import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { HttpClient } from '@angular/common/http';
 import { AngularFirestore } from '@angular/fire/firestore';
 import { AngularFireStorage } from '@angular/fire/storage';
+import { forkJoin } from 'rxjs';
+import { map, mergeMap } from 'rxjs/operators';
 @Component({
   selector: 'pelaguru-diseases-identifier',
   templateUrl: './diseases-identifier.component.html',
@@ -13,7 +15,7 @@ export class DiseasesIdentifierComponent implements OnInit {
   firstFormGroup: FormGroup;
   secondFormGroup: FormGroup;
   title = 'dropzone';
-  files: File[] = [];
+  file: File;
   constructor(
     private _formBuilder: FormBuilder,
     private http: HttpClient,
@@ -32,7 +34,7 @@ export class DiseasesIdentifierComponent implements OnInit {
 
   onSelect(event) {
     console.log(event);
-    this.files.push(...event.addedFiles);
+    this.file = event.addedFiles;
 
     // const formData = new FormData();
 
@@ -47,8 +49,23 @@ export class DiseasesIdentifierComponent implements OnInit {
     // })
   }
 
-  onRemove(event) {
-    console.log(event);
-    this.files.splice(this.files.indexOf(event), 1);
+  async onUploadClick() {
+    const filePath = `path`;
+    const fileRef = this.fireStorage.ref(filePath);
+    const task = this.fireStorage.upload(filePath, this.file);
+    // tslint:disable-next-line: deprecation
+    const url = await forkJoin(task.snapshotChanges())
+      .pipe(
+        mergeMap(() => fileRef.getDownloadURL()),
+        // tslint:disable-next-line: no-shadowed-variable
+        map((url) => url as string)
+      )
+      .toPromise();
+  }
+
+  onRemove() {
+    // console.log(event);
+    // this.files.splice(this.files.indexOf(event), 1);
+    this.file = null;
   }
 }

@@ -42,12 +42,6 @@
   "engines": {
     "node": "10"
   },
-  "husky": {
-    "hooks": {
-      "pre-commit": "npm run format:check",
-      "pre-push": "npm run format:check"
-    }
-  },
   "dependencies": {
     "@angular/animations": "^10.0.0",
     "@angular/cdk": "^10.2.3",
