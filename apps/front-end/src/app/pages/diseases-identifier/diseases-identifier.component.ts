@@ -15,7 +15,7 @@ export class DiseasesIdentifierComponent implements OnInit {
   firstFormGroup: FormGroup;
   secondFormGroup: FormGroup;
   title = 'dropzone';
-  file: File;
+  files: File[] = [];
   constructor(
     private _formBuilder: FormBuilder,
     private http: HttpClient,
@@ -34,7 +34,7 @@ export class DiseasesIdentifierComponent implements OnInit {
 
   onSelect(event) {
     console.log(event);
-    this.file = event.addedFiles;
+    this.files.push(...event.addedFiles);
 
     // const formData = new FormData();
 
@@ -50,9 +50,11 @@ export class DiseasesIdentifierComponent implements OnInit {
   }
 
   async onUploadClick() {
-    const filePath = `path`;
+    const filePath = `uploadImages/${new Date().getTime()}_${
+      this.files[0].name
+    }`;
     const fileRef = this.fireStorage.ref(filePath);
-    const task = this.fireStorage.upload(filePath, this.file);
+    const task = this.fireStorage.upload(filePath, this.files[0]);
     // tslint:disable-next-line: deprecation
     const url = await forkJoin(task.snapshotChanges())
       .pipe(
@@ -61,11 +63,11 @@ export class DiseasesIdentifierComponent implements OnInit {
         map((url) => url as string)
       )
       .toPromise();
+    console.log(url);
   }
 
-  onRemove() {
-    // console.log(event);
-    // this.files.splice(this.files.indexOf(event), 1);
-    this.file = null;
+  onRemove(event) {
+    console.log(event);
+    this.files.splice(this.files.indexOf(event), 1);
   }
 }

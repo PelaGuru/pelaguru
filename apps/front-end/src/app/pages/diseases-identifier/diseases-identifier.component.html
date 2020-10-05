@@ -42,8 +42,8 @@
                           <h2>Drag and drop your images</h2>
                         </div>
                       </ngx-dropzone-label>
-                      <ngx-dropzone-image-preview ngProjectAs="ngx-dropzone-preview" [file]="file" [removable]="true"
-                        (removed)="onRemove()">
+                      <ngx-dropzone-image-preview ngProjectAs="ngx-dropzone-preview" *ngFor="let f of files" [file]="f"
+                        [removable]="true" (removed)="onRemove(f)">
                         <!-- <ngx-dropzone-label>{{ f.name }} ({{ f.type }})</ngx-dropzone-label> -->
                       </ngx-dropzone-image-preview>
                     </div>
@@ -67,7 +67,7 @@
             <div class="row">
               <div class="col-3">
                 <mat-card>
-                  <ngx-dropzone-image-preview ngProjectAs="ngx-dropzone-preview" [file]="file">
+                  <ngx-dropzone-image-preview ngProjectAs="ngx-dropzone-preview" *ngFor="let f of files" [file]="f">
                     <!-- <ngx-dropzone-label>{{ f.name }} ({{ f.type }})</ngx-dropzone-label> -->
                   </ngx-dropzone-image-preview>
                 </mat-card>
@@ -105,7 +105,7 @@
             <br />
             <h1>Your Image</h1>
             <mat-card>
-              <ngx-dropzone-image-preview ngProjectAs="ngx-dropzone-preview" [file]="file">
+              <ngx-dropzone-image-preview ngProjectAs="ngx-dropzone-preview" *ngFor="let f of files" [file]="f">
                 <!-- <ngx-dropzone-label>{{ f.name }} ({{ f.type }})</ngx-dropzone-label> -->
               </ngx-dropzone-image-preview>
             </mat-card>

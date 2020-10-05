@@ -72,6 +72,7 @@
     "ngx-dropzone": "^2.2.2",
     "nx": "^10.3.0",
     "rxjs": "~6.5.5",
+    "ts-md5": "^1.2.7",
     "zone.js": "^0.10.2"
   },
   "devDependencies": {
