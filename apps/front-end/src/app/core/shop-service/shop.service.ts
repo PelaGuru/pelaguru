@@ -36,4 +36,21 @@ export class ShopService {
     });
     return data;
   }
+  async getShopItems(docId : string): Promise<ShopCatalogueItem[]> {
+    const colRef = await this.fireStore.doc(`Shops/${docId}`).collection("items").get().toPromise();
+    const data = colRef.docs.map((d) => {
+      return d.data() as ShopCatalogueItem;
+    });
+    console.log("Data",data);
+    
+    return data;
+  }
+  // async getShopItems(docId: string) {
+  //   console.log('DocId', docId);
+
+  //   const ref = this.fireStore.doc(`Shops/${docId}`);
+  //   const data = await ref.get().toPromise();
+  //   console.log('Doc', data.data());
+  //   return data.data() as ShopCatalogueItem;
+  // }
 }
