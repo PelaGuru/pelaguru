@@ -2,27 +2,30 @@ import { Component, OnInit } from '@angular/core';
 import { FormControl, FormGroup } from '@angular/forms';
 import { Observable, BehaviorSubject } from 'rxjs';
 import { startWith, map } from 'rxjs/operators';
-import { ViewShopItem } from '@pelaguru/interfaces';
+import { ShopCatalogueItem, ViewShopItem } from '@pelaguru/interfaces';
+import {ShopService} from '../../../core/shop-service/shop.service';
+import { Router } from '@angular/router';
 @Component({
   selector: 'pelaguru-view-shop',
   templateUrl: './view-shop.component.html',
   styleUrls: ['./view-shop.component.scss'],
 })
 export class ViewShopComponent implements OnInit {
-  private viewshopItemsDataSource: BehaviorSubject<
-    Array<ViewShopItem>
-  > = new BehaviorSubject<Array<ViewShopItem>>([]);
+  private ShopItemsDataSource: BehaviorSubject<
+    Array<ShopCatalogueItem>
+  > = new BehaviorSubject<Array<ShopCatalogueItem>>([]);
   myControl = new FormControl();
   options: string[] = ['One', 'Two', 'Three'];
   filteredOptions: Observable<string[]>;
 
   searchController: FormGroup;
-  constructor() {
+  constructor(private shopService : ShopService,private router : Router) {
     // shop = SHOP;
     this.searchController = new FormGroup({
       search: new FormControl(),
     });
-    this.addTestData();
+    // this.addTestData();
+    this.getShopItems();
   }
 
   // constructor() {}
@@ -47,48 +50,56 @@ export class ViewShopComponent implements OnInit {
       (option) => option.toLowerCase().indexOf(filterValue) === 0
     );
   }
-  addTestData(): void {
-    this.viewshopItemsDataSource.next([
-      {
-        id: '876543',
-        name: 'Sil-One',
-        price: 'Rs. 250.00',
-        image: '../../../assets/img/temp/4.png',
-      },
-      {
-        id: '876543',
-        name: 'Methyal Eugenol',
-        price: 'Rs. 150.00',
-        image: '../../../assets/img/temp/2.jpg',
-      },
-      {
-        id: '876543',
-        name: 'Magic Hydrogel',
-        price: 'Rs. 550.00',
-        image: '../../../assets/img/temp/3.jpg',
-      },
-      {
-        id: '876543',
-        name: 'Methyal Eugenol',
-        price: 'Rs. 350.00',
-        image: '../../../assets/img/temp/2.jpg',
-      },
-      {
-        id: '876543',
-        name: 'Sil-One',
-        price: 'Rs. 150.00',
-        image: '../../../assets/img/temp/4.png',
-      },
-      {
-        id: '876543',
-        name: 'Magic Hydrogel',
-        price: 'Rs. 150.00',
-        image: '../../../assets/img/temp/3.jpg',
-      },
-    ]);
+
+  async getShopItems() {
+    console.log("itemId",this.router.url.split('/')[2]);
+    const items = await this.shopService.getShopItems(this.router.url.split('/')[2]);
+    console.log('items', items);
+    this.ShopItemsDataSource.next(items);
   }
 
-  get viewshopItems(): Observable<Array<ViewShopItem>> {
-    return this.viewshopItemsDataSource.asObservable();
+  // addTestData(): void {
+  //   this.viewshopItemsDataSource.next([
+  //     {
+  //       id: '876543',
+  //       name: 'Sil-One',
+  //       price: 'Rs. 250.00',
+  //       image: '../../../assets/img/temp/4.png',
+  //     },
+  //     {
+  //       id: '876543',
+  //       name: 'Methyal Eugenol',
+  //       price: 'Rs. 150.00',
+  //       image: '../../../assets/img/temp/2.jpg',
+  //     },
+  //     {
+  //       id: '876543',
+  //       name: 'Magic Hydrogel',
+  //       price: 'Rs. 550.00',
+  //       image: '../../../assets/img/temp/3.jpg',
+  //     },
+  //     {
+  //       id: '876543',
+  //       name: 'Methyal Eugenol',
+  //       price: 'Rs. 350.00',
+  //       image: '../../../assets/img/temp/2.jpg',
+  //     },
+  //     {
+  //       id: '876543',
+  //       name: 'Sil-One',
+  //       price: 'Rs. 150.00',
+  //       image: '../../../assets/img/temp/4.png',
+  //     },
+  //     {
+  //       id: '876543',
+  //       name: 'Magic Hydrogel',
+  //       price: 'Rs. 150.00',
+  //       image: '../../../assets/img/temp/3.jpg',
+  //     },
+  //   ]);
+  // }
+
+  get viewshopItems(): Observable<Array<ShopCatalogueItem>> {
+    return this.ShopItemsDataSource.asObservable();
   }
 }
