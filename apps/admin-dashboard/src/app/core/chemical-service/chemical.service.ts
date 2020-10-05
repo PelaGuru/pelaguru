@@ -38,6 +38,36 @@ export class ChemicalService {
     return await ref.set(data);
   }
 
+  async editChemical(
+    id: string,
+    name: string,
+    description: string,
+    imageData: Image[]
+  ) {
+    const ref = this.fireStore.doc(`Chemicals/${id}`);
+    const data: Partial<Chemical> = {
+      id,
+      description: description,
+      name: name,
+      images: imageData,
+    };
+    return await ref.set(data);
+  }
+
+  async editChemicalWithoutImageUpdate(
+    id: string,
+    name: string,
+    description: string
+  ) {
+    const ref = this.fireStore.doc(`Chemicals/${id}`);
+    const data: Partial<Chemical> = {
+      id,
+      description: description,
+      name: name,
+    };
+    return await ref.update(data);
+  }
+
   geneateId() {
     const chars =
       'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789';
