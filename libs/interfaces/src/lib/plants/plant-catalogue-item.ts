@@ -1,7 +1,8 @@
 export interface PlantCatalogueItem {
   image: string;
-  username: string;
   id: string;
-  name: string;
+  plantName: string;
   sciName: string;
+  commonDiseases: string[];
+  uses: string[];
 }
