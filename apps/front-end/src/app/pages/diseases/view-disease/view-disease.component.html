@@ -8,8 +8,8 @@
       <div class="cover-image"></div>
       <div class="header-container">
         <div class="header-container-inner">
-          <div class="title">{{ disease.diseaseName }}</div>
-          <div class="desc">{{ disease.desc }}</div>
+          <div class="title">{{ (diseaseDetails | async).diseaseName }}</div>
+          <div class="desc">{{ (diseaseDetails | async).commonSymptoms }}</div>
         </div>
       </div>
       <div class="back-button">
@@ -23,34 +23,74 @@
     <mat-card class="basic-details-card">
       <div class="title-text">Basic details</div>
       <div placement="center">
-        <img class="image-container" src="{{ disease.image }}" />
+        <img
+          class="image-container"
+          src="{{ (diseaseDetails | async).image }}"
+        />
         <div class="container">
-          <mat-list>
-            <mat-divider></mat-divider>
-            <mat-list-item>
-              Disease Name : {{ disease.diseaseName }}
-            </mat-list-item>
-            <mat-divider></mat-divider>
-            <mat-list-item>
-              Common Symptoms : {{ disease.symptoms }}
-            </mat-list-item>
-            <mat-divider></mat-divider>
-            <mat-list-item>
-              Causes : {{ disease.causativeAgent }}</mat-list-item
-            >
-            <mat-divider></mat-divider>
-            <mat-list-item
-              >Additional Features :
-              {{ disease.additionalFeatures }}</mat-list-item
-            >
-            <mat-divider></mat-divider>
-            <mat-list-item
-              >Common Plants that are affected by the disease:
-              {{ disease.commonPlants }}</mat-list-item
-            >
-            <mat-divider></mat-divider>
-            <mat-list-item>Solutions : {{ disease.chemicals }}</mat-list-item>
-          </mat-list>
+          <br />
+          <br />
+          <div class="cat-item">
+            <div class="heading">Disease Name</div>
+            <div class="desc">
+              {{ (diseaseDetails | async).diseaseName }}
+            </div>
+          </div>
+          <mat-divider></mat-divider>
+          <div class="cat-item">
+            <div class="heading">Common Symptoms</div>
+            <div class="desc">
+              <div style="display: grid;">
+                <span *ngFor="let i of (diseaseDetails | async).commonSymptoms">
+                  {{ i }}
+                </span>
+              </div>
+            </div>
+          </div>
+
+          <mat-divider></mat-divider>
+          <div class="cat-item">
+            <div class="heading">Causes</div>
+            <div class="desc">
+              {{ (diseaseDetails | async).causes }}
+            </div>
+          </div>
+          <mat-divider></mat-divider>
+
+          <div class="cat-item">
+            <div class="heading">Additional Features</div>
+            <div class="desc">
+              <div style="display: grid;">
+                <span
+                  *ngFor="let i of (diseaseDetails | async).additionalFeatures"
+                >
+                  {{ i }}
+                </span>
+              </div>
+            </div>
+          </div>
+          <mat-divider></mat-divider>
+
+          <div class="cat-item">
+            <div class="heading">
+              Common Plants that are affected by the disease
+            </div>
+            <div class="desc">
+              {{ (diseaseDetails | async).commonPlants }}
+            </div>
+          </div>
+          <mat-divider></mat-divider>
+
+          <div class="cat-item">
+            <div class="heading">Solutions</div>
+            <div class="desc">
+              <div style="display: grid;">
+                <span *ngFor="let i of (diseaseDetails | async).solutions">
+                  {{ i }}
+                </span>
+              </div>
+            </div>
+          </div>
         </div>
       </div>
     </mat-card>

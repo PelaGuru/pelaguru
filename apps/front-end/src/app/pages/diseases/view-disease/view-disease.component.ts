@@ -1,9 +1,14 @@
 import { Component, OnInit } from '@angular/core';
 import { DISEASE } from './diseases';
 import { Observable, BehaviorSubject } from 'rxjs';
-import { ChemicalSuggestionItem } from '@pelaguru/interfaces';
+import {
+  ChemicalSuggestionItem,
+  DiseaseCatalogueItem,
+} from '@pelaguru/interfaces';
 import { FormGroup, FormControl } from '@angular/forms';
 import { map, startWith } from 'rxjs/operators';
+import { DiseaseService } from '../../../core/disease-service/disease.service';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'pelaguru-view-disease',
@@ -14,20 +19,27 @@ export class ViewDiseaseComponent implements OnInit {
   private chemicalItemsDataSource: BehaviorSubject<
     Array<ChemicalSuggestionItem>
   > = new BehaviorSubject<Array<ChemicalSuggestionItem>>([]);
+  private diseaseDetailDataSource: BehaviorSubject<
+    DiseaseCatalogueItem
+  > = new BehaviorSubject<DiseaseCatalogueItem>(null);
   myControl = new FormControl();
   options: string[] = ['One', 'Two', 'Three'];
   filteredOptions: Observable<string[]>;
 
   searchController: FormGroup;
-  constructor() {}
-  disease = DISEASE;
+  constructor(private diseaseService: DiseaseService, private router: Router) {}
+  // disease = DISEASE;
 
   ngOnInit(): void {
     this.getDisease();
-    this.addTestData();
+    //this.addTestData();
+    // console.log(this.router.url.split('/'));
   }
-  getDisease(): void {
-    //this.plantService.getPlant().subscribe(plant => this.plant = plant);
+  async getDisease() {
+    const disease = await this.diseaseService.getDisease(
+      this.router.url.split('/')[2]
+    );
+    this.diseaseDetailDataSource.next(disease);
   }
   addTestData(): void {
     this.chemicalItemsDataSource.next([
@@ -54,7 +66,9 @@ export class ViewDiseaseComponent implements OnInit {
       },
     ]);
   }
-
+  get diseaseDetails(): Observable<DiseaseCatalogueItem> {
+    return this.diseaseDetailDataSource.asObservable();
+  }
   get chemicalSuggestionItems(): Observable<Array<ChemicalSuggestionItem>> {
     return this.chemicalItemsDataSource.asObservable();
   }
