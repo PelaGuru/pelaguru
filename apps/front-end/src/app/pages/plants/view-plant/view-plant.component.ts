@@ -32,11 +32,19 @@ export class ViewPlantComponent implements OnInit {
   ngOnInit(): void {
     this.getPlant();
   }
+  
   async getPlant() {
-    console.log('Doc id', this.router.url.split('/')[2]);
+    // console.log('Doc id', this.router.url.split('/')[2]);
     const plant = await this.plantService.getPlant(
       this.router.url.split('/')[2]
     );
+    console.log("plant",plant);
+    
     this.PlantDetailDataSource.next(plant);
   }
+
+  get plantDetails(): Observable<PlantCatalogueItem> {
+    return this.PlantDetailDataSource.asObservable();
+  }
 }
+
