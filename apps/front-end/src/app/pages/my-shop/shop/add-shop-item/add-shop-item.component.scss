@@ -1,0 +1,33 @@
+.mat-stepper-vertical {
+  margin-top: 8px;
+}
+
+.mat-form-field {
+  margin-top: 16px;
+}
+
+.back-image {
+  // background-image: url('../../../assets/img/background.png');
+  // position: absolute;
+  width: 100%;
+  background-repeat: no-repeat;
+  background-position: right bottom;
+  background-size: cover;
+  background-attachment: fixed;
+}
+
+.view {
+  margin-top: 10px;
+  margin-bottom: 50px;
+  opacity: 0.9;
+}
+
+.image-container {
+  margin: -16px -16px 0 -16px;
+  min-height: 200px;
+  background-position: center;
+  background-size: cover;
+  background-repeat: no-repeat;
+  border-top-left-radius: 4px;
+  border-top-right-radius: 4px;
+}
