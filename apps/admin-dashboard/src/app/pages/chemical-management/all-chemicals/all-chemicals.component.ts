@@ -4,6 +4,7 @@ import { Chemical } from '@pelaguru/interfaces';
 import { BehaviorSubject } from 'rxjs';
 import { ChemicalService } from '../../../core/chemical-service/chemical.service';
 import { NotificationService } from '../../../core/notification-service/notification.service';
+import Swal from 'sweetalert2';
 
 @Component({
   selector: 'pelaguru-all-chemicals',
@@ -42,25 +43,40 @@ export class AllChemicalsComponent implements OnInit {
   }
 
   deleteChemical(id: string) {
-    this.loading = true;
-    this.chemicalService
-      .deleteChamical(id)
-      .then(() => {
-        this.loading = false;
-        this.getAllChemicals();
-        this.notificationService.create(
-          'Chemical successfully deleted.',
-          'success',
-          'Success'
-        );
-      })
-      .catch((error) => {
-        this.loading = false;
-        this.notificationService.create(
-          'Something went wrong. Try again later.',
-          'danger',
-          'Error'
-        );
-      });
+    Swal.fire({
+      title: 'Are you sure?',
+      text: 'You will not be able to recover this file!',
+      icon: 'warning',
+      showCancelButton: true,
+      confirmButtonText: 'Yes!',
+      cancelButtonText: 'No',
+    }).then((result) => {
+      if (result.value) {
+        this.loading = true;
+        this.chemicalService
+          .deleteChamical(id)
+          .then(() => {
+            this.loading = false;
+            this.getAllChemicals();
+            this.notificationService.create(
+              'Chemical successfully deleted.',
+              'success',
+              'Success'
+            );
+          })
+          .catch((error) => {
+            this.loading = false;
+            this.notificationService.create(
+              'Something went wrong. Try again later.',
+              'danger',
+              'Error'
+            );
+          });
+        // For more information about handling dismissals please visit
+        // https://sweetalert2.github.io/#handling-dismissals
+      } else if (result.dismiss === Swal.DismissReason.cancel) {
+        Swal.fire('Cancelled', 'Your imaginary file is safe :)', 'error');
+      }
+    });
   }
 }
