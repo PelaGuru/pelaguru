@@ -21,13 +21,10 @@ export class AddPlantComponent implements OnInit {
     private PlantService: PlantService
   ) {
     this.formControl = new FormGroup({
-      description: new FormControl('', Validators.required),
       name: new FormControl('', Validators.required),
+      description: new FormControl('', Validators.required),
     });
     this.catControl = new FormGroup({
-      additionalFeature: new FormControl('', Validators.required),
-      commonPlant: new FormControl('', Validators.required),
-      commonSymptoms: new FormControl('', Validators.required),
       uses: new FormControl('', Validators.required),
     });
   }
@@ -83,7 +80,7 @@ export class AddPlantComponent implements OnInit {
         );
       } else {
         console.log(this.formControl.get('name').value);
-        console.log(this.formControl.get('description').value);
+        console.log(this.formControl.get('scientificName').value);
         console.log(this.uses);
         console.log(this.images[0]);
 
@@ -94,7 +91,7 @@ export class AddPlantComponent implements OnInit {
             this.PlantService.addPlant(
               id,
               this.formControl.get('name').value,
-              this.formControl.get('description').value,
+              this.formControl.get('scientificName').value,
               this.commonDiseases,
               this.uses,
               response

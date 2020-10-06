@@ -1,0 +1,19 @@
+.cat {
+  .heading {
+    font-weight: bold;
+  }
+  .desc {
+    .desc-item {
+      padding: 0.5em;
+      display: grid;
+      grid-template-columns: auto max-content;
+      .button-container {
+        display: grid;
+        align-content: center;
+      }
+    }
+  }
+}
+.heading {
+  font-weight: bold;
+}

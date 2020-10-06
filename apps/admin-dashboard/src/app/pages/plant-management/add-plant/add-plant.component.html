@@ -9,6 +9,7 @@
       <form [formGroup]="formControl" (submit)="addPlant()">
         <div class="row">
           <div class="col-md-12">
+            <div class="heading">Name</div>
             <input nbInput fullWidth formControlName="name" type="text" id="input-name" placeholder="Name"
               fieldSize="medium" [status]="
                 formControl.get('name').dirty
@@ -33,8 +34,9 @@
           </div>
           <div class="col-md-12">
             <br />
-            <textarea nbInput fullWidth formControlName="description" type="text" id="input-description"
-              placeholder="Scientific Name" fieldSize="medium" rows="5" [status]="
+            <div class="heading">Scientific Name</div>
+            <input nbInput fullWidth formControlName="description" type="text" id="input-description"
+              placeholder="Scientific Name" [status]="
                 formControl.get('description').dirty
                   ? formControl.get('description').invalid
                     ? 'danger'
@@ -45,7 +47,7 @@
                 formControl.get('description').touched
                   ? true
                   : null
-              "></textarea>
+              ">
             <ng-container *ngIf="
                 formControl.get('description').invalid &&
                 formControl.get('description').touched

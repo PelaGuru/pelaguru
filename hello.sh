@@ -1,6 +1,6 @@
 #!/usr/bin/env bash
-from="1 Jun, 2020"
-to="17 Aug, 2020"
+from="1 Jan, 2020"
+to="17 Oct, 2020"
 users=$( git shortlog -sn --no-merges --since="$from" --before="$to"  | awk '{printf "%s %s\n", $2, $3}')
 IFS=$'\n'
 echo -e "User name;Files changed;Lines added;Lines deleted;Total lines (delta);Add./Del. ratio (1:n);Commit count"
@@ -9,7 +9,7 @@ for userName in $users
 do
      result=$(git log --author="$userName" --no-merges --shortstat  --since="$from" --before="$to" | grep -E "fil(e|es) changed" | awk '{files+=$1; inserted+=$4; deleted+=$6; delta+=$4-$6; ratio=deleted/inserted} \
 
-END {printf " \t \t  %s \t ;%s \t ;%s \t ;%s \t ;%s", files, inserted, deleted, delta, ratio }' -)
+END {printf " \t \t  %s \t ;%s \t ;%s \t ;%s \t ;%s \t", files, inserted, deleted, delta, ratio }' -)
      countCommits=$(git shortlog -sn --no-merges  --since="$from" --before="$to" --author="$userName" | awk '{print $1}')
      if [[ ${result} != ';;;;' ]]
      then

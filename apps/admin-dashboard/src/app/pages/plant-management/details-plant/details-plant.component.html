@@ -13,12 +13,21 @@
 <nb-card status="success">
     <nb-card-header>Common Diseases</nb-card-header>
     <nb-card-body>
-        {{commonDiseases}}
+        <ul>
+            <li *ngFor="let d of commonDiseases">
+                {{ d.diseasesName }}
+            </li>
+        </ul>
+
     </nb-card-body>
 </nb-card>
 <nb-card status="success">
     <nb-card-header>Uses of the plant</nb-card-header>
     <nb-card-body>
-        {{uses}}
+        <ul>
+            <li *ngFor="let d of uses">
+                {{ d }}
+            </li>
+        </ul>
     </nb-card-body>
 </nb-card>

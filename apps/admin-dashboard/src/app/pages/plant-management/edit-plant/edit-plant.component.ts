@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { NotificationService } from '../../../core/notification-service/notification.service';
-import { DiseasService } from '../../../core/diseas-service/diseas.service';
+import { PlantService } from '../../../core/plant-service/plant.service';
 import { AngularFirestore } from '@angular/fire/firestore';
 import { Router } from '@angular/router';
 
@@ -11,97 +11,53 @@ import { Router } from '@angular/router';
   styleUrls: ['./edit-plant.component.scss'],
 })
 export class EditPlantComponent implements OnInit {
-  loading = false;
   selectImageBool = false;
+  loading = false;
   formControl: FormGroup;
   catControl: FormGroup;
-  additionalFeatures: string[] = [];
-  commonPlants: string[] = [];
+  commonplantes: string[] = [];
+  uses: string[] = [];
   commonSymptoms: string[] = [];
-  solutions: string[] = [];
   images: File[] = [];
   constructor(
     private fireStore: AngularFirestore,
     private notificationService: NotificationService,
-    private diseasService: DiseasService,
+    private plantService: PlantService,
     private router: Router
   ) {
     this.formControl = new FormGroup({
-      diseaseName: new FormControl('', Validators.required),
-      causes: new FormControl('', Validators.required),
+      name: new FormControl('', Validators.required),
+      description: new FormControl('', Validators.required),
     });
     this.catControl = new FormGroup({
-      additionalFeature: new FormControl('', Validators.required),
-      commonPlant: new FormControl('', Validators.required),
-      commonSymptoms: new FormControl('', Validators.required),
-      solutions: new FormControl('', Validators.required),
+      uses: new FormControl('', Validators.required),
     });
   }
 
   async ngOnInit() {
     const cityRef = this.fireStore
-      .collection('Diseases')
+      .collection('Plants')
       .doc(this.router.url.split('/')[2]);
     const doc = await cityRef.get().toPromise();
     if (!doc.exists) {
       console.log('No such document!');
     } else {
-      this.formControl.get('causes').setValue(doc.data().causes),
-        this.formControl.get('diseaseName').setValue(doc.data().diseaseName),
-        (this.additionalFeatures = doc.data()?.additionalFeatures),
-        (this.commonPlants = doc.data()?.commonPlants),
-        (this.commonSymptoms = doc.data()?.commonSymptoms),
-        (this.solutions = doc.data()?.solutions);
-      this.images[0] = doc.data()?.image;
+      this.formControl.get('name').setValue(doc.data().plantName),
+        this.formControl.get('description').setValue(doc.data().scientificName),
+        (this.uses = doc.data()?.uses),
+        (this.images[0] = doc.data()?.image);
     }
   }
 
-  addPossibleCause() {
-    if (this.catControl.get('additionalFeature').valid) {
-      this.additionalFeatures.push(
-        this.catControl.get('additionalFeature').value
-      );
-      this.catControl.get('additionalFeature').reset();
+  addUses() {
+    if (this.catControl.get('uses').valid) {
+      this.uses.push(this.catControl.get('uses').value);
+      this.catControl.get('uses').reset();
     }
   }
-
-  removeAdditionalFeature(index: number) {
-    this.additionalFeatures.splice(index, 1);
-  }
-
-  addCommonPlant() {
-    if (this.catControl.get('commonPlant').valid) {
-      this.commonPlants.push(this.catControl.get('commonPlant').value);
-      this.catControl.get('commonPlant').reset();
-    }
-  }
-
-  addCommonSymptom() {
-    if (this.catControl.get('commonSymptoms').valid) {
-      this.commonSymptoms.push(this.catControl.get('commonSymptoms').value);
-      this.catControl.get('commonSymptoms').reset();
-    }
-  }
-
-  addSolutions() {
-    if (this.catControl.get('solutions').valid) {
-      this.solutions.push(this.catControl.get('solutions').value);
-      this.catControl.get('solutions').reset();
-    }
-  }
-
-  removeCommonPlant(index: number) {
-    this.commonPlants.splice(index, 1);
-  }
-
   removeCommonSymptom(index: number) {
     this.commonSymptoms.splice(index, 1);
   }
-
-  removeSolutions(index: number) {
-    this.solutions.splice(index, 1);
-  }
-
   onSelect(event: any) {
     // console.log(event);
     this.images.push(...event.addedFiles);
@@ -113,33 +69,13 @@ export class EditPlantComponent implements OnInit {
     this.images.splice(this.images.indexOf(event), 1);
   }
 
-  async editDiseas() {
+  removeUses(index: number) {
+    this.uses.splice(index, 1);
+  }
+
+  async editplant() {
     if (this.formControl.valid) {
-      if (this.additionalFeatures.length < 1) {
-        this.notificationService.create(
-          'Additional features cannot be empty.',
-          'danger',
-          'Error'
-        );
-      } else if (this.commonPlants.length < 1) {
-        this.notificationService.create(
-          'Common plants cannot be empty.',
-          'danger',
-          'Error'
-        );
-      } else if (this.solutions.length < 1) {
-        this.notificationService.create(
-          'Solutions cannot be empty.',
-          'danger',
-          'Error'
-        );
-      } else if (this.commonSymptoms.length < 1) {
-        this.notificationService.create(
-          'Common symptoms cannot be empty.',
-          'danger',
-          'Error'
-        );
-      } else if (this.images.length < 1) {
+      if (this.images.length < 1) {
         this.notificationService.create(
           'Images cannot be empty.',
           'danger',
@@ -149,34 +85,29 @@ export class EditPlantComponent implements OnInit {
         this.selectImageBool = false;
         this.loading = true;
         const id = this.router.url.split('/')[2];
-        this.diseasService
+        this.plantService
           .uploadImage(this.images[0], id)
           .then((response) => {
-            this.diseasService
-              .editDiseas(
+            console.log(response);
+            this.plantService
+              .editPlant(
                 id,
-                this.formControl.get('causes').value,
-                this.formControl.get('diseaseName').value,
-                this.additionalFeatures,
-                this.commonPlants,
-                this.commonSymptoms,
-                this.solutions,
+                this.formControl.get('name').value,
+                this.formControl.get('description').value,
+                this.uses,
                 response
               )
               .then(() => {
                 this.loading = false;
-                this.additionalFeatures = [];
-                this.commonPlants = [];
                 this.commonSymptoms = [];
-                this.solutions = [];
                 this.images = [];
                 this.formControl.reset();
                 this.notificationService.create(
-                  'Diseas successfully added.',
+                  'plant successfully edited.',
                   'success',
                   'Success'
                 );
-                this.router.navigate(['/diseases/all']);
+                this.router.navigate(['/plants/all']);
               })
               .catch((error) => {
                 this.loading = false;
@@ -198,33 +129,26 @@ export class EditPlantComponent implements OnInit {
       } else if (!this.selectImageBool) {
         this.loading = true;
         const id = this.router.url.split('/')[2];
-        // this.diseasService
+        // this.plantService
         //   .uploadImage(this.images[0], id)
         //   .then((response) => {
-        this.diseasService
-          .editDiseasWithoutImageUpdate(
+        this.plantService
+          .editPlantWithoutImageUpdate(
             id,
-            this.formControl.get('causes').value,
-            this.formControl.get('diseaseName').value,
-            this.additionalFeatures,
-            this.commonPlants,
-            this.commonSymptoms,
-            this.solutions
+            this.formControl.get('name').value,
+            this.formControl.get('description').value,
+            this.uses
           )
           .then(() => {
             this.loading = false;
-            this.additionalFeatures = [];
-            this.commonPlants = [];
-            this.commonSymptoms = [];
-            this.solutions = [];
             this.images = [];
             this.formControl.reset();
             this.notificationService.create(
-              'Diseas successfully added.',
+              'plant successfully added.',
               'success',
               'Success'
             );
-            this.router.navigate(['/diseases/all']);
+            this.router.navigate(['/plants/all']);
           })
           .catch((error) => {
             this.loading = false;

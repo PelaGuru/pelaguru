@@ -72,6 +72,39 @@ export class PlantService {
     // console.log(data);
     await ref.set(data);
   }
+
+  async editPlant(
+    id: string,
+    plantName: string,
+    scientificName: string,
+    uses: string[],
+    image: string
+  ) {
+    const ref = this.fireStore.doc(`Plants/${id}`);
+    const data = {
+      plantName: plantName,
+      scientificName: scientificName,
+      uses: uses,
+      image: image,
+    };
+    return await ref.update(data);
+  }
+
+  async editPlantWithoutImageUpdate(
+    id: string,
+    plantname: string,
+    scientificName: string,
+    uses: string[]
+  ) {
+    const ref = this.fireStore.doc(`Plants/${id}`);
+    const data = {
+      plantName: plantname,
+      scientificName: scientificName,
+      uses: uses,
+    };
+    return await ref.update(data);
+  }
+
   async getAllPlants() {
     const ref = this.fireStore.collection<any>('Plants');
     const data = await ref
