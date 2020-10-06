@@ -15,11 +15,7 @@
       <ng-container matColumnDef="name">
         <th mat-header-cell *matHeaderCellDef>Name</th>
         <td mat-cell *matCellDef="let element">
-          <nb-user
-            size="medium"
-            [name]="element.diseaseName"
-            [picture]="element.image"
-          >
+          <nb-user size="medium" [name]="element.diseaseName" [picture]="element.image">
           </nb-user>
         </td>
       </ng-container>
@@ -30,20 +26,12 @@
           <a [routerLink]="'/diseases/' + element.id">
             <button nbButton hero status="info" size="small">
               <nb-icon icon="external-link-outline"></nb-icon>
-            </button> </a
-          >&nbsp;
+            </button> </a>&nbsp;
           <a [routerLink]="'/diseases/' + element.id + '/edit'">
             <button nbButton hero status="warning" size="small">
               <nb-icon icon="edit-2-outline"></nb-icon>
-            </button> </a
-          >&nbsp;
-          <button
-            nbButton
-            hero
-            status="danger"
-            size="small"
-            (click)="getAllDiseases(element.id)"
-          >
+            </button> </a>&nbsp;
+          <button nbButton hero status="danger" size="small" (click)="deleteDisease(element.id)">
             <nb-icon icon="trash-2-outline"></nb-icon>
           </button>
         </td>

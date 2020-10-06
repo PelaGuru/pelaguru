@@ -193,3 +193,21 @@ select option[value=''][disabled] {
     padding: 40px 0 30px;
   }
 }
+
+.profile-imagr-container {
+  .image {
+    width: 170px;
+    height: 170px;
+    border-radius: 50%;
+    overflow: hidden;
+    margin: auto;
+  }
+}
+
+.r-name {
+  text-align: center;
+  font-weight: bold;
+}
+.r-email {
+  text-align: center;
+}

@@ -8,4 +8,9 @@ export interface User extends BaseModel {
   role?: UserRole;
   profilePictureUrl?: string;
   disabled: boolean;
+  firstName?: string;
+  lastName?: string;
+  address?: string;
+  telephone?: string;
+  description?: string;
 }

@@ -68,6 +68,52 @@ export class DiseasService {
     return await ref.set(setData);
   }
 
+  async editDiseas(
+    id: string,
+    causes: string,
+    diseaseName: string,
+    additionalFeatures: string[],
+    commonPlants: string[],
+    commonSymptoms: string[],
+    solutions: string[],
+    image: string
+  ) {
+    const ref = this.fireStore.doc(`Diseases/${id}`);
+    const data = {
+      causes: causes,
+      diseaseName: diseaseName,
+      id: id,
+      additionalFeatures: additionalFeatures,
+      commonPlants: commonPlants,
+      commonSymptoms: commonSymptoms,
+      solutions: solutions,
+      image: image,
+    };
+    return await ref.update(data);
+  }
+
+  async editDiseasWithoutImageUpdate(
+    id: string,
+    causes: string,
+    diseaseName: string,
+    additionalFeatures: string[],
+    commonPlants: string[],
+    commonSymptoms: string[],
+    solutions: string[]
+  ) {
+    const ref = this.fireStore.doc(`Diseases/${id}`);
+    const data = {
+      causes: causes,
+      diseaseName: diseaseName,
+      id: id,
+      additionalFeatures: additionalFeatures,
+      commonPlants: commonPlants,
+      commonSymptoms: commonSymptoms,
+      solutions: solutions,
+    };
+    return await ref.update(data);
+  }
+
   async getAllDiseases() {
     const ref = this.fireStore.collection<Disease>('Diseases');
     const data = await ref
@@ -80,6 +126,12 @@ export class DiseasService {
         })
       )
       .toPromise();
+    return data;
+  }
+
+  async deleteDiseases(id) {
+    const ref = this.fireStore.collection<Disease>('Diseases');
+    const data = await ref.doc(id).delete();
     return data;
   }
 }
