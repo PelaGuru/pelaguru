@@ -70,30 +70,46 @@ export class DiseasService {
 
   async editDiseas(
     id: string,
-    name: string,
-    description: string,
-    imageData: Image[]
+    causes: string,
+    diseaseName: string,
+    additionalFeatures: string[],
+    commonPlants: string[],
+    commonSymptoms: string[],
+    solutions: string[],
+    image: string
   ) {
     const ref = this.fireStore.doc(`Diseases/${id}`);
     const data = {
-      id,
-      description: description,
-      name: name,
-      images: imageData,
+      causes: causes,
+      diseaseName: diseaseName,
+      id: id,
+      additionalFeatures: additionalFeatures,
+      commonPlants: commonPlants,
+      commonSymptoms: commonSymptoms,
+      solutions: solutions,
+      image: image,
     };
-    return await ref.set(data);
+    return await ref.update(data);
   }
 
   async editDiseasWithoutImageUpdate(
     id: string,
-    name: string,
-    description: string
+    causes: string,
+    diseaseName: string,
+    additionalFeatures: string[],
+    commonPlants: string[],
+    commonSymptoms: string[],
+    solutions: string[]
   ) {
     const ref = this.fireStore.doc(`Diseases/${id}`);
     const data = {
-      id,
-      description: description,
-      name: name,
+      causes: causes,
+      diseaseName: diseaseName,
+      id: id,
+      additionalFeatures: additionalFeatures,
+      commonPlants: commonPlants,
+      commonSymptoms: commonSymptoms,
+      solutions: solutions,
     };
     return await ref.update(data);
   }
