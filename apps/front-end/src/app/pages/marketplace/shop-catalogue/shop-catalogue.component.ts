@@ -43,7 +43,6 @@ export class ShopCatalogueComponent implements OnInit {
 
   async getAllShops() {
     const shops = await this.shopService.getAllShops();
-    console.log('plants', shops);
     this.ShopCatalogueItemsDataSource.next(shops);
   }
 

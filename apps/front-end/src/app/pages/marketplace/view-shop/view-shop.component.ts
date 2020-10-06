@@ -52,9 +52,7 @@ export class ViewShopComponent implements OnInit {
   }
 
   async getShopItems() {
-    console.log("itemId",this.router.url.split('/')[2]);
     const items = await this.shopService.getShopItems(this.router.url.split('/')[2]);
-    console.log('items', items);
     this.ShopItemsDataSource.next(items);
   }
 

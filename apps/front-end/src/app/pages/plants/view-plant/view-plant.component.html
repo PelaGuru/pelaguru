@@ -8,8 +8,8 @@
       <div class="cover-image"></div>
       <div class="header-container">
         <div class="header-container-inner">
-          <div class="title">{{ (plantDetails | async).plantName  }}</div>
-          <div class="desc">{{ (plantDetails | async).scientificName }}</div>
+          <div class="title">{{ (plantDetails | async)?.plantName  }}</div>
+          <div class="desc">{{ (plantDetails | async)?.scientificName }}</div>
         </div>
       </div>
       <div class="back-button">
@@ -23,14 +23,14 @@
     <mat-card class="basic-details-card">
       <div class="title-text">Basic details</div>
       <div placement="center">
-        <img class="image-container" src="{{ (plantDetails | async).image }}" />
+        <img class="image-container" src="{{ (plantDetails | async)?.image }}" />
         <div class="container">
           <mat-list>
             <mat-divider></mat-divider>
             <div class="cat-item">
               <div class="heading">Plant Name : </div>
               <div class="desc">
-                {{ (plantDetails | async).plantName}}
+                {{ (plantDetails | async)?.plantName}}
               </div>
             </div>
             <mat-divider></mat-divider>
@@ -39,7 +39,7 @@
               <div class="desc">
                 <div style="display: grid;">
                   <span
-                    *ngFor="let i of (plantDetails | async).uses"
+                    *ngFor="let i of (plantDetails | async)?.uses"
                   >
                     {{ i }}
                   </span>
@@ -53,9 +53,9 @@
               <div class="desc">
                 <div style="display: grid;">
                   <span
-                    *ngFor="let i of (plantDetails | async).commonDiseases"
+                    *ngFor="let i of (plantDetails | async)?.commonDiseases"
                   >
-                    <a routerLink="/diseases/{{i.diseasesId}}">{{ i.diseasesName }}</a>
+                    <a routerLink="/diseases/{{i?.diseasesId}}">{{ i?.diseasesName }}</a>
                   </span>
                 </div>
               </div>

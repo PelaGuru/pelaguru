@@ -44,7 +44,6 @@ export class PlantsCatalogueComponent implements OnInit {
 
   async getAllPlants() {
     const plants = await this.plantService.getAllPlants();
-    console.log('plants', plants);
     this.PlantCatalogueItemsDataSource.next(plants);
   }
 
