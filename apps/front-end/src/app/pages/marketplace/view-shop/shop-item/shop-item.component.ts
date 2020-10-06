@@ -29,7 +29,7 @@ export class ShopItemComponent implements OnInit {
   // this.router.url.split('/')[2],
 
   async getShopItem() {
-    console.log('URL',this.router.url.split('/'));
+    // console.log('URL',this.router.url.split('/'));
     const docId = this.router.url.split('/')[2];
     const itemId = this.router.url.split('/')[3];
     
@@ -39,7 +39,7 @@ export class ShopItemComponent implements OnInit {
     const item = await this.shopService.getShopItem(
       docId,itemId
     );
-    console.log("item",item);
+    // console.log("item",item);
     
     this.ShopCatalogueDataSource.next(item);
   }
