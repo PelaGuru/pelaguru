@@ -26,10 +26,11 @@ export class ProfileComponent implements OnInit {
       firstName: new FormControl('', Validators.required),
       lastName: new FormControl('', Validators.required),
       address: new FormControl(''),
-      // email: new FormControl('', [Validators.required, Validators.email]),
+      email: new FormControl({ value: '', readonly: true }, [
+        Validators.required,
+        Validators.email,
+      ]),
       telephone: new FormControl(''),
-      photoURL: new FormControl(''),
-      description: new FormControl(''),
     });
     this.matcher = new ErrorStateMatcher();
   }
@@ -37,12 +38,7 @@ export class ProfileComponent implements OnInit {
   ngOnInit() {
     // this.getUserId();
     this.authService.getUserStream().subscribe(async (profile) => {
-      const data = await this.profileServiceService.getProfileData(
-        profile.userId
-      );
-      console.log(data);
-
-      this.userData.next(data);
+      this.getProfileData(profile.userId);
     });
   }
 
@@ -55,13 +51,28 @@ export class ProfileComponent implements OnInit {
         }`,
         '',
         this.formControl.get('firstName').value,
-        this.formControl.get('email').value,
         this.formControl.get('lastName').value,
         this.formControl.get('address').value,
-        this.formControl.get('telephone').value,
-        this.formControl.get('description').value
+        this.formControl.get('telephone').value
       )
-      .then(() => {})
-      .catch((error) => {});
+      .then(() => {
+        this.getProfileData(this.userData.value.userId);
+      })
+      .catch((error) => {
+        console.log(error);
+      });
+  }
+
+  async getProfileData(userId: string) {
+    const data = await this.profileServiceService.getProfileData(userId);
+    this.formControl.setValue({
+      firstName: data.firstName || '',
+      lastName: data.lastName || '',
+      address: data.address || '',
+      email: data.email || '',
+      telephone: data.telephone || '',
+    });
+
+    this.userData.next(data);
   }
 }
