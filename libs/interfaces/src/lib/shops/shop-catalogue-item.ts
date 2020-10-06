@@ -9,4 +9,7 @@ export interface ShopCatalogueItem {
   description: string;
   ingredients:string;
   note:string;
+  diseases:string[];
+  shopId:string;
+
 }
