@@ -7,24 +7,47 @@
 <nb-card status="success">
     <nb-card-header>Symptomps</nb-card-header>
     <nb-card-body>
-        {{commonSymptomps}}
+        <!-- {{commonSymptomps}} -->
+
+        <ul>
+            <li *ngFor="let d of commonSymptomps">
+                {{ d }}
+            </li>
+        </ul>
     </nb-card-body>
 </nb-card>
 <nb-card status="success">
     <nb-card-header>Common Plants</nb-card-header>
     <nb-card-body>
-        {{commonPlants}}
+        <!-- {{commonPlants}} -->
+
+
+        <ul>
+            <li *ngFor="let d of commonPlants">
+                {{ d }}
+            </li>
+        </ul>
     </nb-card-body>
 </nb-card>
 <nb-card status="success">
     <nb-card-header>Solutions</nb-card-header>
     <nb-card-body>
-        {{solutions}}
+        <!-- {{solutions}} -->
+        <ul>
+            <li *ngFor="let d of solutions">
+                {{ d }}
+            </li>
+        </ul>
     </nb-card-body>
 </nb-card>
 <nb-card status="success">
     <nb-card-header>Features</nb-card-header>
     <nb-card-body>
-        {{additionalFeatures}}
+        <!-- {{additionalFeatures}} -->
+        <ul>
+            <li *ngFor="let d of additionalFeatures">
+                {{ d }}
+            </li>
+        </ul>
     </nb-card-body>
 </nb-card>

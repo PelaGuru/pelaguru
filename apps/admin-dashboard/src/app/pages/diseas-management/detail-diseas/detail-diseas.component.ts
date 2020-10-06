@@ -26,7 +26,7 @@ export class DetailDiseasComponent implements OnInit {
     } else {
       this.additionalFeatures = doc.data().additionalFeatures;
       this.commonPlants = doc.data().commonPlants;
-      this.commonSymptomps = doc.data().commonSymptomps;
+      this.commonSymptomps = doc.data().commonSymptoms;
       this.solutions = doc.data().solutions;
       this.image = doc.data().image;
       this.diseaseName = doc.data().diseaseName;
