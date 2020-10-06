@@ -1,8 +1,8 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { RouterModule } from '@angular/router';
 import {
   NbLayoutModule,
   NbAlertModule,
@@ -11,14 +11,25 @@ import {
   NbInputModule,
   NbButtonModule,
   NbCardModule,
+  NbFormFieldModule,
+  NbSidebarModule,
+  NbUserModule,
+  NbContextMenuModule,
+  NbMenuModule,
+  NbSelectModule,
+  NbBadgeModule,
+  NbSpinnerModule,
 } from '@nebular/theme';
 import { NbEvaIconsModule } from '@nebular/eva-icons';
-import { RouterModule } from '@angular/router';
+import { MatTableModule } from '@angular/material/table';
+import { NgxDropzoneModule } from 'ngx-dropzone';
+
+import { NotFoundComponent } from './not-found/not-found.component';
+import { NotAuthorizedComponent } from './not-authorized/not-authorized.component';
 
 const nativeModules = [
   CommonModule,
   RouterModule,
-  BrowserAnimationsModule,
   FormsModule,
   ReactiveFormsModule,
 ];
@@ -32,10 +43,20 @@ const externalModules = [
   NbInputModule,
   NbButtonModule,
   NbCardModule,
+  NbFormFieldModule,
+  NbSidebarModule,
+  NbUserModule,
+  NbContextMenuModule,
+  NbMenuModule,
+  NbSelectModule,
+  MatTableModule,
+  NbBadgeModule,
+  NbSpinnerModule,
+  NgxDropzoneModule,
 ];
 
 @NgModule({
-  declarations: [],
+  declarations: [NotAuthorizedComponent, NotFoundComponent],
   imports: [CommonModule, ...nativeModules, ...externalModules],
   exports: [...nativeModules, ...externalModules],
 })

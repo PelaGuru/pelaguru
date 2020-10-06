@@ -1,7 +1,10 @@
 export interface DiseaseCatalogueItem {
-  image: string;
-  username: string;
   id: string;
-  name: string;
-  sciName: string;
+  image: string;
+  diseaseName: string;
+  additionalFeatures: string;
+  causes: string;
+  commonPlants: string[];
+  commonSymptoms: string[];
+  solutions: string[];
 }

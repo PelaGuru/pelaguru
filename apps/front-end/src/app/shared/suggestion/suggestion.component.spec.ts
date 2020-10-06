@@ -6,6 +6,7 @@ describe('SuggestionComponent', () => {
   let component: SuggestionComponent;
   let fixture: ComponentFixture<SuggestionComponent>;
 
+  // tslint:disable-next-line: deprecation
   beforeEach(async(() => {
     TestBed.configureTestingModule({
       declarations: [SuggestionComponent],

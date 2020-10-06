@@ -1,12 +1,6 @@
 <div class="container-fluid">
   <div class="header-container">
-    <div class="back-button">
-      <a routerLink="../">
-        <button mat-icon-button mat-ripple>
-          <mat-icon>arrow_back</mat-icon>
-        </button>
-      </a>
-    </div>
+    <pelaguru-breadcrumb id="008"></pelaguru-breadcrumb>
     <div
       class="header-container-inner mat-elevation-z2"
       style="
@@ -43,49 +37,96 @@
           Exercitationem non laudantium est suscipit culpa deserunt sed, hic
           voluptatum! Recusandae, alias.
         </div>
+        <div class="desc-text">
+          Lorem ipsum dolor sit amet consectetur adipisicing elit.
+          Exercitationem non laudantium est suscipit culpa deserunt sed, hic
+          voluptatum! Recusandae, alias.
+        </div>
       </div>
     </div>
   </div>
 
   <div class="container-inner">
-    <mat-card class="header-card">
-      <div class="cover-image"></div>
-      <div class="header-container">
-        <div class="header-container-inner">
-          <div class="title">{{ shop.shopName }}</div>
-          <!-- <div class="desc">
-            {{ shop.desc }}
-          </div> -->
+    <!-- <mat-card class="basic-details-card"> -->
+    <div placement="center">
+      <div class="search-container">
+        <div class="search-container-inner">
+          <div class="search-form">
+            <form [formGroup]="searchController">
+              <div class="input-container mat-elevation-z2">
+                <div class="icon">
+                  <span class="material-icons">search</span>
+                </div>
+                <input
+                  class="search-input"
+                  type="text"
+                  placeholder="Search plants"
+                  [formControl]="searchController.get('search')"
+                  [matAutocomplete]="auto"
+                />
+                <div
+                  class="reset"
+                  mat-ripple
+                  *ngIf="searchController.get('search').value"
+                  (click)="searchController.reset()"
+                >
+                  <span class="material-icons">close</span>
+                </div>
+              </div>
+
+              <mat-autocomplete autoActiveFirstOption #auto="matAutocomplete">
+                <mat-option
+                  *ngFor="let option of filteredOptions | async"
+                  [value]="option"
+                >
+                  {{ option }}
+                </mat-option>
+              </mat-autocomplete>
+            </form>
+          </div>
         </div>
       </div>
-      <div class="back-button">
-        <a routerLink="../">
-          <button mat-icon-button mat-ripple>
-            <mat-icon>arrow_back</mat-icon>
-          </button>
-        </a>
-      </div>
-    </mat-card>
-    <mat-card class="basic-details-card">
-      <div placement="center">
-        <img class="image-container" src="{{ shop.image }}" />
+
+      <div class="grid-container">
         <div class="container">
-          <mat-list>
-            <mat-divider></mat-divider>
-            <mat-list-item> Shop Name : {{ shop.shopName }} </mat-list-item>
-            <mat-divider></mat-divider>
-            <mat-list-item>
-              <!-- Description :  -->
-              Popular Districts : {{ shop.popularDistricts }}
-            </mat-list-item>
-            <mat-divider></mat-divider>
-            <mat-list-item> Location : location 1</mat-list-item>
-            <mat-divider></mat-divider>
-            <mat-list-item>Chemicals : chemical 1</mat-list-item>
-            <mat-divider></mat-divider>
-          </mat-list>
+          <div class="grid-container-inner">
+            <a
+              *ngFor="let item of viewshopItems | async"
+              routerLink="{{ item.id }}"
+            >
+              <mat-card>
+                <div
+                  class="image-container1"
+                  [ngStyle]="{ 'background-image': 'url(' + item.image + ')' }"
+                ></div>
+                <div class="description-container1">
+                  <div class="name">{{ item.name }}</div>
+                  <div class="description1">
+                    Lorem ipsum dolor sit amet consectetur, adipisicing elit.
+                    Dolores ipsam delectus libero architecto, ut a eum
+                    perferendis corporis cupiditate obcaecati veritatis nulla
+                    suscipit quas commodi eaque ad recusandae aperiam enim!
+                  </div>
+                  <div class="pricing">
+                    {{ item.price }}
+                  </div>
+                  <div class="rating">
+                    <div class="rating-inner">
+                      <span class="material-icons">star</span>
+                      <span class="material-icons">star</span>
+                      <span class="material-icons">star</span>
+                      <span class="material-icons">star</span>
+                      <span class="material-icons">star</span>
+                    </div>
+                  </div>
+                </div>
+              </mat-card>
+            </a>
+          </div>
         </div>
       </div>
-    </mat-card>
+    </div>
+    <!-- </mat-card> -->
   </div>
 </div>
+<pelaguru-footer></pelaguru-footer>

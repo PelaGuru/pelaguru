@@ -1,0 +1,417 @@
+<nb-card [nbSpinner]="loading" nbSpinnerStatus="primary">
+  <nb-card-header>
+    <div class="interface-heading">
+      Add Disease
+    </div>
+  </nb-card-header>
+  <nb-card-body>
+    <div class="container-fluid">
+      <form [formGroup]="formControl" (submit)="addDisease()">
+        <div class="row">
+          <div class="col-md-12">
+            <input
+              nbInput
+              fullWidth
+              formControlName="diseaseName"
+              type="text"
+              id="input-name"
+              placeholder="Name"
+              fieldSize="medium"
+              [status]="
+                formControl.get('diseaseName').dirty
+                  ? formControl.get('diseaseName').invalid
+                    ? 'danger'
+                    : 'success'
+                  : 'basic'
+              "
+              [required]="true"
+              [attr.aria-invalid]="
+                formControl.get('diseaseName').invalid &&
+                formControl.get('diseaseName').touched
+                  ? true
+                  : null
+              "
+            />
+            <ng-container
+              *ngIf="
+                formControl.get('diseaseName').invalid &&
+                formControl.get('diseaseName').touched
+              "
+            >
+              <p
+                class="caption status-danger"
+                *ngIf="formControl.get('diseaseName').hasError('required')"
+              >
+                Disease name is required.
+              </p>
+            </ng-container>
+          </div>
+          <div class="col-md-12">
+            <br />
+            <input
+              nbInput
+              fullWidth
+              formControlName="causes"
+              type="text"
+              id="input-name"
+              placeholder="Causes"
+              fieldSize="medium"
+              [status]="
+                formControl.get('causes').dirty
+                  ? formControl.get('causes').invalid
+                    ? 'danger'
+                    : 'success'
+                  : 'basic'
+              "
+              [required]="true"
+              [attr.aria-invalid]="
+                formControl.get('causes').invalid &&
+                formControl.get('causes').touched
+                  ? true
+                  : null
+              "
+            />
+            <ng-container
+              *ngIf="
+                formControl.get('causes').invalid &&
+                formControl.get('causes').touched
+              "
+            >
+              <p
+                class="caption status-danger"
+                *ngIf="formControl.get('causes').hasError('required')"
+              >
+                Causes is required.
+              </p>
+            </ng-container>
+          </div>
+        </div>
+        <br />
+        <div class="cat">
+          <div class="heading">Additional Features</div>
+          <div class="desc">
+            <div
+              class="desc-item"
+              *ngFor="
+                let additionalFeature of additionalFeatures;
+                let i = index
+              "
+            >
+              <div class="text">
+                {{ additionalFeature }}
+              </div>
+              <div class="button-container">
+                <button
+                  nbButton
+                  hero
+                  status="danger"
+                  size="small"
+                  (click)="removeAdditionalFeature(i)"
+                >
+                  <nb-icon icon="trash-2-outline"></nb-icon>
+                </button>
+              </div>
+            </div>
+          </div>
+          <br />
+          <form [formGroup]="catControl">
+            <textarea
+              nbInput
+              fullWidth
+              formControlName="additionalFeature"
+              type="text"
+              id="input-possible-cause"
+              placeholder="Additional Features"
+              fieldSize="medium"
+              rows="3"
+              [status]="
+                catControl.get('additionalFeature').dirty
+                  ? catControl.get('additionalFeature').invalid
+                    ? 'danger'
+                    : 'success'
+                  : 'basic'
+              "
+              [required]="true"
+              [attr.aria-invalid]="
+                catControl.get('additionalFeature').invalid &&
+                catControl.get('additionalFeature').touched
+                  ? true
+                  : null
+              "
+            ></textarea>
+            <ng-container
+              *ngIf="
+                catControl.get('additionalFeature').invalid &&
+                catControl.get('additionalFeature').touched
+              "
+            >
+              <p
+                class="caption status-danger"
+                *ngIf="catControl.get('additionalFeature').hasError('required')"
+              >
+                Feature is required.
+              </p>
+            </ng-container>
+            <p style="text-align: right;">
+              <button
+                nbButton
+                hero
+                status="info"
+                size="small"
+                (click)="addPossibleCause()"
+              >
+                Add
+              </button>
+            </p>
+          </form>
+        </div>
+        <br />
+        <div class="cat">
+          <div class="heading">Common Plants</div>
+          <div class="desc">
+            <div
+              class="desc-item"
+              *ngFor="let commonPlant of commonPlants; let i = index"
+            >
+              <div class="text">
+                {{ commonPlant }}
+              </div>
+              <div class="button-container">
+                <button
+                  nbButton
+                  hero
+                  status="danger"
+                  size="small"
+                  (click)="removeCommonPlant(i)"
+                >
+                  <nb-icon icon="trash-2-outline"></nb-icon>
+                </button>
+              </div>
+            </div>
+          </div>
+          <br />
+          <form [formGroup]="catControl">
+            <input
+              nbInput
+              fullWidth
+              formControlName="commonPlant"
+              type="text"
+              id="input-possible-cause"
+              placeholder="Plants"
+              fieldSize="medium"
+              [status]="
+                catControl.get('commonPlant').dirty
+                  ? catControl.get('commonPlant').invalid
+                    ? 'danger'
+                    : 'success'
+                  : 'basic'
+              "
+              [required]="true"
+              [attr.aria-invalid]="
+                catControl.get('commonPlant').invalid &&
+                catControl.get('commonPlant').touched
+                  ? true
+                  : null
+              "
+            />
+            <ng-container
+              *ngIf="
+                catControl.get('commonPlant').invalid &&
+                catControl.get('commonPlant').touched
+              "
+            >
+              <p
+                class="caption status-danger"
+                *ngIf="catControl.get('commonPlant').hasError('required')"
+              >
+                Plant name is required.
+              </p>
+            </ng-container>
+            <p style="text-align: right; padding-top: 5px;">
+              <button
+                nbButton
+                hero
+                status="info"
+                size="small"
+                (click)="addCommonPlant()"
+              >
+                Add
+              </button>
+            </p>
+          </form>
+        </div>
+        <br />
+        <div class="cat">
+          <div class="heading">Common Symptoms</div>
+          <div class="desc">
+            <div
+              class="desc-item"
+              *ngFor="let commonSymptom of commonSymptoms; let i = index"
+            >
+              <div class="text">
+                {{ commonSymptom }}
+              </div>
+              <div class="button-container">
+                <button
+                  nbButton
+                  hero
+                  status="danger"
+                  size="small"
+                  (click)="removeCommonSymptom(i)"
+                >
+                  <nb-icon icon="trash-2-outline"></nb-icon>
+                </button>
+              </div>
+            </div>
+          </div>
+          <br />
+          <form [formGroup]="catControl">
+            <textarea
+              nbInput
+              fullWidth
+              formControlName="commonSymptoms"
+              type="text"
+              id="input-possible-cause"
+              placeholder="Symptom"
+              fieldSize="medium"
+              rows="3"
+              [status]="
+                catControl.get('commonSymptoms').dirty
+                  ? catControl.get('commonSymptoms').invalid
+                    ? 'danger'
+                    : 'success'
+                  : 'basic'
+              "
+              [required]="true"
+              [attr.aria-invalid]="
+                catControl.get('commonSymptoms').invalid &&
+                catControl.get('commonSymptoms').touched
+                  ? true
+                  : null
+              "
+            ></textarea>
+            <ng-container
+              *ngIf="
+                catControl.get('commonSymptoms').invalid &&
+                catControl.get('commonSymptoms').touched
+              "
+            >
+              <p
+                class="caption status-danger"
+                *ngIf="catControl.get('commonSymptoms').hasError('required')"
+              >
+                Symptoms is required.
+              </p>
+            </ng-container>
+            <p style="text-align: right; padding-top: 5px;">
+              <button
+                nbButton
+                hero
+                status="info"
+                size="small"
+                (click)="addCommonSymptom()"
+              >
+                Add
+              </button>
+            </p>
+          </form>
+        </div>
+        <br />
+        <div class="cat">
+          <div class="heading">Solutions</div>
+          <div class="desc">
+            <div
+              class="desc-item"
+              *ngFor="let solution of solutions; let i = index"
+            >
+              <div class="text">
+                {{ solution }}
+              </div>
+              <div class="button-container">
+                <button
+                  nbButton
+                  hero
+                  status="danger"
+                  size="small"
+                  (click)="removeSolutions(i)"
+                >
+                  <nb-icon icon="trash-2-outline"></nb-icon>
+                </button>
+              </div>
+            </div>
+          </div>
+          <br />
+          <form [formGroup]="catControl">
+            <textarea
+              nbInput
+              fullWidth
+              formControlName="solutions"
+              type="text"
+              id="input-possible-cause"
+              placeholder="Solution"
+              fieldSize="medium"
+              rows="3"
+              [status]="
+                catControl.get('solutions').dirty
+                  ? catControl.get('solutions').invalid
+                    ? 'danger'
+                    : 'success'
+                  : 'basic'
+              "
+              [required]="true"
+              [attr.aria-invalid]="
+                catControl.get('solutions').invalid &&
+                catControl.get('solutions').touched
+                  ? true
+                  : null
+              "
+            ></textarea>
+            <ng-container
+              *ngIf="
+                catControl.get('solutions').invalid &&
+                catControl.get('solutions').touched
+              "
+            >
+              <p
+                class="caption status-danger"
+                *ngIf="catControl.get('solutions').hasError('required')"
+              >
+                Solution is required.
+              </p>
+            </ng-container>
+            <p style="text-align: right; padding-top: 5px;">
+              <button
+                nbButton
+                hero
+                status="info"
+                size="small"
+                (click)="addSolutions()"
+              >
+                Add
+              </button>
+            </p>
+          </form>
+        </div>
+        <br />
+        <ngx-dropzone (change)="onSelect($event)">
+          <ngx-dropzone-label>Select files</ngx-dropzone-label>
+          <ngx-dropzone-preview
+            *ngFor="let f of images"
+            [removable]="true"
+            (removed)="onRemove(f)"
+          >
+            <ngx-dropzone-label>
+              {{ f.name }} ({{ f.type }})
+            </ngx-dropzone-label>
+          </ngx-dropzone-preview>
+        </ngx-dropzone>
+        <br />
+        <p style="text-align: right;">
+          <button nbButton hero status="primary" (click)="addDiseas()">
+            Add disease
+          </button>
+        </p>
+      </form>
+    </div>
+  </nb-card-body>
+</nb-card>

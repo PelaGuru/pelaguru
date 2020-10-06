@@ -1,5 +1,5 @@
 .bcground_image {
-  background-image: url('../../../assets/img/background.png');
+  // background-image: url('../../../assets/img/background.png');
   background-size: cover;
   min-height: 100%;
 }
@@ -152,4 +152,26 @@ select option[value=''][disabled] {
     width: 100%;
     padding: 40px 0 30px;
   }
+}
+
+.spin {
+  display: grid;
+  justify-content: center;
+  padding: 5em 0;
+}
+
+.is-pending {
+  padding: 5em 0;
+  text-align: center;
+  font-weight: bold;
+  font-size: 1.2em;
+  color: var(--primary);
+}
+
+.is-rejected {
+  padding: 5em 0;
+  text-align: center;
+  font-weight: bold;
+  font-size: 1.2em;
+  color: red;
 }

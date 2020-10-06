@@ -43,7 +43,7 @@
     <div class="grid-container-inner">
       <a
         *ngFor="let item of plantCatalogueItems | async"
-        routerLink="{{ item.username }}"
+        routerLink="/plants/{{ item.id }}"
       >
         <mat-card>
           <div
@@ -51,7 +51,7 @@
             [ngStyle]="{ 'background-image': 'url(' + item.image + ')' }"
           ></div>
           <div class="description-container">
-            <div class="name">{{ item.name }}</div>
+            <div class="name">{{ item.plantName }}</div>
             <div class="description">{{ item.sciName }}</div>
           </div>
         </mat-card>

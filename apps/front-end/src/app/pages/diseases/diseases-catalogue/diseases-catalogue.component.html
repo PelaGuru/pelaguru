@@ -43,7 +43,7 @@
     <div class="grid-container-inner">
       <a
         *ngFor="let item of diseaseCatalogueItems | async"
-        routerLink="{{ item.username }}"
+        routerLink="/diseases/{{ item.id }}"
       >
         <mat-card>
           <div
@@ -53,8 +53,8 @@
             "
           ></div>
           <div class="description-container">
-            <div class="name">Septoria leaf spot</div>
-            <div class="description">Septoria lycopersici</div>
+            <div class="name">{{ item.diseaseName }}</div>
+            <!-- <div class="description">{{item.}}</div> -->
           </div>
         </mat-card>
       </a>

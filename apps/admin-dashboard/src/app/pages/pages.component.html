@@ -1,1 +1,33 @@
-<p>pages works!</p>
+<nb-layout>
+  <nb-layout-header fixed>
+    <div class="header-conteiner">
+      <div class="brand-container">
+        <img
+          src="../../assets/img/logo/main-logo.svg"
+          class="img-resp"
+          alt=""
+        />
+      </div>
+      <div class="profile-container">
+        <button class="user-button">
+          <nb-user
+            size="medium"
+            shape="rectangle"
+            name="John Doe"
+            title="Engineer"
+            [nbContextMenu]="profileMenuItems"
+            nbContextMenuTag="profile-context-menu"
+          >
+          </nb-user>
+        </button>
+      </div>
+    </div>
+  </nb-layout-header>
+  <nb-sidebar>
+    <nb-menu [items]="sidenavMenuItems" autoCollapse="true"> </nb-menu>
+  </nb-sidebar>
+  <nb-layout-column class="colored-column-basic">
+    <router-outlet></router-outlet>
+  </nb-layout-column>
+  <nb-layout-footer>© 2020 Digitally Crafted by Pelaguru Team</nb-layout-footer>
+</nb-layout>

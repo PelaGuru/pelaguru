@@ -5,9 +5,10 @@ import { Routes, RouterModule } from '@angular/router';
 import { SignInComponent } from './core/auth/sign-in/sign-in.component';
 import { AccountRecoveryRequestComponent } from './core/auth/account-recovery-request/account-recovery-request.component';
 import { ResetPasswordComponent } from './core/auth/reset-password/reset-password.component';
+import { NotAuthorizedComponent } from './shared/not-authorized/not-authorized.component';
+import { NotFoundComponent } from './shared/not-found/not-found.component';
 
 const routes: Routes = [
-  { path: '', redirectTo: 'sign-in', pathMatch: 'full' },
   { path: 'sign-in', component: SignInComponent /*canActivate: [AuthGuard]*/ },
   {
     path: 'account-recovery-request',
@@ -18,6 +19,14 @@ const routes: Routes = [
     path: '',
     loadChildren: () =>
       import('./pages/pages.module').then((m) => m.PagesModule),
+  },
+  {
+    path: 'unauthorized',
+    component: NotAuthorizedComponent,
+  },
+  {
+    path: '**',
+    component: NotFoundComponent,
   },
 ];
 

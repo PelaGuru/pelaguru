@@ -1,9 +1,9 @@
+<pelaguru-breadcrumb id="007"></pelaguru-breadcrumb>
 <!-- <br><br>
 <button mat-raised-button (click)="isLinear = !isLinear" id="toggle-linear">
     {{!isLinear ? 'Enable linear mode' : 'Disable linear mode'}}
   </button> -->
 <div>
-  <pelaguru-breadcrumb id="007"></pelaguru-breadcrumb>
   <div class="container-fluid view">
     <mat-card>
       <mat-vertical-stepper [linear]="isLinear" #stepper>
@@ -14,46 +14,36 @@
               <div class="row">
                 <div class="col-8">
                   <div class="col-11">
-                    <h1
-                      style="font-family: Verdana, Geneva, Tahoma, sans-serif;"
-                    >
-                      Follow The Guideline
+                    <h1 style="font-family: Verdana, Geneva, Tahoma, sans-serif;">
+                      Follow The Guidelines
                     </h1>
                     <hr />
-                    Lorem, ipsum dolor sit amet consectetur adipisicing elit.
-                    Delectus, voluptatem doloremque fugiat officiis accusantium
-                    ducimus ullam ex aut eaque illum, corrupti dolor? Mollitia
-                    dignissimos laboriosam porro eligendi, rerum sequi
-                    molestias?
-                    <br /><br />
-                    Lorem, ipsum dolor sit amet consectetur adipisicing elit.
-                    Delectus, voluptatem doloremque fugiat officiis accusantium
-                    ducimus ullam ex aut eaque illum, corrupti dolor? Mollitia
-                    dignissimos laboriosam porro eligendi, rerum sequi
-                    molestias?
+                    1. Snap a photo in a clear and well lit environment for
+                    better precision.
+                    <br />
+                    2. Make sure there aren't multiple objects in the
+                    background.
+                    <br />
+                    3. Use a white background to get a good prediction.
+                    <br />
+                    4. Upload an image less than 10MB.
+                    <br />
+                    5. You can drag and drop your images.
+                    <br />
+                    6. Then click "Upload".
                   </div>
                 </div>
                 <div class="col-4">
                   <mat-card>
-                    <div
-                      class="custom-dropzone"
-                      [multiple]="false"
-                      ngx-dropzone
-                      [accept]="'image/*'"
-                      (change)="onSelect($event)"
-                    >
+                    <div class="custom-dropzone" [multiple]="false" ngx-dropzone [accept]="'image/*'"
+                      (change)="onSelect($event)">
                       <ngx-dropzone-label>
                         <div>
                           <h2>Drag and drop your images</h2>
                         </div>
                       </ngx-dropzone-label>
-                      <ngx-dropzone-image-preview
-                        ngProjectAs="ngx-dropzone-preview"
-                        *ngFor="let f of files"
-                        [file]="f"
-                        [removable]="true"
-                        (removed)="onRemove(f)"
-                      >
+                      <ngx-dropzone-image-preview ngProjectAs="ngx-dropzone-preview" *ngFor="let f of files" [file]="f"
+                        [removable]="true" (removed)="onRemove(f)">
                         <!-- <ngx-dropzone-label>{{ f.name }} ({{ f.type }})</ngx-dropzone-label> -->
                       </ngx-dropzone-image-preview>
                     </div>
@@ -62,16 +52,13 @@
               </div>
 
               <div style="padding-top: 20px; text-align: right;">
-                <button
-                  class="mat-elevation-z5"
-                  mat-button
-                  matStepperNext
-                  style="background-color: #84a03c; border-radius: 30px;"
-                >
+                <button class="mat-elevation-z5" mat-button matStepperNext
+                  style="background-color: #84a03c; border-radius: 30px;" (click)="onUploadClick()">
                   <span class="material-icons">upgrade</span>
                   <strong>Upload</strong>
                 </button>
               </div>
+
             </mat-card>
           </form>
         </mat-step>
@@ -81,49 +68,30 @@
             <div class="row">
               <div class="col-3">
                 <mat-card>
-                  <ngx-dropzone-image-preview
-                    ngProjectAs="ngx-dropzone-preview"
-                    *ngFor="let f of files"
-                    [file]="f"
-                  >
+                  <ngx-dropzone-image-preview ngProjectAs="ngx-dropzone-preview" *ngFor="let f of files" [file]="f">
                     <!-- <ngx-dropzone-label>{{ f.name }} ({{ f.type }})</ngx-dropzone-label> -->
                   </ngx-dropzone-image-preview>
                 </mat-card>
               </div>
               <div class="col-9">
                 <div class="col-8">
-                  Lorem ipsum dolor sit amet, consectetur adipisicing elit.
-                  Aperiam rerum, culpa reprehenderit magnam adipisci
-                  perspiciatis veniam consequuntur eum unde eos quo doloremque
-                  qui dicta ea harum. Quidem tenetur impedit atque.
+                  Click "Predict" to continue.
                   <br /><br />
-                  Lorem ipsum dolor sit amet, consectetur adipisicing elit.
-                  Aperiam rerum, culpa reprehenderit magnam adipisci
-                  perspiciatis veniam consequuntur eum unde eos quo doloremque
-                  qui dicta ea harum. Quidem tenetur impedit atque.
+                  Click "Back" to upload a different image.
                 </div>
                 <div class="col-4"></div>
 
                 <div style="padding-top: 20px; text-align: right;">
-                  <button
-                    class="mat-elevation-z5"
-                    mat-button
-                    matStepperPrevious
-                    style="
+                  <button class="mat-elevation-z5" mat-button matStepperPrevious style="
                       background-color: #84a03c;
                       margin-right: 10px;
                       border-radius: 30px;
-                    "
-                  >
+                    ">
                     <span class="material-icons">west</span>
                     <strong> Back</strong>
                   </button>
-                  <button
-                    class="mat-elevation-z5"
-                    mat-button
-                    matStepperNext
-                    style="background-color: #84a03c; border-radius: 30px;"
-                  >
+                  <button class="mat-elevation-z5" mat-button matStepperNext
+                    style="background-color: #84a03c; border-radius: 30px;">
                     <strong> Predict </strong>
                     <span class="material-icons">east</span>
                   </button>
@@ -136,23 +104,37 @@
           <ng-template matStepLabel>Done</ng-template>
           <mat-card>
             <br />
-            <div
-              class="image-container col-3"
-              style="background-image: url('../../assets/img/temp/shop.webp');"
-            ></div>
+            <h1>Your Image</h1>
+            <mat-card>
+              <ngx-dropzone-image-preview ngProjectAs="ngx-dropzone-preview" *ngFor="let f of files" [file]="f">
+                <!-- <ngx-dropzone-label>{{ f.name }} ({{ f.type }})</ngx-dropzone-label> -->
+              </ngx-dropzone-image-preview>
+            </mat-card>
+
             <br /><br />
             <h1>Final Prediction</h1>
-            <br /><br />
-            <h3>Plant Name:</h3>
-            <h3>Disease Category:</h3>
-            <h3>Description</h3>
+            <mat-card>
+              <div class="image-container col-3" style="
+                  background-image: url('../../assets/img/temp/shop.webp');
+                "></div>
+            </mat-card>
+            <br />
+            <h2>Plant Name:</h2>
+            <h3>Tomato</h3>
+            <br />
+            <h2>Disease Name:</h2>
+            <h3>Get from ML model</h3>
+            <br />
+            <h2>Description</h2>
             <p>
-              Lorem ipsum dolor sit amet consectetur adipisicing elit. Molestias
-              quas amet autem magni est nobis corrupti cum numquam illo
-              doloribus quidem perferendis accusantium fugiat, exercitationem
-              ipsa veniam quo rerum dolorem.
+              -Get Image, Description, Rating and Solutions according to Disease
+              Name from Database. -
             </p>
-            <h3>Rating</h3>
+            <br />
+            <h2>Solutions</h2>
+            <p>Retrive Items from database and show as an image slider</p>
+            <br />
+            <h2>How satisfied are you with the result? Please rate.</h2>
             <div class="rating">
               <div class="rating-inner">
                 <span class="material-icons">star</span>
@@ -162,24 +144,28 @@
                 <span class="material-icons">star_border</span>
               </div>
             </div>
-            <br />
-            <h2>Solution</h2>
           </mat-card>
           <div style="padding-top: 20px; text-align: right;">
-            <button
-              class="mat-elevation-z5"
-              mat-button
-              (click)="stepper.reset()"
-              style="background-color: #84a03c; border-radius: 30px;"
-            >
-              <span class="material-icons">west</span>
+            <p>
+              Click "Reset" to try again or click "Finish" to return to Home
+              page.
+            </p>
+            <button class="mat-elevation-z5" mat-button (click)="stepper.reset()"
+              style="background-color: #84a03c; border-radius: 30px;">
+              <span class="material-icons">cached</span>
               <strong> Reset</strong>
             </button>
+            &nbsp;&nbsp;&nbsp;
+            <a routerLink="../">
+              <button class="mat-elevation-z5" mat-button style="background-color: #dbdbd9; border-radius: 30px;">
+                <span class="material-icons">check_circle</span>
+                <strong> Finish</strong>
+              </button></a>
           </div>
         </mat-step>
       </mat-vertical-stepper>
     </mat-card>
   </div>
-
+  <ngx-spinner color="#84a03c"></ngx-spinner>
   <pelaguru-footer></pelaguru-footer>
 </div>

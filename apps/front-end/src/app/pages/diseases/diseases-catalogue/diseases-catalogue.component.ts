@@ -3,6 +3,8 @@ import { FormControl, FormGroup } from '@angular/forms';
 import { Observable, BehaviorSubject } from 'rxjs';
 import { startWith, map } from 'rxjs/operators';
 import { DiseaseCatalogueItem } from '@pelaguru/interfaces';
+import { DiseaseService } from '../../../core/disease-service/disease.service';
+import { DomSanitizer } from '@angular/platform-browser';
 
 @Component({
   selector: 'pelaguru-diseases-catalogue',
@@ -18,7 +20,7 @@ export class DiseasesCatalogueComponent implements OnInit {
   filteredOptions: Observable<string[]>;
 
   searchController: FormGroup;
-  constructor() {
+  constructor(private diseaseService: DiseaseService) {
     this.searchController = new FormGroup({
       search: new FormControl(),
     });
@@ -29,7 +31,8 @@ export class DiseasesCatalogueComponent implements OnInit {
       startWith(''),
       map((value) => this._filter(value))
     );
-    this.addTestData();
+    this.getDiseases();
+    // this.addTestData();
   }
 
   private _filter(value: string): string[] {
@@ -40,31 +43,34 @@ export class DiseasesCatalogueComponent implements OnInit {
     );
   }
 
-  addTestData(): void {
-    this.DiseaseCatalogueItemsDataSource.next([
-      {
-        id: '876543',
-        image: 'http://localhost:4200/assets/img/temp/1.jpg',
-        name: 'Tomato',
-        sciName: 'Lycopersicon esculentum',
-        username: 'tomato',
-      },
-      {
-        id: '876543',
-        image: 'http://localhost:4200/assets/img/temp/1.jpg',
-        name: 'Tomato',
-        sciName: 'Lycopersicon esculentum',
-        username: 'tomato',
-      },
-      {
-        id: '876543',
-        image: 'http://localhost:4200/assets/img/temp/1.jpg',
-        name: 'Tomato',
-        sciName: 'Lycopersicon esculentum',
-        username: 'tomato',
-      },
-    ]);
+  async getDiseases() {
+    const diseases = await this.diseaseService.getAllDiseases();
+    this.DiseaseCatalogueItemsDataSource.next(diseases);
   }
+
+  // addTestData(): void {
+  //   this.DiseaseCatalogueItemsDataSource.next([
+  //     {
+  //       id: '876543',
+  //       image: 'http://localhost:4200/assets/img/temp/1.jpg',
+  //       diseaseName: 'Tomato',
+  //       username: 'tomato',
+  //     },
+  //     {
+  //       id: '876543',
+  //       image: 'http://localhost:4200/assets/img/temp/1.jpg',
+  //       diseaseName: 'Tomato',
+  //       username: 'tomato',
+  //     },
+  //     {
+  //       id: '876543',
+  //       image: 'http://localhost:4200/assets/img/temp/1.jpg',
+  //       diseaseName: 'Tomato',
+  //       username: 'tomato',
+  //     },
+  //   ]);
+  // }
+
   get diseaseCatalogueItems(): Observable<Array<DiseaseCatalogueItem>> {
     return this.DiseaseCatalogueItemsDataSource.asObservable();
   }

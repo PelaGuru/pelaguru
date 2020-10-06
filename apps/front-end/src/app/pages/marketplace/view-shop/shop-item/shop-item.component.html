@@ -1,0 +1,62 @@
+<div class="container">
+  <div class="container-inner">
+    <mat-card class="header-card">
+      <!-- <div
+          class="cover-image"
+          style="background-image: url(https://images5.alphacoders.com/378/thumb-1920-378648.jpg);"
+        ></div> -->
+      <div class="cover-image"></div>
+      <div class="header-container">
+        <div class="header-container-inner">
+          <div class="title">{{ (shopCatalogueItems | async)?.name }}</div>
+          <!-- <div class="desc">{{ shopitem.price }}</div> -->
+        </div>
+      </div>
+      <div class="back-button">
+        <a routerLink="../">
+          <button mat-icon-button mat-ripple>
+            <mat-icon>arrow_back</mat-icon>
+          </button>
+        </a>
+      </div>
+    </mat-card>
+    <mat-card class="basic-details-card">
+      <div placement="center">
+        <div class="row">
+          <div class="col-5">
+            <img class="image-container" src="{{ (shopCatalogueItems | async)?.image }}" />
+          </div>
+          <div class="col-7">
+            <div class="description-container">
+              <div class="description-container-inner">
+                <mat-list>
+                  <div class="header-text">Description</div>
+                  <br />
+                  <mat-list-item> {{ (shopCatalogueItems | async)?.description }} </mat-list-item>
+                  <br /><br />
+                  <div class="header-text">Ingredients</div>
+                  <br />
+                  <mat-list-item>
+                    {{(shopCatalogueItems | async)?.ingredients}} </mat-list-item
+                  ><br /><br />
+                  <div class="header-text">Note</div>
+                  <br />
+                  <mat-list-item>
+                    {{(shopCatalogueItems | async)?.note}}
+                  </mat-list-item>
+                  <br /><br /><br />
+                  <div class="header-text">Price</div>
+                  <br />
+                  <mat-list-item>
+                    {{(shopCatalogueItems | async)?.price}}
+                  </mat-list-item>
+                  <!-- <div class="price">{{ shopitem.price }} /=</div> -->
+                </mat-list>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </mat-card>
+  </div>
+</div>

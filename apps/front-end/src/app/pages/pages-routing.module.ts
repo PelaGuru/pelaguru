@@ -49,7 +49,8 @@ const routes: Routes = [
       },
       {
         path: 'seller-request',
-        component: SellerRequestComponent,
+        loadChildren: () =>
+          import('./seller-request/seller-request.module').then((m) => m.SellerRequestModule),
         canActivate: [PageGuard],
       },
       {

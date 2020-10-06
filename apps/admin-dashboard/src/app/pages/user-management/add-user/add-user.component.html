@@ -1,0 +1,217 @@
+<nb-card [nbSpinner]="loading" nbSpinnerStatus="primary">
+  <nb-card-header>
+    <div class="interface-heading">
+      Add User
+    </div>
+  </nb-card-header>
+  <nb-card-body>
+    <div class="container-fluid">
+      <form [formGroup]="formControl" (submit)="addUser()">
+        <div class="row">
+          <div class="col-md-6">
+            <input
+              nbInput
+              fullWidth
+              formControlName="firstName"
+              type="text"
+              id="input-first-name"
+              placeholder="First name"
+              fieldSize="medium"
+              [status]="
+                formControl.get('firstName').dirty
+                  ? formControl.get('firstName').invalid
+                    ? 'danger'
+                    : 'success'
+                  : 'basic'
+              "
+              [required]="true"
+              [attr.aria-invalid]="
+                formControl.get('firstName').invalid &&
+                formControl.get('firstName').touched
+                  ? true
+                  : null
+              "
+            />
+            <ng-container
+              *ngIf="
+                formControl.get('firstName').invalid &&
+                formControl.get('firstName').touched
+              "
+            >
+              <p
+                class="caption status-danger"
+                *ngIf="formControl.get('firstName').hasError('required')"
+              >
+                First name is required.
+              </p>
+            </ng-container>
+          </div>
+          <div class="col-md-6">
+            <input
+              nbInput
+              fullWidth
+              formControlName="lastName"
+              type="text"
+              id="input-last-name"
+              placeholder="Last name"
+              fieldSize="medium"
+              [status]="
+                formControl.get('lastName').dirty
+                  ? formControl.get('lastName').invalid
+                    ? 'danger'
+                    : 'success'
+                  : 'basic'
+              "
+              [required]="true"
+              [attr.aria-invalid]="
+                formControl.get('lastName').invalid &&
+                formControl.get('lastName').touched
+                  ? true
+                  : null
+              "
+            />
+            <ng-container
+              *ngIf="
+                formControl.get('lastName').invalid &&
+                formControl.get('lastName').touched
+              "
+            >
+              <p
+                class="caption status-danger"
+                *ngIf="formControl.get('lastName').hasError('required')"
+              >
+                Last name is required.
+              </p>
+            </ng-container>
+          </div>
+        </div>
+        <br />
+        <div class="row">
+          <div class="col-md-6">
+            <input
+              nbInput
+              fullWidth
+              formControlName="email"
+              type="text"
+              id="input-email"
+              placeholder="Email"
+              fieldSize="medium"
+              [status]="
+                formControl.get('email').dirty
+                  ? formControl.get('email').invalid
+                    ? 'danger'
+                    : 'success'
+                  : 'basic'
+              "
+              [required]="true"
+              [attr.aria-invalid]="
+                formControl.get('email').invalid &&
+                formControl.get('email').touched
+                  ? true
+                  : null
+              "
+            />
+            <ng-container
+              *ngIf="
+                formControl.get('email').invalid &&
+                formControl.get('email').touched
+              "
+            >
+              <p
+                class="caption status-danger"
+                *ngIf="formControl.get('email').hasError('required')"
+              >
+                Email address is required.
+              </p>
+            </ng-container>
+          </div>
+          <div class="col-md-6">
+            <input
+              nbInput
+              fullWidth
+              formControlName="password"
+              type="password"
+              id="input-password"
+              placeholder="Password"
+              fieldSize="medium"
+              [status]="
+                formControl.get('password').dirty
+                  ? formControl.get('password').invalid
+                    ? 'danger'
+                    : 'success'
+                  : 'basic'
+              "
+              [required]="true"
+              [attr.aria-invalid]="
+                formControl.get('password').invalid &&
+                formControl.get('password').touched
+                  ? true
+                  : null
+              "
+            />
+            <ng-container
+              *ngIf="
+                formControl.get('password').invalid &&
+                formControl.get('password').touched
+              "
+            >
+              <p
+                class="caption status-danger"
+                *ngIf="formControl.get('password').hasError('required')"
+              >
+                Password is required.
+              </p>
+            </ng-container>
+          </div>
+        </div>
+        <br />
+        <div class="row">
+          <div class="col-md-6">
+            <nb-select
+              placeholder="Role"
+              fullWidth
+              formControlName="role"
+              id="input-role"
+              fieldSize="medium"
+              [status]="
+                formControl.get('email').dirty
+                  ? formControl.get('email').invalid
+                    ? 'danger'
+                    : 'success'
+                  : 'basic'
+              "
+              [required]="true"
+              [attr.aria-invalid]="
+                formControl.get('role').invalid &&
+                formControl.get('role').touched
+                  ? true
+                  : null
+              "
+            >
+              <nb-option value="1">Admin</nb-option>
+              <nb-option value="2">Resource Person</nb-option>
+              <nb-option value="3">Moderator</nb-option>
+            </nb-select>
+            <ng-container
+              *ngIf="
+                formControl.get('role').invalid &&
+                formControl.get('role').touched
+              "
+            >
+              <p
+                class="caption status-danger"
+                *ngIf="formControl.get('role').hasError('required')"
+              >
+                Role is required.
+              </p>
+            </ng-container>
+          </div>
+        </div>
+        <br />
+        <p style="text-align: right;">
+          <button nbButton hero status="primary">Add user</button>
+        </p>
+      </form>
+    </div>
+  </nb-card-body>
+</nb-card>

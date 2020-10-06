@@ -1,0 +1,121 @@
+<nb-card [nbSpinner]="loading" nbSpinnerStatus="primary">
+  <nb-card-header>
+    <div class="interface-heading">
+      Add Plant
+    </div>
+  </nb-card-header>
+  <nb-card-body>
+    <div class="container-fluid">
+      <form [formGroup]="formControl" (submit)="addPlant()">
+        <div class="row">
+          <div class="col-md-12">
+            <input nbInput fullWidth formControlName="name" type="text" id="input-name" placeholder="Name"
+              fieldSize="medium" [status]="
+                formControl.get('name').dirty
+                  ? formControl.get('name').invalid
+                    ? 'danger'
+                    : 'success'
+                  : 'basic'
+              " [required]="true" [attr.aria-invalid]="
+                formControl.get('name').invalid &&
+                formControl.get('name').touched
+                  ? true
+                  : null
+              " />
+            <ng-container *ngIf="
+                formControl.get('name').invalid &&
+                formControl.get('name').touched
+              ">
+              <p class="caption status-danger" *ngIf="formControl.get('name').hasError('required')">
+                Plant Name is required.
+              </p>
+            </ng-container>
+          </div>
+          <div class="col-md-12">
+            <br />
+            <textarea nbInput fullWidth formControlName="description" type="text" id="input-description"
+              placeholder="Scientific Name" fieldSize="medium" rows="5" [status]="
+                formControl.get('description').dirty
+                  ? formControl.get('description').invalid
+                    ? 'danger'
+                    : 'success'
+                  : 'basic'
+              " [required]="true" [attr.aria-invalid]="
+                formControl.get('description').invalid &&
+                formControl.get('description').touched
+                  ? true
+                  : null
+              "></textarea>
+            <ng-container *ngIf="
+                formControl.get('description').invalid &&
+                formControl.get('description').touched
+              ">
+              <p class="caption status-danger" *ngIf="formControl.get('description').hasError('required')">
+                Scientific Name is required.
+              </p>
+            </ng-container>
+          </div>
+        </div>
+        <br />
+        <div class="cat">
+          <div class="heading">Uses</div>
+          <div class="desc">
+            <div class="desc-item" *ngFor="let solution of uses; let i = index">
+              <div class="text">
+                {{ solution }}
+              </div>
+              <div class="button-container">
+                <button nbButton hero status="danger" size="small" (click)="removeUses(i)">
+                  <nb-icon icon="trash-2-outline"></nb-icon>
+                </button>
+              </div>
+            </div>
+          </div>
+          <br />
+          <form [formGroup]="catControl">
+            <textarea nbInput fullWidth formControlName="uses" type="text" id="input-possible-cause"
+              placeholder="Solution" fieldSize="medium" rows="3" [status]="
+                catControl.get('uses').dirty
+                  ? catControl.get('uses').invalid
+                    ? 'danger'
+                    : 'success'
+                  : 'basic'
+              " [required]="true" [attr.aria-invalid]="
+                catControl.get('uses').invalid &&
+                catControl.get('uses').touched
+                  ? true
+                  : null
+              "></textarea>
+            <ng-container *ngIf="
+                catControl.get('uses').invalid &&
+                catControl.get('uses').touched
+              ">
+              <p class="caption status-danger" *ngIf="catControl.get('uses').hasError('required')">
+                Uses are required.
+              </p>
+            </ng-container>
+            <p style="text-align: right; padding-top: 5px;">
+              <button nbButton hero status="info" size="small" (click)="addUses()">
+                Add
+              </button>
+            </p>
+          </form>
+        </div>
+        <br />
+        <ngx-dropzone (change)="onSelect($event)">
+          <ngx-dropzone-label>Select files</ngx-dropzone-label>
+          <ngx-dropzone-preview *ngFor="let f of images" [removable]="true" (removed)="onRemove(f)">
+            <ngx-dropzone-label>
+              {{ f.name }} ({{ f.type }})
+            </ngx-dropzone-label>
+          </ngx-dropzone-preview>
+        </ngx-dropzone>
+        <br />
+        <p style="text-align: right;">
+          <button nbButton hero status="primary">Add Plant</button>
+        </p>
+
+      </form>
+    </div>
+  </nb-card-body>
+</nb-card>

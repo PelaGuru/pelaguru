@@ -1,1 +1,206 @@
 <pelaguru-breadcrumb id="006"></pelaguru-breadcrumb>
+
+<div>
+  <div class="container-fluid view">
+    <mat-card>
+      <mat-vertical-stepper [linear]="isLinear" #stepper>
+        <mat-step [stepControl]="firstFormGroup">
+          <form [formGroup]="firstFormGroup">
+            <ng-template matStepLabel>Add New Item</ng-template>
+            <mat-card>
+              <div class="row">
+                <div class="col-8">
+                  <div class="col-11">
+                    <h1
+                      style="font-family: Verdana, Geneva, Tahoma, sans-serif;"
+                    >
+                      Follow The Guidelines to add a new item.
+                    </h1>
+                    <hr />
+                    1. Snap a photo of your product in a clear and well lit
+                    environment.
+                    <br />
+                    2. Make sure there aren't any prohibited chemicals in your products. Refer the <a href="https://www.doa.gov.lk/SCPPC/images/ROP/Tabel.pdf">
+                        link
+                      </a>.
+                    <br />
+                    3. Use a solid color background.
+                    <br />
+                    4. Upload an image less than 10MB.
+                    <br />
+                    5. You can drag and drop your images.
+                    <br />
+                    6. Then click "Upload".
+                  </div>
+                </div>
+                <div class="col-4">
+                  <mat-card>
+                    <div
+                      class="custom-dropzone"
+                      [multiple]="false"
+                      ngx-dropzone
+                      [accept]="'image/*'"
+                      (change)="onSelect($event)"
+                    >
+                      <ngx-dropzone-label>
+                        <div>
+                          <h2>Drag and drop your images</h2>
+                        </div>
+                      </ngx-dropzone-label>
+                      <ngx-dropzone-image-preview
+                        ngProjectAs="ngx-dropzone-preview"
+                        *ngFor="let f of files"
+                        [file]="f"
+                        [removable]="true"
+                        (removed)="onRemove(f)"
+                      >
+                        <!-- <ngx-dropzone-label>{{ f.name }} ({{ f.type }})</ngx-dropzone-label> -->
+                      </ngx-dropzone-image-preview>
+                    </div>
+                  </mat-card>
+                </div>
+              </div>
+
+              <div style="padding-top: 20px; text-align: right;">
+                <button
+                  class="mat-elevation-z5"
+                  mat-button
+                  matStepperNext
+                  style="background-color: #84a03c; border-radius: 30px;"
+                >
+                  <span class="material-icons">upgrade</span>
+                  <strong>Upload</strong>
+                </button>
+              </div>
+            </mat-card>
+          </form>
+        </mat-step>
+        <mat-step [stepControl]="secondFormGroup">
+          <form [formGroup]="secondFormGroup">
+            <ng-template matStepLabel>Process</ng-template>
+            <div class="row">
+              <div class="col-3">
+                <mat-card>
+                  <ngx-dropzone-image-preview
+                    ngProjectAs="ngx-dropzone-preview"
+                    *ngFor="let f of files"
+                    [file]="f"
+                  >
+                    <!-- <ngx-dropzone-label>{{ f.name }} ({{ f.type }})</ngx-dropzone-label> -->
+                  </ngx-dropzone-image-preview>
+                </mat-card>
+              </div>
+              <div class="col-9">
+                <div class="col-8">
+                  Click "Next" to continue.
+                  <br /><br />
+                  Click "Back" to upload a different image.
+                </div>
+                <div class="col-4"></div>
+
+                <div style="padding-top: 20px; text-align: right;">
+                  <button
+                    class="mat-elevation-z5"
+                    mat-button
+                    matStepperPrevious
+                    style="
+                      background-color: #84a03c;
+                      margin-right: 10px;
+                      border-radius: 30px;
+                    "
+                  >
+                    <span class="material-icons">west</span>
+                    <strong> Back</strong>
+                  </button>
+                  <button
+                    class="mat-elevation-z5"
+                    mat-button
+                    matStepperNext
+                    style="background-color: #84a03c; border-radius: 30px;"
+                  >
+                    <strong> Next </strong>
+                    <span class="material-icons">east</span>
+                  </button>
+                </div>
+              </div>
+            </div>
+          </form>
+        </mat-step>
+        <mat-step>
+          <ng-template matStepLabel>Done</ng-template>
+          <mat-card>
+            <br />
+            <h1>Your Product</h1>
+            <mat-card>
+              <ngx-dropzone-image-preview
+                ngProjectAs="ngx-dropzone-preview"
+                *ngFor="let f of files"
+                [file]="f"
+              >
+                <!-- <ngx-dropzone-label>{{ f.name }} ({{ f.type }})</ngx-dropzone-label> -->
+              </ngx-dropzone-image-preview>
+            </mat-card>
+
+            <br /><br />
+            <h2>Final Step</h2>
+            <!-- <mat-card>
+                <div
+                  class="image-container col-3"
+                  style="
+                    background-image: url('../../assets/img/temp/shop.webp');
+                  "
+                ></div>
+              </mat-card> -->
+            <br />
+            <h2>Product Name:</h2>
+            <h3>input field</h3>
+            <br />
+            <h2>Ingredients</h2>
+            <h3>input field</h3>
+            <br />
+            <h2>Description</h2>
+            <p>
+              -Input field-
+            </p>
+            <br />
+            <h2>Notes</h2>
+            <h3>input field</h3>
+            <br />
+            <h2>Solution For</h2>
+            <p>Retrive Items from database and show as an image slider</p>
+            <br />
+            
+          </mat-card>
+          <div style="padding-top: 20px; text-align: right;">
+            <p>
+              Click "Reset" to try again or click "Finish" to return to Home
+              page.
+            </p>
+            <button
+              class="mat-elevation-z5"
+              mat-button
+              (click)="stepper.reset()"
+              style="background-color: #84a03c; border-radius: 30px;"
+            >
+              <span class="material-icons">cached</span>
+              <strong> Reset</strong>
+            </button>
+            &nbsp;&nbsp;&nbsp;
+            <a routerLink="../">
+              <button
+                class="mat-elevation-z5"
+                mat-button
+                style="background-color: #dbdbd9; border-radius: 30px;"
+              >
+                <span class="material-icons">check_circle</span>
+                <strong> Finish</strong>
+              </button></a
+            >
+          </div>
+        </mat-step>
+      </mat-vertical-stepper>
+    </mat-card>
+  </div>
+
+  <!-- <pelaguru-footer></pelaguru-footer> -->
+</div>

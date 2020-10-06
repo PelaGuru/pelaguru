@@ -43,7 +43,7 @@
     <div class="grid-container-inner">
       <a
         *ngFor="let item of shopCatalogueItems | async"
-        routerLink="{{ item.username }}"
+        routerLink="{{ item.id }}"
       >
         <mat-card>
           <div
@@ -54,11 +54,14 @@
           <div class="description-container">
             <div class="name">{{ item.name }}</div>
             <div class="description">
-              Lorem Ipsum is simply dummy text of the printing and typesetting
-              industry. Lorem Ipsum has been the industry's standard dummy text
-              ever since the 1500s, when an
-              {{ item.sciName }}
+              {{ item.description }}
             </div>
+            <!-- <div class="telephone">
+              Telephone: {{item.telephone}}
+            </div>
+            <div class="address">
+              Address: {{ item.address }}
+            </div> -->
             <div class="rating">
               <div class="rating-inner">
                 <span class="material-icons">star</span>
