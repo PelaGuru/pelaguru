@@ -13,6 +13,6 @@ export class AllPlantsComponent implements OnInit {
   constructor() {}
 
   ngOnInit(): void {
-    this.plants.next([{ name: 'plant One' }]);
+    // this.plants.next([{ name: 'plant One' }]);
   }
 }
