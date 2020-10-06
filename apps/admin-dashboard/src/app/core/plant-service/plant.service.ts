@@ -72,4 +72,24 @@ export class PlantService {
     // console.log(data);
     await ref.set(data);
   }
+  async getAllPlants() {
+    const ref = this.fireStore.collection<any>('Plants');
+    const data = await ref
+      .get()
+      .pipe(
+        map((snap) => {
+          return snap.docs.map((d) => {
+            return d.data();
+          });
+        })
+      )
+      .toPromise();
+    return data;
+  }
+
+  async deletePlant(id) {
+    const ref = this.fireStore.collection<any>('Plants');
+    const data = await ref.doc(id).delete();
+    return data;
+  }
 }
