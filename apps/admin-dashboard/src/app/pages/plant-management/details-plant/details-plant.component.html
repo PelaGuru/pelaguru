@@ -1,1 +1,24 @@
-<p>details-plant works!</p>
+<nb-card status="success">
+    <nb-card-header>{{name}}</nb-card-header>
+    <nb-card-body>
+        <img [src]="image" alt="Place image title" width="100%">
+    </nb-card-body>
+</nb-card>
+<nb-card status="success">
+    <nb-card-header>scientificName</nb-card-header>
+    <nb-card-body>
+        {{scientificName}}
+    </nb-card-body>
+</nb-card>
+<nb-card status="success">
+    <nb-card-header>Common Diseases</nb-card-header>
+    <nb-card-body>
+        {{commonDiseases}}
+    </nb-card-body>
+</nb-card>
+<nb-card status="success">
+    <nb-card-header>Uses of the plant</nb-card-header>
+    <nb-card-body>
+        {{uses}}
+    </nb-card-body>
+</nb-card>
