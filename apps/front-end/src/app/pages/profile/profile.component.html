@@ -1,7 +1,7 @@
 <div class="grid-container">
-  <div class="container-fluid">
+  <div class="container">
     <div class="row">
-      <div class="col-3">
+      <!-- <div class="col-3">
         <mat-card class="card1">
           <div class="back-button">
             <a routerLink="../">
@@ -29,9 +29,9 @@
             </p>
           </mat-card>
         </mat-card>
-      </div>
+      </div> -->
 
-      <div class="col-9" style="margin-bottom: 15px;">
+      <div class="col-12" style="margin-bottom: 15px;">
         <mat-card
           class="card2"
           style="
@@ -39,7 +39,6 @@
             margin-top: 5px;
             margin-left: -5px;
             min-height: 100%;
-            background-image: url('../../../assets/img/background.png');
             background-size: cover;
           "
         >
@@ -51,7 +50,30 @@
             >
               <h1 style="color: #84a03c;">My Profile</h1>
               <hr />
-              <br /><br />
+              <br />
+              <div class="profile-imagr-container">
+                <div class="image">
+                  <img
+                    *ngIf="
+                      (userData | async) &&
+                      (userData | async)?.profilePictureUrl
+                    "
+                    [src]="(userData | async)?.profilePictureUrl"
+                    class="img-resp"
+                    alt=""
+                  />
+                  <img
+                    *ngIf="!(userData | async)"
+                    src="../../../assets/img/temp/temp-user.svg"
+                    class="img-resp"
+                    alt=""
+                  />
+                </div>
+              </div>
+              <br />
+              <div class="r-name">{{ (userData | async)?.displayName }}</div>
+              <div class="r-email">{{ (userData | async)?.email }}</div>
+              <br />
               <div class="form-wrapper">
                 <mat-form-field class="example-full-width">
                   <mat-label>First Name</mat-label>
@@ -125,22 +147,6 @@
                   <mat-icon matSuffix>phone</mat-icon>
                   <mat-hint>Enter your Telephone No.</mat-hint>
                   <mat-error>Enter your Telephone No</mat-error>
-                </mat-form-field>
-              </div>
-              <br />
-              <div class="form-wrapper">
-                <mat-form-field class="example-full-width">
-                  <mat-label>Description</mat-label>
-                  <textarea
-                    matInput
-                    formControlName="description"
-                    value="{{ (userData | async)?.description }}"
-                    [errorStateMatcher]="matcher"
-                    placeholder="Ex. It makes me feel..."
-                  ></textarea>
-                  <mat-icon matSuffix>description</mat-icon>
-                  <mat-hint>Enter your Description.</mat-hint>
-                  <mat-error>Enter your Description</mat-error>
                 </mat-form-field>
               </div>
               <br /><br />
