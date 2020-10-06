@@ -1,12 +1,15 @@
-import { Image } from './image';
 import { BaseModel } from './common/base-model';
 
+export interface CommonDiseases {
+  diseasesId: string;
+  diseasesName: string;
+}
+
 export interface Plant extends BaseModel {
+  image: string;
   id: string;
-  name: string;
+  plantName: string;
   scientificName: string;
-  popularDistrict: string;
-  description: string;
-  commonDiseases: string;
-  images: Image[];
+  commonDiseases: CommonDiseases[];
+  uses: string[];
 }
