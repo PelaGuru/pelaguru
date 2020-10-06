@@ -47,7 +47,7 @@ export class ProfileComponent implements OnInit {
       .updateUserProfile(
         this.userData.value.userId,
         `${this.formControl.get('firstName').value} ${
-          this.formControl.get('firstName').value
+          this.formControl.get('lastName').value
         }`,
         '',
         this.formControl.get('firstName').value,
