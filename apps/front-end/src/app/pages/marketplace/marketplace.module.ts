@@ -7,6 +7,7 @@ import { ShopCatalogueComponent } from './shop-catalogue/shop-catalogue.componen
 import { SharedModule } from '../../shared/shared.module';
 import { ViewShopComponent } from './view-shop/view-shop.component';
 import { ShopItemComponent } from './view-shop/shop-item/shop-item.component';
+import { ShopMessageDialogComponent } from './view-shop/shop-message-dialog/shop-message-dialog.component';
 
 @NgModule({
   declarations: [
@@ -14,6 +15,7 @@ import { ShopItemComponent } from './view-shop/shop-item/shop-item.component';
     ShopCatalogueComponent,
     ViewShopComponent,
     ShopItemComponent,
+    ShopMessageDialogComponent,
   ],
   imports: [CommonModule, MarketplaceRoutingModule, SharedModule],
 })

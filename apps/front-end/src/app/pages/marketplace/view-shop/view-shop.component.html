@@ -1,4 +1,4 @@
-<div class="container-fluid">
+<div class="container">
   <div class="header-container">
     <pelaguru-breadcrumb id="008"></pelaguru-breadcrumb>
     <div
@@ -37,10 +37,15 @@
           Exercitationem non laudantium est suscipit culpa deserunt sed, hic
           voluptatum! Recusandae, alias.
         </div>
-        <div class="desc-text">
-          Lorem ipsum dolor sit amet consectetur adipisicing elit.
-          Exercitationem non laudantium est suscipit culpa deserunt sed, hic
-          voluptatum! Recusandae, alias.
+        <div style="text-align: right;">
+          <button
+            mat-raised-button
+            color="primary"
+            style="color: white;"
+            (click)="openMessageDialog()"
+          >
+            Message
+          </button>
         </div>
       </div>
     </div>
