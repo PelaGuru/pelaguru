@@ -20,24 +20,21 @@ export class ProfileService {
     displayName: string,
     photoURL: string,
     firstName: string,
-    email: string,
     lastName: string,
     address: string,
     telephone: string,
-    description: string
   ) {
     const afsUserRef: AngularFirestoreDocument<User> = this.fireStore.doc(
       `Users/${uid}`
     );
     const userData: Partial<User> = {
       displayName,
-      firstName: firstName,
+      firstName,
       lastName: lastName,
       address: address,
       telephone: telephone,
-      description: description,
-    } as User;
-    await afsUserRef.set(userData as User, { merge: true });
+    };
+    await afsUserRef.update(userData as User);
   }
 
   async getProfileData(id: string): Promise<User> {
