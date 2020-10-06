@@ -2,8 +2,11 @@ import * as functions from 'firebase-functions';
 import { Logger } from '../utils/logger';
 import { AuthService } from '../services/auth.service';
 import { UserRole } from '@pelaguru/interfaces';
+import { NotifcationService } from '../services/notification.service';
+import { EmailTemplate } from '../models/email-template';
 
 const authService = new AuthService();
+const notifcationService = new NotifcationService();
 
 // In the scenario where user record is created through the local firebase auth client,
 // the firestore record has to be created by this trigger
@@ -26,6 +29,12 @@ export const onNewUser = functions.auth.user().onCreate(async (user) => {
       user.toJSON()
     );
   }
+  await notifcationService.sendEmailNotificationWithSendgrid(
+    user.uid,
+    EmailTemplate.WelcomeEmail,
+    { email: user.email, name: user.displayName }
+  );
+  Logger.info('OnBoarding notification sent');
 });
 
 export const onDeleteUser = functions.auth.user().onDelete(async (user) => {
