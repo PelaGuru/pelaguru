@@ -80,19 +80,19 @@ export class PagesComponent implements OnInit, OnDestroy {
         },
       ],
     },
-    {
-      title: 'Messages',
-      children: [
-        {
-          title: 'From sellers',
-          link: '/messages/sellers',
-        },
-        {
-          title: 'From users',
-          link: '/messages/users',
-        },
-      ],
-    },
+    // {
+    //   title: 'Messages',
+    //   children: [
+    //     {
+    //       title: 'From sellers',
+    //       link: '/messages/sellers',
+    //     },
+    //     {
+    //       title: 'From users',
+    //       link: '/messages/users',
+    //     },
+    //   ],
+    // },
     {
       title: 'ML Model',
       children: [
