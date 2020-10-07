@@ -1,4 +1,10 @@
 @import 'catalouge';
+.hr_line {
+  border: 0;
+  height: 1px;
+  background: #333;
+  background-image: linear-gradient(to right, #ccc, #333, #ccc);
+}
 
 $header-card-min-height: 0px;
 $header-card-inner-min-height: calc(0px - 32px);
