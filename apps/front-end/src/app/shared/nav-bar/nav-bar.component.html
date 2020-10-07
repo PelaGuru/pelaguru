@@ -42,14 +42,15 @@
       <div class="is-signed-in" *ngIf="isAuthenticated | async">
         <div class="notification">
           <button mat-icon-button (click)="rightDrawerToggle('NOTIFICATION')">
-            <mat-icon
+            <!-- <mat-icon
               matBadge="4"
               matBadgePosition="after"
               matBadgeOverlap="true"
               matBadgeSize="small"
               matBadgeColor="warn"
               >notification_important</mat-icon
-            >
+            > -->
+            <mat-icon>notification_important</mat-icon>
           </button>
         </div>
         <div class="profile">
