@@ -14,6 +14,7 @@ export const environment = {
     appId: '1:41926452209:web:27c755cceed4f0d43f9a50',
     measurementId: 'G-H7SEM57MHS',
   },
+  predictionURL: 'http://6fd556c6c7e3.ngrok.io/predict/',
 };
 
 /*

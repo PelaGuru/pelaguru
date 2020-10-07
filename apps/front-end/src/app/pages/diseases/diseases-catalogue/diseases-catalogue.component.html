@@ -48,9 +48,7 @@
         <mat-card>
           <div
             class="image-container"
-            style="
-              background-image: url(../../../assets/img/temp/26-500x375.jpg);
-            "
+            [style]="{ 'background-image': 'url(' + item.image + ')' }"
           ></div>
           <div class="description-container">
             <div class="name">{{ item.diseaseName }}</div>

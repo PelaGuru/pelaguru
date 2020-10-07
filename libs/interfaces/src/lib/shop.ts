@@ -7,4 +7,8 @@ export interface Shop extends BaseModel {
   description: string;
   approved: boolean;
   closed: boolean;
+  image: string;
+  address: string;
+  contactNumber: string;
+  email: string;
 }

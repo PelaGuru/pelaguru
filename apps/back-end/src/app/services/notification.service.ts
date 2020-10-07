@@ -14,6 +14,7 @@ export class NotifcationService<parameters = any> {
   async sendEmailNotification(
     to: string[],
     templateName: EmailTemplate,
+    // tslint:disable-next-line: no-shadowed-variable
     parameters: parameters
   ): Promise<void> {
     const db = admin.firestore();
@@ -39,6 +40,7 @@ export class NotifcationService<parameters = any> {
   async sendEmailNotificationWithSendgrid<T>(
     receiverId: string,
     templateName: EmailTemplate,
+    // tslint:disable-next-line: no-shadowed-variable
     parameters: T
   ): Promise<void> {
     sendgrid.setApiKey(environment.sendgridAPIKey);
