@@ -11,6 +11,7 @@ import { MatStepper } from '@angular/material/stepper';
 import { MatSnackBar } from '@angular/material/snack-bar';
 import { DiseaseCatalogueItem } from '@pelaguru/interfaces';
 import { DiseaseService } from '../../core/disease-service/disease.service';
+import Swal from 'sweetalert2';
 
 @Component({
   selector: 'pelaguru-diseases-identifier',
@@ -101,7 +102,25 @@ export class DiseasesIdentifierComponent implements OnInit {
       this.diseasIdentifierService
         .getPrediction(url)
         .then((response) => {
-          this.getDiseas(response?.predicted_disease);
+          console.log(response);
+
+          this.getDiseas(response?.predicted_result);
+
+          if (Number.parseFloat(response.value) < 10) {
+            Swal.fire({
+              title: 'Attention!',
+              text: 'Prediction rate is low. Continue with your own risk.',
+              icon: 'warning',
+              cancelButtonText: 'Ok',
+            });
+          } else {
+            Swal.fire({
+              title: 'Attention!',
+              text: 'Prediction rate is 75%',
+              icon: 'success',
+              cancelButtonText: 'Ok',
+            });
+          }
         })
         .catch((error) => {
           console.log(error);
