@@ -1,23 +1,22 @@
 import { Component, Inject, OnInit } from '@angular/core';
+import { AngularFirestore } from '@angular/fire/firestore';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { MatDialogRef, MAT_DIALOG_DATA } from '@angular/material/dialog';
-import { AuthService } from '../../../../../app/core/auth/auth.service';
 import { Router } from '@angular/router';
-import { AngularFirestore } from '@angular/fire/firestore';
+import { AuthService } from '../../core/auth/auth.service';
 import Swal from 'sweetalert2';
 
 @Component({
-  selector: 'pelaguru-shop-message-dialog',
-  templateUrl: './shop-message-dialog.component.html',
-  styleUrls: ['./shop-message-dialog.component.scss'],
+  selector: 'pelaguru-notofication-reply-dialog',
+  templateUrl: './notofication-reply-dialog.component.html',
+  styleUrls: ['./notofication-reply-dialog.component.scss'],
 })
-export class ShopMessageDialogComponent implements OnInit {
+export class NotoficationReplyDialogComponent implements OnInit {
   formControl: FormGroup;
-  to_id: string;
-  from_id: string;
-  msg: string;
+  from_id = '';
+  to_id = '';
   constructor(
-    public dialogRef: MatDialogRef<ShopMessageDialogComponent>,
+    public dialogRef: MatDialogRef<NotoficationReplyDialogComponent>,
     @Inject(MAT_DIALOG_DATA) public data: { shopId: string },
     private authService: AuthService,
     private router: Router,
@@ -28,15 +27,13 @@ export class ShopMessageDialogComponent implements OnInit {
     });
   }
 
-  ngOnInit(): void {
-    console.log(this.data);
-  }
+  ngOnInit(): void {}
 
   async sendMessage() {
     this.authService.getUserStream().subscribe((resopnse) => {
       // console.log(Response);
       this.from_id = resopnse.userId;
-      this.to_id = this.router.url.split('/')[2];
+      // this.to_id = this.router.url.split('/')[2];
 
       this.writeUserData();
     });
@@ -46,7 +43,7 @@ export class ShopMessageDialogComponent implements OnInit {
     this.fireStore
       .collection('contactMessages')
       .add({
-        to_id: this.to_id,
+        to_id: this.data.shopId,
         from_id: this.from_id,
         message: this.formControl.get('message').value,
         timestamp: new Date(),
@@ -60,4 +57,22 @@ export class ShopMessageDialogComponent implements OnInit {
         this.dialogRef.close();
       });
   }
+
+  //   sendMessage() {
+  //     let msg = ''
+  //     console.log('send');
+  //     console.log(msg = this.formControl.get('message').value);
+
+  //     this.authService.getUserStream().subscribe(async (resopnse) => {
+  //       // console.log(Response);
+  //       this.myId = resopnse.userId;
+  //       console.log(this.myId);
+  //       try {
+
+  //       } catch (error) {
+  //         console.log(error);
+  //       }
+
+  //   }
+  // }
 }

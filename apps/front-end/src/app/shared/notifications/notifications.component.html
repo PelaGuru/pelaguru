@@ -1,4 +1,4 @@
-<div class="notification-item">
+<div class="notification-item" *ngFor="let msg of msgs; let i = index">
   <div class="header">
     <div class="label">{{ title }}</div>
     <div class="close-button">
@@ -8,11 +8,9 @@
     </div>
   </div>
   <div class="content">
-    Lorem ipsum dolor, sit amet consectetur adipisicing elit. Quasi provident
-    tempore accusantium consequatur necessitatibus alias ab doloribus facilis,
-    optio enim?
+    {{ msg.msg }}
   </div>
-  <div class="time">April 22, 2020</div>
+  <button (click)="reply(msg.shopId)" mat-raised-button color="primary">reply</button>
 </div>
 <!-- <div class="notification-item">
             <div class="header">

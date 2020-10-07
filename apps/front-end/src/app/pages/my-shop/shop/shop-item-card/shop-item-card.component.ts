@@ -1,4 +1,5 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, Input, OnInit } from '@angular/core';
+import { ShopItem } from '@pelaguru/interfaces';
 
 @Component({
   selector: 'pelaguru-shop-item-card',
@@ -6,6 +7,7 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./shop-item-card.component.scss'],
 })
 export class ShopItemCardComponent implements OnInit {
+  @Input() data: ShopItem;
   constructor() {}
 
   ngOnInit(): void {}

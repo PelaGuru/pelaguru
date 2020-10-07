@@ -3,6 +3,7 @@ import { NavLinkData } from '../models/nav-link-data';
 import { AuthService } from '../../core/auth/auth.service';
 import { Router } from '@angular/router';
 import { RightDrawerServiceService } from '../../core/right-drawer-service/right-drawer-service.service';
+import { BehaviorSubject } from 'rxjs';
 
 @Component({
   selector: 'pelaguru-right-drawer',
@@ -11,6 +12,7 @@ import { RightDrawerServiceService } from '../../core/right-drawer-service/right
 })
 export class RightDrawerComponent implements OnInit {
   @Input() viewState: string;
+  clearNotifications: BehaviorSubject<boolean> = new BehaviorSubject(false);
   profileLinks: Array<NavLinkData> = [{ label: 'Profile', link: '/profile' }];
   constructor(
     private authService: AuthService,
@@ -32,5 +34,9 @@ export class RightDrawerComponent implements OnInit {
 
   get isVendor() {
     return this.authService.isVendor();
+  }
+
+  clearN() {
+    this.clearNotifications.next(!this.clearNotifications.value);
   }
 }

@@ -1,0 +1,15 @@
+<h2 mat-dialog-title>Message</h2>
+<mat-dialog-content class="mat-typography">
+    <form [formGroup]="formControl">
+        <mat-form-field class="example-full-width" appearance="outline">
+            <mat-label>Message</mat-label>
+            <textarea matInput formControlName="message" rows="4"></textarea>
+        </mat-form-field>
+    </form>
+</mat-dialog-content>
+<mat-dialog-actions align="end">
+    <button mat-button mat-dialog-close>Cancel</button>
+    <button mat-raised-button color="primary" style="color: white;" (click)="sendMessage()">
+        Send
+    </button>
+</mat-dialog-actions>

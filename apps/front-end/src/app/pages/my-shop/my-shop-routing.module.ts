@@ -9,7 +9,7 @@ const routes: Routes = [
     path: '',
     component: MyShopComponent,
     children: [
-      { path: '', redirectTo: 'dashboard', pathMatch: 'full' },
+      { path: '', redirectTo: 'shop-items', pathMatch: 'full' },
       {
         path: 'dashboard',
         loadChildren: () =>
