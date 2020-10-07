@@ -11,7 +11,7 @@ import { filter, map, timeout } from 'rxjs/operators';
 export class PagesComponent implements OnInit, OnDestroy {
   newSellerRequestCount = 0;
   subscriptions: Subscription[] = [];
-  profileMenuItems = [{ title: 'Profile' }, { title: 'Logout' }];
+  profileMenuItems = [{ title: 'Logout',link: '/sign-in' }];
   sidenavMenuItems: NbMenuItem[] = [
     { title: 'Dashboard', link: '/dashboard' },
     {
