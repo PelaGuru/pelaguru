@@ -36,6 +36,7 @@ import { BreadcrumbComponent } from './breadcrumb/breadcrumb.component';
 import { SuggestionComponent } from './suggestion/suggestion.component';
 import { BtnLoadingComponent } from './btn-loading/btn-loading.component';
 import { NotificationsComponent } from './notifications/notifications.component';
+import { NotoficationReplyDialogComponent } from './notofication-reply-dialog/notofication-reply-dialog.component';
 
 const nativeModules = [
   CommonModule,
@@ -81,6 +82,7 @@ const externalModules = [
     SuggestionComponent,
     BtnLoadingComponent,
     NotificationsComponent,
+    NotoficationReplyDialogComponent,
   ],
   imports: [CommonModule, ...nativeModules, ...externalModules],
   exports: [

@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { AuthService } from '../auth.service';
 import { MatSnackBar } from '@angular/material/snack-bar';
+import Swal from 'sweetalert2';
 
 @Component({
   selector: 'pelaguru-google-sign-in',
@@ -19,6 +20,13 @@ export class GoogleSignInComponent implements OnInit {
     const response = await this.authService.loginWithGoogle();
     if (!response.success) {
       this.snackbar.open('Something went wrong. Try again later.', 'close');
+    } else {
+      Swal.fire({
+        title: 'Nice to see you again !',
+        text: 'Log in successful',
+        icon: 'success',
+        cancelButtonText: 'No',
+      });
     }
   }
 }

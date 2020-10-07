@@ -4,6 +4,7 @@ import { ErrorStateMatcher } from '@angular/material/core';
 import { AuthService } from '../auth.service';
 import { MatSnackBar } from '@angular/material/snack-bar';
 import { Router } from '@angular/router';
+import Swal from 'sweetalert2';
 
 @Component({
   selector: 'pelaguru-sign-in',
@@ -38,6 +39,12 @@ export class SignInComponent implements OnInit {
       if (response.success) {
         this.isLoading = false;
         this.router.navigate(['/']);
+        Swal.fire({
+          title: 'Nice to see you again !',
+          text: 'Log in successful',
+          icon: 'success',
+          cancelButtonText: 'No',
+        });
       } else {
         this.isLoading = false;
         switch (response.errorCode) {

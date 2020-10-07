@@ -5,6 +5,7 @@ import { AuthService } from '../auth.service';
 import { MatSnackBar } from '@angular/material/snack-bar';
 import { Router } from '@angular/router';
 import { AuthErrorCodes } from '@pelaguru/error-codes';
+import Swal from 'sweetalert2';
 
 @Component({
   selector: 'pelaguru-sign-up',
@@ -44,6 +45,11 @@ export class SignUpComponent implements OnInit {
 
       if (signUpResponse.success) {
         this.isLoading = false;
+        Swal.fire({
+          title: 'Welcome to our app !',
+          icon: 'success',
+          cancelButtonText: 'No',
+        });
         this.router.navigate(['/']);
       } else {
         this.isLoading = false;
