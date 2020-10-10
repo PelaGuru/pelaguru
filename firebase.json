@@ -1,25 +1,29 @@
 {
   "hosting": [
     {
-      "target": "front-end",
+      "target": "front-end-dev",
       "public": "dist/apps/front-end",
-      "ignore": ["**/.*"],
-      "headers": [
-        {
-          "source": "*.[0-9a-f][0-9a-f][0-9a-f][0-9a-f][0-9a-f][0-9a-f][0-9a-f][0-9a-f][0-9a-f][0-9a-f][0-9a-f][0-9a-f][0-9a-f][0-9a-f][0-9a-f][0-9a-f][0-9a-f][0-9a-f][0-9a-f][0-9a-f].+(css|js)",
-          "headers": [
-            {
-              "source": "/api/**",
-              "function": "api"
-            },
-            {
-              "key": "Cache-Control",
-              "value": "public,max-age=31536000,immutable"
-            }
-          ]
-        }
-      ],
+      "ignore": ["firebase.json", "**/.*", "**/node_modules/**"],
       "rewrites": [
+        {
+          "source": "/api/**",
+          "function": "api"
+        },
+        {
+          "source": "**",
+          "destination": "/index.html"
+        }
+      ]
+    },
+    {
+      "target": "admin-dev",
+      "public": "dist/apps/admin-dashboard",
+      "ignore": ["firebase.json", "**/.*", "**/node_modules/**"],
+      "rewrites": [
+        {
+          "source": "/api/**",
+          "function": "api"
+        },
         {
           "source": "**",
           "destination": "/index.html"

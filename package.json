@@ -34,7 +34,7 @@
     "firebase:shell": "concurrently --kill-others \"npm run build back-end -- --watch\" \"firebase functions:shell\" --raw",
     "firebase:deploy": "firebase deploy",
     "firebase:func_deploy": "firebase deploy --only functions",
-    "firebase:frontend_deploy": "ng build --prod front-end && firebase deploy --only hosting:pelaguru-dev",
+    "firebase:frontend_deploy": "ng build --prod front-end && firebase deploy --only hosting:front-end-dev",
     "firebase:admin_deploy": "ng build --prod admin-dashboard && firebase deploy --only hosting:admin-dev"
   },
   "private": true,
