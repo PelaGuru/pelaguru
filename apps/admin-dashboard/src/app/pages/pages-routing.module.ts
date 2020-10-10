@@ -1,5 +1,7 @@
 import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
+import { UserRole } from '@pelaguru/interfaces';
+import { RoleGuard } from '../core/role-guard/role.guard';
 
 import { PagesComponent } from './pages.component';
 
@@ -13,6 +15,14 @@ const routes: Routes = [
         path: 'dashboard',
         loadChildren: () =>
           import('./dashboard/dashboard.module').then((m) => m.DashboardModule),
+        canActivate: [RoleGuard],
+        data: {
+          allowedRoles: [
+            UserRole.Admin,
+            UserRole.Moderator,
+            UserRole.ResourcePerson,
+          ],
+        },
       },
       {
         path: 'users',
@@ -20,6 +30,10 @@ const routes: Routes = [
           import('./user-management/user-management.module').then(
             (m) => m.UserManagementModule
           ),
+        canActivate: [RoleGuard],
+        data: {
+          allowedRoles: [UserRole.Admin],
+        },
       },
       {
         path: 'sellers',
@@ -27,6 +41,14 @@ const routes: Routes = [
           import('./seller-management/seller-management.module').then(
             (m) => m.SellerManagementModule
           ),
+        canActivate: [RoleGuard],
+        data: {
+          allowedRoles: [
+            UserRole.Admin,
+            UserRole.Moderator,
+            UserRole.ResourcePerson,
+          ],
+        },
       },
       {
         path: 'plants',
@@ -34,6 +56,10 @@ const routes: Routes = [
           import('./plant-management/plant-management.module').then(
             (m) => m.PlantManagementModule
           ),
+        canActivate: [RoleGuard],
+        data: {
+          allowedRoles: [UserRole.Admin, UserRole.Moderator],
+        },
       },
       {
         path: 'diseases',
@@ -41,6 +67,10 @@ const routes: Routes = [
           import('./diseas-management/diseas-management.module').then(
             (m) => m.DiseasManagementModule
           ),
+        canActivate: [RoleGuard],
+        data: {
+          allowedRoles: [UserRole.Admin, UserRole.Moderator],
+        },
       },
       {
         path: 'chemicals',
@@ -48,16 +78,32 @@ const routes: Routes = [
           import('./chemical-management/chemical-management.module').then(
             (m) => m.ChemicalManagementModule
           ),
+        canActivate: [RoleGuard],
+        data: {
+          allowedRoles: [
+            UserRole.Admin,
+            UserRole.Moderator,
+            UserRole.ResourcePerson,
+          ],
+        },
       },
       {
         path: 'messages',
         loadChildren: () =>
           import('./messages/messages.module').then((m) => m.MessagesModule),
+        canActivate: [RoleGuard],
+        data: {
+          allowedRoles: [UserRole.Admin],
+        },
       },
       {
         path: 'ml-model',
         loadChildren: () =>
           import('./ml-model/ml-model.module').then((m) => m.MlModelModule),
+        canActivate: [RoleGuard],
+        data: {
+          allowedRoles: [UserRole.Admin],
+        },
       },
     ],
   },

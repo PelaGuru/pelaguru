@@ -2,7 +2,7 @@
   <nb-layout-column>
     <div class="card-container">
       <nb-card>
-        <nb-card-body>
+        <nb-card-body [nbSpinner]="isLoading" nbSpinnerStatus="primary">
           <div class="header-container">
             <div class="image-container">
               <div class="image">
@@ -22,7 +22,7 @@
           <div class="form-container">
             <form
               (submit)="login()"
-              [formGroup]="formControl"
+              [formGroup]="formController"
               aria-labelledby="title"
             >
               <div class="form-control-group">
@@ -35,35 +35,35 @@
                   fieldSize="medium"
                   autofocus
                   [status]="
-                    formControl.get('email').dirty
-                      ? formControl.get('email').invalid
+                    formController.get('email').dirty
+                      ? formController.get('email').invalid
                         ? 'danger'
                         : 'success'
                       : 'basic'
                   "
                   [required]="true"
                   [attr.aria-invalid]="
-                    formControl.get('email').invalid &&
-                    formControl.get('email').touched
+                    formController.get('email').invalid &&
+                    formController.get('email').touched
                       ? true
                       : null
                   "
                 />
                 <ng-container
                   *ngIf="
-                    formControl.get('email').invalid &&
-                    formControl.get('email').touched
+                    formController.get('email').invalid &&
+                    formController.get('email').touched
                   "
                 >
                   <p
                     class="caption status-danger"
-                    *ngIf="formControl.get('email').hasError('required')"
+                    *ngIf="formController.get('email').hasError('required')"
                   >
                     Email is required.
                   </p>
                   <p
                     class="caption status-danger"
-                    *ngIf="formControl.get('email').hasError('email')"
+                    *ngIf="formController.get('email').hasError('email')"
                   >
                     Email should be the real one.
                   </p>
@@ -80,29 +80,29 @@
                   placeholder="Password"
                   fieldSize="medium"
                   [status]="
-                    formControl.get('password').dirty
-                      ? formControl.get('password').invalid
+                    formController.get('password').dirty
+                      ? formController.get('password').invalid
                         ? 'danger'
                         : 'success'
                       : 'basic'
                   "
                   [required]="true"
                   [attr.aria-invalid]="
-                    formControl.get('password').invalid &&
-                    formControl.get('password').touched
+                    formController.get('password').invalid &&
+                    formController.get('password').touched
                       ? true
                       : null
                   "
                 />
                 <ng-container
                   *ngIf="
-                    formControl.get('password').invalid &&
-                    formControl.get('password').touched
+                    formController.get('password').invalid &&
+                    formController.get('password').touched
                   "
                 >
                   <p
                     class="caption status-danger"
-                    *ngIf="formControl.get('password').hasError('required')"
+                    *ngIf="formController.get('password').hasError('required')"
                   >
                     Password is required.
                   </p>
@@ -121,7 +121,7 @@
                 fullWidth
                 status="primary"
                 size="small"
-                [disabled]="submitted || !formControl.valid"
+                [disabled]="submitted || !formController.valid"
                 [class.btn-pulse]="submitted"
               >
                 Log In

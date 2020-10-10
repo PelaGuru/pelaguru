@@ -13,8 +13,8 @@
           <nb-user
             size="medium"
             shape="rectangle"
-            name="Induwara jayalath"
-            title="Admin"
+            [name]="(userData | async)?.displayName"
+            [title]="(userData | async)?.role"
             [nbContextMenu]="profileMenuItems"
             nbContextMenuTag="profile-context-menu"
           >

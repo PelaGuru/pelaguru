@@ -1,7 +1,9 @@
 import { Component, OnDestroy, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
 import { NbMenuItem, NbMenuService } from '@nebular/theme';
 import { Subscription } from 'rxjs';
 import { filter, map, timeout } from 'rxjs/operators';
+import { AuthService } from '../core/auth/auth.service';
 
 @Component({
   selector: 'pelaguru-pages',
@@ -11,7 +13,7 @@ import { filter, map, timeout } from 'rxjs/operators';
 export class PagesComponent implements OnInit, OnDestroy {
   newSellerRequestCount = 0;
   subscriptions: Subscription[] = [];
-  profileMenuItems = [{ title: 'Logout',link: '/sign-in' }];
+  profileMenuItems = [{ title: 'Logout', link: '/sign-in' }];
   sidenavMenuItems: NbMenuItem[] = [
     { title: 'Dashboard', link: '/dashboard' },
     {
@@ -104,7 +106,11 @@ export class PagesComponent implements OnInit, OnDestroy {
     },
   ];
 
-  constructor(private nbMenuService: NbMenuService) {}
+  constructor(
+    private nbMenuService: NbMenuService,
+    private authService: AuthService,
+    private router: Router
+  ) {}
 
   ngOnDestroy(): void {
     for (const s of this.subscriptions) {
@@ -121,7 +127,12 @@ export class PagesComponent implements OnInit, OnDestroy {
       )
       .subscribe((title) => {
         if (title === 'Logout') {
-          alert('logout');
+          this.authService
+            .logout()
+            .toPromise()
+            .then(() => {
+              this.router.navigate(['/sign-in']);
+            });
         }
       });
   }
@@ -243,5 +254,9 @@ export class PagesComponent implements OnInit, OnDestroy {
         });
       }
     });
+  }
+
+  get userData() {
+    return this.authService.userData;
   }
 }

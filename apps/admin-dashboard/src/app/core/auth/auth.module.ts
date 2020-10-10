@@ -5,6 +5,7 @@ import { AccountRecoveryRequestComponent } from './account-recovery-request/acco
 import { ResetPasswordComponent } from './reset-password/reset-password.component';
 import { SharedModule } from '../../shared/shared.module';
 import { AuthService } from './auth.service';
+import { AuthGuard } from './auth-guard/auth.guard';
 
 @NgModule({
   declarations: [
@@ -13,6 +14,6 @@ import { AuthService } from './auth.service';
     ResetPasswordComponent,
   ],
   imports: [CommonModule, SharedModule],
-  providers: [AuthService],
+  providers: [AuthService, AuthGuard],
 })
 export class AuthModule {}

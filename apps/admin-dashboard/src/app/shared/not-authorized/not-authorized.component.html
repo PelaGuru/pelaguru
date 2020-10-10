@@ -1,1 +1,22 @@
-<p>not-authorized works!</p>
+<div class="page-not-found">
+  <div class="content-container">
+    <div class="icon-container">
+      <div class="icon-container-inner">
+        <div class="icon">:(</div>
+      </div>
+    </div>
+    <div class="description-container">
+      <div class="heading">401 - UNAUTHORIZED</div>
+      <div class="text">
+        You do not have access to this page.
+      </div>
+      <div class="button-container">
+        <a routerLink="/">
+          <button nbButton status="info">Home Page</button>
+        </a>
+        &nbsp;
+        <button nbButton status="basic" (click)="logOut()">Logout</button>
+      </div>
+    </div>
+  </div>
+</div>

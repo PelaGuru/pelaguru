@@ -7,9 +7,11 @@ import { AccountRecoveryRequestComponent } from './core/auth/account-recovery-re
 import { ResetPasswordComponent } from './core/auth/reset-password/reset-password.component';
 import { NotAuthorizedComponent } from './shared/not-authorized/not-authorized.component';
 import { NotFoundComponent } from './shared/not-found/not-found.component';
+import { AuthGuard } from './core/auth/auth-guard/auth.guard';
+import { PageGuard } from './core/page-guard/page.guard';
 
 const routes: Routes = [
-  { path: 'sign-in', component: SignInComponent /*canActivate: [AuthGuard]*/ },
+  { path: 'sign-in', component: SignInComponent, canActivate: [AuthGuard] },
   {
     path: 'account-recovery-request',
     component: AccountRecoveryRequestComponent,
@@ -19,6 +21,7 @@ const routes: Routes = [
     path: '',
     loadChildren: () =>
       import('./pages/pages.module').then((m) => m.PagesModule),
+    canActivate: [PageGuard],
   },
   {
     path: 'unauthorized',

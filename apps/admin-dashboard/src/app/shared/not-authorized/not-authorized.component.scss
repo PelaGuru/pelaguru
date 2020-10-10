@@ -1,0 +1,42 @@
+@import 'mixing';
+
+.page-not-found {
+  width: 100%;
+  height: 100vh;
+  position: relative;
+  display: grid;
+  align-content: center;
+  .content-container {
+    display: grid;
+    grid-template-columns: max-content auto;
+    justify-content: center;
+    padding: 20px;
+    .icon-container {
+      display: grid;
+      align-content: center;
+      font-size: 6em;
+      padding-right: 30px;
+      color: var(--primary);
+    }
+    .description-container {
+      width: 100%;
+      .heading {
+        font-size: 2em;
+      }
+      .text {
+        padding: 10px 0;
+        color: rgb(113, 113, 113);
+      }
+      .button-container {
+        padding: 10px 0;
+        a {
+          text-decoration: none;
+
+          button {
+            color: white !important;
+          }
+        }
+      }
+    }
+  }
+}
